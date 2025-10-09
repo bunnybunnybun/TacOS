@@ -311,9 +311,9 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // The wiki explains how to configure individual animations:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Animations
 animations {
-    slowdown 2.5
+    slowdown 2.0
     window-open {
-      duration-ms 250
+      duration-ms 200
       curve "linear"
       custom-shader r"
     
@@ -336,7 +336,7 @@ animations {
  }
 
    window-close {
-      duration-ms 370
+      duration-ms 250
       curve "linear"
       custom-shader r"
 
@@ -432,7 +432,7 @@ binds {
     Mod+S { spawn "nemo"; }
     Mod+Z { spawn "/opt/zen-browser-bin/zen-bin"; }
     Mod+T hotkey-overlay-title="Open a Terminal: Kitty" { spawn "kitty"; }
-    Mod+W hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Mod+W hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel" "--config" "/etc/xdg/fuzzel/magic_fuzzel.ini"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
