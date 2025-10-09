@@ -1,0 +1,6 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Theme Switcher
+Exec=python3 /home/carlisle/.scrolling_de_stuff/theme_switcher.py
+Terminal=true

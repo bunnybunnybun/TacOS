@@ -1,0 +1,54 @@
+{
+	"layer": "top",
+	"height": 20,
+	"reload_style_on_change": true,
+	"modules-left": ["niri/workspaces", "mpd", "niri/window"],
+	"modules-center": ["clock"],
+	"modules-right": ["pulseaudio", "cpu", "memory"],
+	"mpd": {
+		"tooltip": false,
+		"format": "{stateIcon} {artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+		"format-disconnected": "ﳌ",
+		"format-stopped": "",
+        "state-icons": {
+            "playing": "",
+            "paused": ""
+        }
+	},
+	"niri/window": {
+	"format": "{app_id}",
+	"rewrite": {
+		"(.*) - kitty": "🌎 $1",
+		"(.*) - zsh": "> [$1]"
+	}
+},
+	"pulseaudio": {
+		"tooltip": false,
+		"scroll-step": 5,
+		"format": "   {volume}%",
+		"format-icons": {
+			"default": ["奄", "奔", "墳"]
+		},
+		"on-click": "kitty -e cava"
+	},
+	"network": {
+		"tooltip": false,
+		"format-wifi": " {essid} {ipaddr}",
+		"format-ethernet": " {ipaddr}"
+	},
+	"cpu": {
+		"tooltip": false,
+		"interval": 3,
+		"format": "   {}%",
+		"on-click": "plasma-systemmonitor"
+	},
+	"memory": {
+		"tooltip": false,
+		"format": "   {}%",
+		"on-click": "plasma-systemmonitor"
+	},
+	"clock": {
+		"format": "{:%Y/%m/%d %H:%M}",
+		"tooltip": false
+	}
+}

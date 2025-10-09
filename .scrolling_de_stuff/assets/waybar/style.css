@@ -1,0 +1,326 @@
+/*
+ ********************************************
+ *░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*
+ *░░█▀█░█░░░█░█░█▀▀░░░█░█░█░░░▀█▀░█▀▄░█▀█░░*
+ *░░█▀▀░█░░░█░█░▀▀█░░░█░█░█░░░░█░░█▀▄░█▀█░░*
+ *░░▀░░░▀▀▀░▀▀▀░▀▀▀░░░▀▀▀░▀▀▀░░▀░░▀░▀░▀░▀░░*
+ *░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*
+ ********************************************
+ */
+
+* {
+	border: none;
+	border-radius: 0;
+	font-family: Minecraft;
+	font-size: 14px;
+	min-height: 5px;
+}
+
+.modules-left {
+	
+}
+
+window#waybar {
+	background: transparent;
+	min-height: 0px;
+	padding: 1px 10px;
+	margin-right: 20px;
+}
+
+window#waybar.hidden {
+	opacity: 0.2;
+}
+
+#workspaces {
+	margin-top: 6px;
+	padding-top: 0px;
+	margin-left: 10px;
+	margin-right: 6px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 0px;
+	margin-bottom: 10px;
+	border: 7px solid #ffffff;
+	border-radius: 8px;
+	transition: none;
+	color: #000000;
+	background: #f4da32;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
+}
+
+#workspaces:hover {
+	margin-top: 6px;
+	padding-top: 0px;
+	margin-left: 10px;
+	margin-right: 6px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 0px;
+	margin-bottom: 10px;
+	border: 7px solid #31af00;
+	border-radius: 8px;
+	transition: none;
+	color: #000000;
+	background: #f4da32;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
+}
+
+#workspaces button {
+	transition: none;
+	color: #000000;
+	background: transparent;
+	font-size: 16px;
+}
+
+#workspaces button.focused {
+	color: #31af00;
+}
+
+#workspaces button:hover {
+	transition: none;
+	box-shadow: inherit;
+	text-shadow: inherit;
+	color: #0095ff;
+}
+
+#mpd {
+	margin-top: 6px;
+	padding-top: 0px;
+	margin-left: 8px;
+	margin-right: 12px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+	border: 7px solid #ffffff;
+	border-radius: 8px;
+	transition: none;
+	color: #000000;
+	background: #f4da32;
+}
+
+#mpd.disconnected,
+#mpd.stopped {
+	margin-top: 6px;
+	padding-top: 0px;
+	margin-left: 8px;
+	margin-right: 12px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+	border: 7px solid #ffffff;
+	border-radius: 8px;
+	transition: none;
+	color: #000000;
+	background: #f4da32;
+}
+
+#network {
+	margin-top: 6px;
+	padding-top: 0px;
+	margin-left: 8px;
+	margin-right: 12px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+	border: 7px solid #ffffff;
+	border-radius: 8px;
+	transition: none;
+	color: #000000;
+	background: #f4da32;
+}
+
+#pulseaudio {
+	margin-top: 6px;
+	padding-top: 0px;
+	margin-left: 6px;
+	margin-right: 6px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 0px;
+	margin-bottom: 10px;
+	border: 7px solid #ffffff;
+	border-radius: 8px;
+	transition: none;
+	color: #000000;
+	background: #f4da32;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
+}
+
+#pulseaudio:hover {
+	margin-top: 6px;
+	padding-top: 0px;
+	margin-left: 6px;
+	margin-right: 6px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 0px;
+	margin-bottom: 10px;
+	border: 7px solid #31af00;
+	border-radius: 8px;
+	transition: none;
+	color: #000000;
+	background: #f4da32;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
+}
+
+#temperature {
+	margin-top: 6px;
+	padding-top: 0px;
+	margin-left: 8px;
+	margin-right: 8px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+	border: 7px solid #ffffff;
+	border-radius: 8px;
+	transition: none;
+	color: #000000;
+	background: #f4da32;
+}
+
+#cpu {
+	margin-top: 6px;
+	padding-top: 0px;
+	margin-left: 6px;
+	margin-right: 6px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 0px;
+	margin-bottom: 10px;
+    border: 7px solid #ffffff;
+	border-radius: 8px;
+	transition: none;
+	color: #000000;
+	background: #f4da32;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
+}
+
+#cpu:hover {
+	margin-top: 6px;
+	padding-top: 0px;
+	margin-left: 6px;
+	margin-right: 6px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 0px;
+	margin-bottom: 10px;
+	border: 7px solid #31af00;
+	border-radius: 8px;
+	transition: none;
+	color: #000000;
+	background: #f4da32;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
+}
+
+#memory {
+	margin-top: 6px;
+	padding-top: 0px;
+	margin-left: 8px;
+	margin-right: 10px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 0px;
+	margin-bottom: 10px;
+	border: 7px solid #ffffff;
+	border-radius: 8px;
+	transition: none;
+	color: #000000;
+	background: #f4da32;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
+}
+
+#memory:hover {
+	margin-top: 6px;
+	padding-top: 0px;
+	margin-left: 8px;
+	margin-right: 10px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 0px;
+	margin-bottom: 10px;
+	border: 7px solid #31af00;
+	border-radius: 8px;
+	transition: none;
+	color: #000000;
+	background: #f4da32;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
+}
+
+#clock {
+	margin-top: 6px;
+	padding-top: 0px;
+	margin-left: 6px;
+	margin-right: 6px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 0px;
+	margin-bottom: 10px;
+	border: 7px solid #ffffff;
+	border-radius: 8px;
+	transition: none;
+	color: #000000;
+	background: #f4da32;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
+}
+
+#clock:hover {
+	margin-top: 6px;
+	padding-top: 0px;
+	margin-left: 6px;
+	margin-right: 6px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 0px;
+	margin-bottom: 10px;
+	border: 7px solid #31af00;
+	border-radius: 8px;
+	transition: none;
+	color: #000000;
+	background: #f4da32;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
+}
+
+#window {
+    margin-top: 6px;
+	padding-top: 0px;
+	margin-left: 6px;
+	margin-right: 6px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 0px;
+	margin-bottom: 10px;
+	border: 7px solid #ffffff;
+	border-radius: 8px;
+	transition: none;
+	color: #000000;
+	background: #f4da32;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
+}
+
+#window:hover {
+    margin-top: 6px;
+	padding-top: 0px;
+	margin-left: 6px;
+	margin-right: 6px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 0px;
+	margin-bottom: 10px;
+	border: 7px solid #31af00;
+	border-radius: 8px;
+	transition: none;
+	color: #000000;
+	background: #f4da32;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
+	border: 0px transparent;
+	box-shadow: none;
+}
+
