@@ -10,6 +10,9 @@ Also, please keep in mind that:
 
 This DE only works on Arch Linux (and probably it's derivatives, such as CachyOS. But those have not been tested.), and I do not expect anyone to download a new operating system onto their computer just to test my DE. So, you can just watch this demo/showcase video:
 
+    [![Watch the video](https://raw.githubusercontent.com/bunnybunbun/ScrollingDE/main/assets/thumbnail.png)](https://raw.githubusercontent.com/bunnybunbun/ScrollingDE/main/assets/ScrollingDEShowcaseVid.mov)
+
+
 ## Features
  - Auto tiling window management, with the ability to scroll through your windows. Watch the demo video to see what I mean.
  - Dynamic workspaces. Use different workspaces to stay organized!
