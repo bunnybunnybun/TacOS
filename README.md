@@ -25,6 +25,7 @@ Click this to view the demo: https://hc-cdn.hel1.your-objectstorage.com/s/v3/0b3
  - Add more preset themes!
  - Support for logging in with a fingerprint reader
  - Improve the way notifications are handled
+ - Add a polkit authentification agent
  - And SO MUCH MORE :) :) 
 
 ## How to install
