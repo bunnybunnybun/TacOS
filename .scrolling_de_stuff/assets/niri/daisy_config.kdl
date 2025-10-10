@@ -4,7 +4,7 @@
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
 
 overview {
-    backdrop-color "#2c2c2cff"
+    backdrop-color "#0a2714ff"
 }
 
 cursor {
