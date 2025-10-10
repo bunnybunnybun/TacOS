@@ -23,4 +23,5 @@ This DE only works on Arch Linux (and probably it's derivatives, such as CachyOS
  - Actually create the demo video :(
  - Add more preset themes!
  - Support for logging in with a fingerprint reader
- - and SO MUCH MORE :) :) 
+ - Improve the way notifications are handled
+ - And SO MUCH MORE :) :) 

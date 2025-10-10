@@ -189,7 +189,7 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "rgba(120, 170, 116, 0.593)"
+        active-color "rgba(204, 255, 0, 1)"
 
         // Color of the ring on inactive monitors.
         inactive-color "#ffffff00"
@@ -252,16 +252,16 @@ layout {
         // pixels and match the CSS box-shadow properties.
 
         // Softness controls the shadow blur radius.
-        softness 7
+        softness 10
 
         // Spread expands the shadow.
-        spread 1.5
+        spread 6.0
 
         // Offset moves the shadow relative to the window.
-        offset x=0 y=5.0
+        offset x=0 y=0
 
         // You can also change the shadow color and opacity.
-        color "rgba(0, 0, 0, 0.9)"
+        color "rgba(34, 236, 229, 1)"
     }
 
     // Struts shrink the area occupied by windows, similarly to layer-shell panels.
