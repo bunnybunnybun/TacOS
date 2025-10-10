@@ -8,7 +8,8 @@ Also, please keep in mind that:
  - This is a very early prototype, and not anywhere near finished
  - I did not write this entirely from scratch, as that would take, maybe... years?
 
-This DE only works on Arch Linux (and probably it's derivatives, such as CachyOS. But those have not been tested.), and I do not expect anyone to download a new operating system onto their computer just to test my DE. So, you can just watch the demo/showcase video. Go to the repository files and look for a file called ScrollingDEShowcaseVid.mov and watch that. (I could not figure out how to embed the video into this README)
+This DE only works on Arch Linux (and probably it's derivatives, such as CachyOS. But those have not been tested.), and I do not expect anyone to download a new operating system onto their computer just to test my DE. So, you can just watch the demo/showcase video.
+Click this to view the demo: https://hc-cdn.hel1.your-objectstorage.com/s/v3/0b38fe7e85b389dd1a82d1ff72ba8a0d138aa259_scrollingdeshowcasevid.mp4
 
 ## Features
  - Auto tiling window management, with the ability to scroll through your windows. Watch the demo video to see what I mean.
