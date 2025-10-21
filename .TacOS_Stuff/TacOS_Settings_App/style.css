@@ -11,8 +11,42 @@ box.box_1 {
     margin: 0px;
 }
 
-button.theme_buttons {
+button.button_theme_daisies {
     margin: 10px;
-    min-width: 100px;
+    min-width: 110px;
     min-height: 30px;
+    background: #f4da32;
+    color: black;
+    font-weight: bold;
+    border: 1px solid white;
+}
+
+button.button_theme_minimal {
+    margin: 10px;
+    min-width: 110px;
+    min-height: 30px;
+    background: #302d41;
+    color: white;
+    font-weight: bold;
+    border: 1px solid white;
+}
+
+button.button_theme_magic {
+    margin: 10px;
+    min-width: 110px;
+    min-height: 30px;
+    background: #200936;
+    color: #00e8ff;
+    font-weight: bold;
+    border: 1px solid white;
+}
+
+button.button_theme_fall {
+    margin: 10px;
+    min-width: 110px;
+    min-height: 30px;
+    background: rgb(249, 135, 6);
+    color: white;
+    font-weight: bold;
+    border: 1px solid white;
 }
