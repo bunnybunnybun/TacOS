@@ -1,23 +1,9 @@
-/*
- ********************************************
- *░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*
- *░░█▀█░█░░░█░█░█▀▀░░░█░█░█░░░▀█▀░█▀▄░█▀█░░*
- *░░█▀▀░█░░░█░█░▀▀█░░░█░█░█░░░░█░░█▀▄░█▀█░░*
- *░░▀░░░▀▀▀░▀▀▀░▀▀▀░░░▀▀▀░▀▀▀░░▀░░▀░▀░▀░▀░░*
- *░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░*
- ********************************************
- */
-
 * {
 	border: none;
 	border-radius: 0;
 	font-family: Minecraft;
 	font-size: 14px;
 	min-height: 5px;
-}
-
-.modules-left {
-	
 }
 
 window#waybar {
@@ -200,7 +186,7 @@ window#waybar.hidden {
 	transition: none;
 	color: #000000;
 	background: #9c6262;
-	box-shadow: 0 0px 0px rgba(0, 0, 0, 0.7);
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.7);
 }
 
 #cpu:hover {
@@ -217,7 +203,7 @@ window#waybar.hidden {
 	transition: none;
 	color: #000000;
 	background: #9c6262;
-	box-shadow: 4 4px 4px rgba(0, 0, 0, 0.7);
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.7);
 }
 
 #memory {
@@ -234,7 +220,7 @@ window#waybar.hidden {
 	transition: none;
 	color: #000000;
 	background: #9c6262;
-	box-shadow: 0 0px 0px rgba(0, 0, 0, 0.7);
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.7);
 }
 
 #memory:hover {
@@ -251,7 +237,7 @@ window#waybar.hidden {
 	transition: none;
 	color: #000000;
 	background: #9c6262;
-	box-shadow: 4 4px 4px rgba(0, 0, 0, 0.7);
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.7);
 }
 
 #clock {
@@ -268,7 +254,7 @@ window#waybar.hidden {
 	transition: none;
 	color: #000000;
 	background: #9c6262;
-	box-shadow: 0 0px 0px rgba(0, 0, 0, 0.7);
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.7);
 }
 
 #clock:hover {
@@ -285,7 +271,7 @@ window#waybar.hidden {
 	transition: none;
 	color: #000000;
 	background: #9c6262;
-	box-shadow: 4 4px 4px rgba(0, 0, 0, 0.7);
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.7);
 }
 
 #window {
@@ -302,7 +288,7 @@ window#waybar.hidden {
 	transition: none;
 	color: #000000;
 	background: #9c6262;
-	box-shadow: 0 0px 0px rgba(0, 0, 0, 0.7);
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.7);
 }
 
 #window:hover {
@@ -319,7 +305,7 @@ window#waybar.hidden {
 	transition: none;
 	color: #000000;
 	background: #9c6262;
-	box-shadow: 4 4px 4px rgba(0, 0, 0, 0.7);
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.7);
 }
 
 window#waybar.empty #window {

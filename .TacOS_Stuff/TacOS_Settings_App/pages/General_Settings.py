@@ -21,7 +21,7 @@ class GeneralSettingsPage(Gtk.Box):
         theme_button_3.connect("clicked", self.Set_Theme_Magic)
         theme_button_3.get_style_context().add_class("button_theme_magic")
         theme_button_4 = Gtk.Button(label="Fall/Autumn")
-        theme_button_4.connect("clicked", self.Set_Theme_Magic)
+        theme_button_4.connect("clicked", self.Set_Theme_Fall)
         theme_button_4.get_style_context().add_class("button_theme_fall")
         self.add(label_1)
         self.add(theme_grid)
@@ -51,7 +51,7 @@ class GeneralSettingsPage(Gtk.Box):
         os.system("hyprpaper --config ~/.TacOS_Stuff/assets/hyprpaper/magic_hyprpaper.conf & disown")
         os.system("cp ~/.TacOS_Stuff/assets/niri/magic_config.kdl ~/.config/niri/config.kdl")
 
-    def Set_Theme_Magic(self, widget):
+    def Set_Theme_Fall(self, widget):
         os.system("killall waybar; waybar -c ~/.TacOS_Stuff/assets/waybar/fall_config.jsonc -s ~/.TacOS_Stuff/assets/waybar/fall_style.css & disown")
         os.system("killall hyprpaper")
         time.sleep(0.1)
