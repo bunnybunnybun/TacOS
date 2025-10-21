@@ -4,7 +4,7 @@
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
 
 overview {
-    backdrop-color "#0f1a26ff"
+    backdrop-color "rgba(141, 89, 30, 1)"
 }
 
 cursor {
@@ -133,7 +133,7 @@ output "HDMI-A-2"{
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 7
+    gaps 20
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -181,7 +181,7 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 2
+        width 3
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -189,7 +189,7 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#7264a8ff"
+        active-color "#0f4c5cff"
 
         // Color of the ring on inactive monitors.
         inactive-color "#ffffff00"
@@ -252,10 +252,10 @@ layout {
         // pixels and match the CSS box-shadow properties.
 
         // Softness controls the shadow blur radius.
-        softness 7
+        softness 12
 
         // Spread expands the shadow.
-        spread 4.0
+        spread 5.0
 
         // Offset moves the shadow relative to the window.
         offset x=0 y=0.0
@@ -270,10 +270,10 @@ layout {
     // Top and bottom struts will simply add outer gaps in addition to the area occupied by
     // layer-shell panels and regular gaps.
     struts {
-        // left 5
-        // right 5
-        // top -8
-        // bottom 5
+        left 5
+        right 5
+        top 5
+        bottom 5
     }
 }
 
@@ -361,7 +361,7 @@ window-rule {
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
 window-rule {
-    geometry-corner-radius 0
+    geometry-corner-radius 10
     clip-to-geometry true
 }
 
