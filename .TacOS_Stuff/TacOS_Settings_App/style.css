@@ -19,6 +19,12 @@ button.button_theme_daisies {
     color: black;
     font-weight: bold;
     border: 1px solid white;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.7);
+}
+
+button.button_theme_daisies:hover {
+    border: 1px solid #3daee9;
+    background: #c2ad28;
 }
 
 button.button_theme_minimal {
@@ -29,6 +35,12 @@ button.button_theme_minimal {
     color: white;
     font-weight: bold;
     border: 1px solid white;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.7);
+}
+
+button.button_theme_minimal:hover {
+    border: 1px solid #3daee9;
+    background: #201e2c;
 }
 
 button.button_theme_magic {
@@ -39,6 +51,12 @@ button.button_theme_magic {
     color: #00e8ff;
     font-weight: bold;
     border: 1px solid white;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.7);
+}
+
+button.button_theme_magic:hover {
+    border: 1px solid #3daee9;
+    background: #0a0311;
 }
 
 button.button_theme_fall {
@@ -49,4 +67,10 @@ button.button_theme_fall {
     color: white;
     font-weight: bold;
     border: 1px solid white;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.7);
+}
+
+button.button_theme_fall:hover {
+    border: 1px solid #3daee9;
+    background: rgb(183, 100, 5);
 }
