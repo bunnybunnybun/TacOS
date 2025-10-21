@@ -1,16 +1,9 @@
-# ScrollingDE
-This is a Desktop Environment for Arch Linux with automatic window management (Thanks to Niri!), intended for power users and power user wannabe's like me.
-
-## Demo
-Before you watch the demo, please read this so you understand what exactly this is. This is a desktop environment (DE). But what is that? Well, take for example Windows and MacOS. They have a lot of differences, but the most obvious one is that they look different. Everything that you see on your screen, except for the individual apps that you downloaded, is thanks to the desktop environment. That's why Windows and MacOS look so different; they have different DEs. On Linux however, there are many different DE's that you can choose from, allowing it to look however you want. I decided to make my own DE, and that's what this project is.
+# TacOS
+This is an operating system based on Arch Linux, designed for power users and power user wannabe's like me!
 
 Also, please keep in mind that:
  - This is a very early prototype, and not anywhere near finished
  - I did not write this entirely from scratch, as that would take, maybe... years?
-
-This DE only works on Arch Linux (and probably it's derivatives, such as CachyOS. But those have not been tested.), and I do not expect anyone to download a new operating system onto their computer just to test my DE. So, you can just watch the demo/showcase video.
-Click this to download the demo video: https://hc-cdn.hel1.your-objectstorage.com/s/v3/0b38fe7e85b389dd1a82d1ff72ba8a0d138aa259_scrollingdeshowcasevid.mp4
-Or click this to view it in Slack, so you don't have to download it: https://hackclub.slack.com/archives/C016DEDUL87/p1760075846758609
 
 ## Features
  - Auto tiling window management, with the ability to scroll through your windows. Watch the demo video to see what I mean.
@@ -35,5 +28,5 @@ First of all, to anyone who has come to review/demo this, you don't need to inst
  - Next, clone the contents of this repository onto your machine.
  - Then, cd into the folder you just cloned from this repo.
  - Run ./install_script. This will begin the installation process. You may be asked to enter your sudo password. Don't worry, I'm not trying to hack into your computer (you can check the source code if you want), it's just required by the package manager in order to install some of the base applications. It may also prompt you a few times to ask if you want to perform certain operations. Just click yes in order to get a proper installation.
- - You may have to manually install drivers for your device, ScrollingDE does not install them automaticaly. (Atleast not yet.)
+ - You may have to manually install drivers for your device, TacOS does not install them automaticaly. (Atleast not yet.)
  - And finaly, enjoy your new desktop!!!
