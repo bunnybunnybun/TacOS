@@ -1,6 +1,7 @@
 import gi
 import os
 import time
+from pages.General_Settings_Subfiles.Change_Accent_Color import okdoitnow
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 
@@ -23,8 +24,18 @@ class GeneralSettingsPage(Gtk.Box):
         theme_button_4 = Gtk.Button(label="Fall/Autumn")
         theme_button_4.connect("clicked", self.Set_Theme_Fall)
         theme_button_4.get_style_context().add_class("button_theme_fall")
+
+
+        label_2 = Gtk.Label(label="Choose your accent color:")
+        button_red = Gtk.Button(label="Red")
+        button_red.connect("clicked", okdoitnow)
+        button_white = Gtk.Button(label="White")
+
         self.add(label_1)
         self.add(theme_grid)
+        self.add(label_2)
+        self.add(button_red)
+        self.add(button_white)
         theme_grid.attach(theme_button_1, 1, 0, 1, 1)
         theme_grid.attach_next_to(theme_button_2, theme_button_1, Gtk.PositionType.RIGHT, 1, 1)
         theme_grid.attach_next_to(theme_button_3, theme_button_1, Gtk.PositionType.BOTTOM, 1, 1)
