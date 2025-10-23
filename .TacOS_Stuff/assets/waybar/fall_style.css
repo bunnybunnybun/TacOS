@@ -11,7 +11,7 @@
 }
 
 window#waybar {
-	background: #0f4c5c;
+	background: linear-gradient(to bottom, #12596b 20%, #0c414f 100%);
 	min-height: 0px;
 	padding: 1px 5px;
 	margin-right: 20px;
