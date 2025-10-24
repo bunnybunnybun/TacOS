@@ -30,6 +30,10 @@ class GeneralSettingsPage(Gtk.Box):
         theme_button_4 = Gtk.Button(label="Fall/Autumn")
         theme_button_4.connect("clicked", self.Set_Theme_Fall)
         theme_button_4.get_style_context().add_class("button_theme_fall")
+        light_mode_button = Gtk.Button(label="Light mode")
+        light_mode_button.connect("clicked", self.Light_Mode)
+        dark_mode_button = Gtk.Button(label="Dark mode")
+        dark_mode_button.connect("clicked", self.Dark_Mode)   
 
 
         label_2 = Gtk.Label(label="Set focus ring width:")
@@ -46,12 +50,20 @@ class GeneralSettingsPage(Gtk.Box):
 
         self.add(label_1)
         self.add(theme_grid)
+        self.add(light_mode_button)
+        self.add(dark_mode_button)
         self.add(label_2)
         self.add(self.focus_ring_width_scale)
         theme_grid.attach(theme_button_1, 1, 0, 1, 1)
         theme_grid.attach_next_to(theme_button_2, theme_button_1, Gtk.PositionType.RIGHT, 1, 1)
         theme_grid.attach_next_to(theme_button_3, theme_button_1, Gtk.PositionType.BOTTOM, 1, 1)
         theme_grid.attach_next_to(theme_button_4, theme_button_3, Gtk.PositionType.RIGHT, 1, 1)
+
+    def Light_Mode(self, widget):
+        os.system('gsettings set org.gnome.desktop.interface gtk-theme "Default"')
+    
+    def Dark_Mode(self, widget):
+        os.system('gsettings set org.gnome.desktop.interface gtk-theme "Material-Black-Plum-3.38"')
 
     def on_scale_changed(self, scale):
         value = scale.get_value()
