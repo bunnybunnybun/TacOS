@@ -33,7 +33,9 @@ class GeneralSettingsPage(Gtk.Box):
         light_mode_button = Gtk.Button(label="Light mode")
         light_mode_button.connect("clicked", self.Light_Mode)
         dark_mode_button = Gtk.Button(label="Dark mode")
-        dark_mode_button.connect("clicked", self.Dark_Mode)   
+        dark_mode_button.connect("clicked", self.Dark_Mode)
+        black_mode_button = Gtk.Button(label="Black mode")
+        black_mode_button.connect("clicked", self.Black_Mode)
 
 
         label_2 = Gtk.Label(label="Set focus ring width:")
@@ -52,6 +54,7 @@ class GeneralSettingsPage(Gtk.Box):
         self.add(theme_grid)
         self.add(light_mode_button)
         self.add(dark_mode_button)
+        self.add(black_mode_button)
         self.add(label_2)
         self.add(self.focus_ring_width_scale)
         theme_grid.attach(theme_button_1, 1, 0, 1, 1)
@@ -60,9 +63,12 @@ class GeneralSettingsPage(Gtk.Box):
         theme_grid.attach_next_to(theme_button_4, theme_button_3, Gtk.PositionType.RIGHT, 1, 1)
 
     def Light_Mode(self, widget):
-        os.system('gsettings set org.gnome.desktop.interface gtk-theme "Default"')
-    
+        os.system('gsettings set org.gnome.desktop.interface gtk-theme "Emacs"')
+
     def Dark_Mode(self, widget):
+        os.system('gsettings set org.gnome.desktop.interface gtk-theme "Fluent-pink"')
+    
+    def Black_Mode(self, widget):
         os.system('gsettings set org.gnome.desktop.interface gtk-theme "Material-Black-Plum-3.38"')
 
     def on_scale_changed(self, scale):
@@ -100,6 +106,7 @@ class GeneralSettingsPage(Gtk.Box):
         time.sleep(0.1)
         os.system("hyprpaper --config ~/.TacOS_Stuff/assets/hyprpaper/magic_hyprpaper.conf & disown")
         os.system("cp ~/.TacOS_Stuff/assets/niri/magic_config.kdl ~/.config/niri/config.kdl")
+        os.system('gsettings set org.gnome.desktop.interface gtk-theme "Material-Black-Plum-3.38"')
         os.system(f"rm {self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies {self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal {self.script_dir}/General_Settings_Subfiles/current_theme_is_magic {self.script_dir}/General_Settings_Subfiles/current_theme_is_fall")
         os.system(f"touch {self.script_dir}/General_Settings_Subfiles/current_theme_is_magic")
 
@@ -111,3 +118,4 @@ class GeneralSettingsPage(Gtk.Box):
         os.system("cp ~/.TacOS_Stuff/assets/niri/fall_config.kdl ~/.config/niri/config.kdl")
         os.system(f"rm {self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies {self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal {self.script_dir}/General_Settings_Subfiles/current_theme_is_magic {self.script_dir}/General_Settings_Subfiles/current_theme_is_fall")
         os.system(f"touch {self.script_dir}/General_Settings_Subfiles/current_theme_is_fall")
+        os.system('gsettings set org.gnome.desktop.interface gtk-theme "Material-Black-Mango-3.38"')

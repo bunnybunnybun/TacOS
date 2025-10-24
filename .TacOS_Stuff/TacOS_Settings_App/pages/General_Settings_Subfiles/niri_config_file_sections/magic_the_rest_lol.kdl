@@ -168,7 +168,7 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 animations {
     slowdown 2.0
     window-open {
-      duration-ms 200
+      duration-ms 350
       curve "linear"
       custom-shader r"
     
@@ -191,7 +191,7 @@ animations {
  }
 
    window-close {
-      duration-ms 250
+      duration-ms 400
       curve "linear"
       custom-shader r"
 
