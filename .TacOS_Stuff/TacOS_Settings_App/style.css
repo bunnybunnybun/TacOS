@@ -76,7 +76,7 @@ button.button_theme_fall:hover {
 }
 
 box.top_bar {
-    background: #691b9c;
+    background: linear-gradient(#aa2bff 0%, #691b9c 30%);
     color: white;
     min-height: 30px;
     margin: 0px;
