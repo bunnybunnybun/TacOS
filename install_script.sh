@@ -6,7 +6,7 @@ sudo pacman -S --needed --noconfirm nemo fastfetch base-devel git sddm niri kitt
 sudo systemctl enable sddm
 pip install FreeSimpleGUI --break-system-packages
 pip install kdl-py --break-system-packages
-sudo cp $SCRIPT_DIR/.TacOS_Stuff ~/ -r
+cp $SCRIPT_DIR/.TacOS_Stuff ~/ -r
 sudo cp $SCRIPT_DIR/Theme\ Switcher.desktop /usr/share/applications/Theme\ Switcher.desktop
 cp ~/.TacOS_Stuff/assets/niri/ ~/.config/ -r
 cp ~/.TacOS_Stuff/assets/kitty/ ~/.config/ -r
