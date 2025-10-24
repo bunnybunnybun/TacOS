@@ -1,5 +1,6 @@
 import gi
 import os
+import subprocess
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 
@@ -10,10 +11,20 @@ class AudioSettingsPage(Gtk.Box):
         main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         secondary_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
 
+        current = subprocess.run(
+            "pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '\d+(?=%)' | head -n 1",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+
+        current_volume = current.stdout.strip()
+        volume_value = int(current_volume)
+
         self.label_ig = Gtk.Label(label="Adjust audio level")
         self.mute_button = Gtk.Button(label="Toggle mute")
         self.mute_button.connect("clicked", self.on_mute_clicked)
-        self.mute_button.set_valign(Gtk.Align.CENTER)
+        self.mute_button.set_valign(Gtk.Align.CENTER) 
 
         self.audio_slider = Gtk.Scale.new_with_range(
             orientation=Gtk.Orientation.VERTICAL,
@@ -21,7 +32,7 @@ class AudioSettingsPage(Gtk.Box):
             max=100,
             step=1
         )
-        self.audio_slider.set_value(50)
+        self.audio_slider.set_value(volume_value)
         self.audio_slider.set_inverted(True)
         self.audio_slider.get_style_context().add_class("audio_slider")
         self.audio_slider.connect("value-changed", self.on_value_changed)
