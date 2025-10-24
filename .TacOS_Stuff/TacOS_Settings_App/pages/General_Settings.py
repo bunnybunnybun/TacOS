@@ -40,6 +40,7 @@ class GeneralSettingsPage(Gtk.Box):
         dark_mode_button.connect("clicked", self.Dark_Mode)
         black_mode_button = Gtk.Button(label="Black mode")
         black_mode_button.connect("clicked", self.Black_Mode)
+        color_chooser_label = Gtk.Label(label="Set the focus ring color:")
         color_chooser_button = Gtk.ColorButton()
         color_chooser_button.connect("color-set", self.on_color_set)
 
@@ -61,6 +62,7 @@ class GeneralSettingsPage(Gtk.Box):
         self.add(light_mode_button)
         self.add(dark_mode_button)
         self.add(black_mode_button)
+        self.add(color_chooser_label)
         self.add(color_chooser_button)
         self.add(label_2)
         self.add(self.focus_ring_width_scale)

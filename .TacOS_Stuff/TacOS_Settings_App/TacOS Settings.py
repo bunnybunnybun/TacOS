@@ -24,12 +24,20 @@ class MainWindow(Gtk.Window):
         super().__init__(title="TacOS Settings")
         self.set_default_size(600, 400)
 
-        self.main_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         self.main_box.get_style_context().add_class("main_box")
+        self.top_bar_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        self.top_bar_box.get_style_context().add_class("top_bar")
+        self.big_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
 
         self.box_1 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         self.box_1.get_style_context().add_class("box_1")
         self.box_2 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+
+        self.top_bar_label = Gtk.Label(label="TacOS Settings")
+        self.top_bar_close_button = Gtk.Button(label="")
+        self.top_bar_close_button.connect("clicked", self.close_button_on_clicked)
+        self.top_bar_close_button.get_style_context().add_class("close_button")
         
         self.general_settings_page = GeneralSettingsPage()
         self.audio_settings_page = AudioSettingsPage()
@@ -48,11 +56,18 @@ class MainWindow(Gtk.Window):
 
         self.box_1.pack_start(self.switcher, True, True, 0)
         self.box_2.add(self.stack)
+        self.top_bar_box.set_center_widget(self.top_bar_label)
+        self.top_bar_box.pack_end(self.top_bar_close_button, False, False, 0)
 
-        self.main_box.add(self.box_1)
-        self.main_box.add(self.box_2)
+        self.big_box.add(self.box_1)
+        self.big_box.add(self.box_2)
 
+        self.main_box.add(self.top_bar_box)
+        self.main_box.add(self.big_box)
         self.add(self.main_box)
+
+    def close_button_on_clicked(self, widget):
+        win.destroy()
 
 win = MainWindow()
 win.connect("destroy", Gtk.main_quit)

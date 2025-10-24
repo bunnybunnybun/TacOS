@@ -7,8 +7,8 @@ default-column-width {
 	proportion 0.5
 }
 focus-ring {
-	width 7.0
-	active-color "rgba(204, 255, 0, 1)"
+	width 15.0
+	active-color "#463c77ff"
 	inactive-color "#ffffff00"
 }
 border {

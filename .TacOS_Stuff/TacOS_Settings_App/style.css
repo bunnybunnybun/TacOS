@@ -74,3 +74,23 @@ button.button_theme_fall:hover {
     border: 1px solid #3daee9;
     background: rgb(183, 100, 5);
 }
+
+box.top_bar {
+    background: #691b9c;
+    color: white;
+    min-height: 30px;
+    margin: 0px;
+    border-radius: 0px;
+    font-weight: bold;
+}
+
+button.close_button {
+    color: red;
+    font-weight: bold;
+    font-size: 30px;
+    padding: 0px;
+    padding-left: 3px;
+    padding-right: 3px;
+    border-radius: 20px;
+    margin: 5px;
+}
