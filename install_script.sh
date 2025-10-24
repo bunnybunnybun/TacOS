@@ -20,6 +20,6 @@ if [ -f "/home/carlisle/.yay_has_been_installed" ]; then
 else
     cd ~/ && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && touch ~/.yay_has_been_installed && rm -rf yay
 fi
-yay -S --needed ungoogled-chromium-bin --noconfirm
+yay -S --needed --noconfirm ungoogled-chromium-bin fluent-gtk-theme material-black-colors-theme
 
 echo "TacOS setup finished! It is recommend that you reboot now. (You can reboot by typing reboot and then pressing enter)"
