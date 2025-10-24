@@ -1,0 +1,27 @@
+preset-column-widths {
+	proportion 0.33333
+	proportion 0.5
+	proportion 0.66667
+}
+default-column-width {
+	proportion 0.5
+}
+focus-ring {
+	width 2.0
+	active-color "#7264a8ff"
+	inactive-color "#ffffff00"
+}
+border {
+	off
+	width 4.0
+	active-color "#f4da32"
+	inactive-color "#ffffff"
+	urgent-color "#9b0000"
+}
+shadow {
+	on
+	softness 7.0
+	spread 1.5
+	offset x=0.0 y=5.0
+	color "rgba(0, 0, 0, 0.9)"
+}

@@ -1,7 +1,11 @@
 import gi
 import os
 import time
-from pages.General_Settings_Subfiles.Change_Accent_Color import okdoitnow
+from pages.General_Settings_Subfiles.set_focus_ring_width import okdoitnowdaisies
+from pages.General_Settings_Subfiles.set_focus_ring_width import okdoitnowminimal
+from pages.General_Settings_Subfiles.set_focus_ring_width import okdoitnowmagic
+from pages.General_Settings_Subfiles.set_focus_ring_width import okdoitnowfall
+
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 
@@ -11,6 +15,8 @@ class GeneralSettingsPage(Gtk.Box):
 
         label_1 = Gtk.Label(label="Choose a theme:")
         theme_grid = Gtk.Grid()
+
+        self.script_dir = os.path.dirname(os.path.abspath(__file__))
 
         theme_button_1 = Gtk.Button(label="Daisies")
         theme_button_1.connect("clicked", self.Set_Theme_Daisies)
@@ -26,20 +32,37 @@ class GeneralSettingsPage(Gtk.Box):
         theme_button_4.get_style_context().add_class("button_theme_fall")
 
 
-        label_2 = Gtk.Label(label="Choose your accent color:")
-        button_red = Gtk.Button(label="Red")
-        button_red.connect("clicked", okdoitnow)
-        button_white = Gtk.Button(label="White")
+        label_2 = Gtk.Label(label="Set focus ring width:")
+        self.focus_ring_width_scale = Gtk.Scale.new_with_range(
+            orientation=Gtk.Orientation.HORIZONTAL,
+            min=0,
+            max=25,
+            step=1
+        )
+
+        self.focus_ring_width_scale.set_value(5)
+        self.focus_ring_width_scale.add_mark(5, Gtk.PositionType.TOP, "Default")
+        self.focus_ring_width_scale.connect("value-changed", self.on_scale_changed)
 
         self.add(label_1)
         self.add(theme_grid)
         self.add(label_2)
-        self.add(button_red)
-        self.add(button_white)
+        self.add(self.focus_ring_width_scale)
         theme_grid.attach(theme_button_1, 1, 0, 1, 1)
         theme_grid.attach_next_to(theme_button_2, theme_button_1, Gtk.PositionType.RIGHT, 1, 1)
         theme_grid.attach_next_to(theme_button_3, theme_button_1, Gtk.PositionType.BOTTOM, 1, 1)
         theme_grid.attach_next_to(theme_button_4, theme_button_3, Gtk.PositionType.RIGHT, 1, 1)
+
+    def on_scale_changed(self, scale):
+        value = scale.get_value()
+        if os.path.exists(f"{self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies"):
+            okdoitnowdaisies(None, value)
+        elif os.path.exists(f"{self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal"):
+            okdoitnowminimal(None, value)
+        elif os.path.exists(f"{self.script_dir}/General_Settings_Subfiles/current_theme_is_magic"):
+            okdoitnowmagic(None, value)
+        elif os.path.exists(f"{self.script_dir}/General_Settings_Subfiles/current_theme_is_fall"):
+            okdoitnowfall(None, value)
 
     def Set_Theme_Daisies(self, widget):
         os.system("killall waybar; waybar -c ~/.TacOS_Stuff/assets/waybar/config.jsonc -s ~/.TacOS_Stuff/assets/waybar/daisies_style.css & disown")
@@ -47,6 +70,8 @@ class GeneralSettingsPage(Gtk.Box):
         time.sleep(0.1)
         os.system("hyprpaper --config ~/.TacOS_Stuff/assets/hyprpaper/daisies_hyprpaper.conf & disown")
         os.system("cp ~/.TacOS_Stuff/assets/niri/daisy_config.kdl ~/.config/niri/config.kdl")
+        os.system(f"rm {self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies {self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal {self.script_dir}/General_Settings_Subfiles/current_theme_is_magic {self.script_dir}/General_Settings_Subfiles/current_theme_is_fall")
+        os.system(f"touch {self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies")
 
     def Set_Theme_Minimal(self, widget):
         os.system("killall waybar; waybar -c ~/.TacOS_Stuff/assets/waybar/config.jsonc -s ~/.TacOS_Stuff/assets/waybar/minimal_style.css & disown")
@@ -54,6 +79,8 @@ class GeneralSettingsPage(Gtk.Box):
         time.sleep(0.1)
         os.system("hyprpaper --config ~/.TacOS_Stuff/assets/hyprpaper/minimal_hyprpaper.conf & disown")
         os.system("cp ~/.TacOS_Stuff/assets/niri/minimal_config.kdl ~/.config/niri/config.kdl")
+        os.system(f"rm {self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies {self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal {self.script_dir}/General_Settings_Subfiles/current_theme_is_magic {self.script_dir}/General_Settings_Subfiles/current_theme_is_fall")
+        os.system(f"touch {self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal")
 
     def Set_Theme_Magic(self, widget):
         os.system("killall waybar; waybar -c ~/.TacOS_Stuff/assets/waybar/config.jsonc -s ~/.TacOS_Stuff/assets/waybar/magic_style.css & disown")
@@ -61,6 +88,8 @@ class GeneralSettingsPage(Gtk.Box):
         time.sleep(0.1)
         os.system("hyprpaper --config ~/.TacOS_Stuff/assets/hyprpaper/magic_hyprpaper.conf & disown")
         os.system("cp ~/.TacOS_Stuff/assets/niri/magic_config.kdl ~/.config/niri/config.kdl")
+        os.system(f"rm {self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies {self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal {self.script_dir}/General_Settings_Subfiles/current_theme_is_magic {self.script_dir}/General_Settings_Subfiles/current_theme_is_fall")
+        os.system(f"touch {self.script_dir}/General_Settings_Subfiles/current_theme_is_magic")
 
     def Set_Theme_Fall(self, widget):
         os.system("killall waybar; waybar -c ~/.TacOS_Stuff/assets/waybar/fall_config.jsonc -s ~/.TacOS_Stuff/assets/waybar/fall_style.css & disown")
@@ -68,3 +97,5 @@ class GeneralSettingsPage(Gtk.Box):
         time.sleep(0.1)
         os.system("hyprpaper --config ~/.TacOS_Stuff/assets/hyprpaper/fall_hyprpaper.conf & disown")
         os.system("cp ~/.TacOS_Stuff/assets/niri/fall_config.kdl ~/.config/niri/config.kdl")
+        os.system(f"rm {self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies {self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal {self.script_dir}/General_Settings_Subfiles/current_theme_is_magic {self.script_dir}/General_Settings_Subfiles/current_theme_is_fall")
+        os.system(f"touch {self.script_dir}/General_Settings_Subfiles/current_theme_is_fall")

@@ -3,6 +3,7 @@ import gi
 from pages.General_Settings import GeneralSettingsPage
 from pages.Display_Settings import DisplaySettingsPage
 from pages.Other_Settings import OtherSettingsPage
+from pages.Audio_Settings import AudioSettingsPage
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk
@@ -31,6 +32,7 @@ class MainWindow(Gtk.Window):
         self.box_2 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         
         self.general_settings_page = GeneralSettingsPage()
+        self.audio_settings_page = AudioSettingsPage()
         self.display_settings_page = DisplaySettingsPage()
         self.other_settings_page = OtherSettingsPage()
 
@@ -38,6 +40,7 @@ class MainWindow(Gtk.Window):
         self.stack.set_transition_type(Gtk.StackTransitionType.CROSSFADE)
         self.stack.set_transition_duration(500)
         self.stack.add_titled(self.general_settings_page, "General_Settings", "General Settings")
+        self.stack.add_titled(self.audio_settings_page, "Audo_Settings", "Audio Settings")
         self.stack.add_titled(self.display_settings_page, "Display_Settings", "Display Settings")
         self.stack.add_titled(self.other_settings_page, "Other_Settings", "Other Settings")
         self.switcher = Gtk.StackSidebar()

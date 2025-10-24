@@ -1,0 +1,7 @@
+struts {
+		//left 5
+		//right 5
+		top -8
+		//bottom 5
+	}
+}
