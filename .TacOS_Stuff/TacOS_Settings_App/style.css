@@ -94,3 +94,7 @@ button.close_button {
     border-radius: 20px;
     margin: 5px;
 }
+
+scale.audio_slider {
+    min-height: 150px;
+}

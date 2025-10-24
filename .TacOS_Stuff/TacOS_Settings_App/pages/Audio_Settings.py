@@ -1,4 +1,5 @@
 import gi
+import os
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 
@@ -6,9 +7,34 @@ class AudioSettingsPage(Gtk.Box):
     def __init__(self):
         super().__init__(orientation=Gtk.Orientation.VERTICAL, spacing=10)
 
+        main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        secondary_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+
+        self.label_ig = Gtk.Label(label="Adjust audio level")
+        self.mute_button = Gtk.Button(label="Toggle mute")
+        self.mute_button.connect("clicked", self.on_mute_clicked)
+        self.mute_button.set_valign(Gtk.Align.CENTER)
+
         self.audio_slider = Gtk.Scale.new_with_range(
             orientation=Gtk.Orientation.VERTICAL,
             min=0,
             max=100,
             step=1
         )
+        self.audio_slider.set_value(50)
+        self.audio_slider.set_inverted(True)
+        self.audio_slider.get_style_context().add_class("audio_slider")
+        self.audio_slider.connect("value-changed", self.on_value_changed)
+
+        main_box.pack_start(self.label_ig, True, True, 0)
+        secondary_box.pack_start(self.mute_button, False, False, 0)
+        secondary_box.pack_start(self.audio_slider, True, True, 0)
+        main_box.add(secondary_box)
+        self.add(main_box)
+
+    def on_value_changed(self, widget):
+        value = self.audio_slider.get_value()
+        os.system(f"pactl set-sink-volume @DEFAULT_SINK@ {value}%")
+
+    def on_mute_clicked(self, widget):
+        os.system("pactl set-sink-mute @DEFAULT_SINK@ toggle")
