@@ -21,6 +21,40 @@ window#waybar.hidden {
 	opacity: 0.2;
 }
 
+#battery {
+	margin-top: 6px;
+	padding-top: 0px;
+	margin-left: 6px;
+	margin-right: 6px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 0px;
+	margin-bottom: 10px;
+    border: 7px solid #ffffff;
+	border-radius: 8px;
+	transition: none;
+	color: #000000;
+	background: #f4da32;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
+}
+
+#battery:hover {
+	margin-top: 6px;
+	padding-top: 0px;
+	margin-left: 6px;
+	margin-right: 6px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 0px;
+	margin-bottom: 10px;
+	border: 7px solid #31af00;
+	border-radius: 8px;
+	transition: none;
+	color: #000000;
+	background: #f4da32;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
+}
+
 #workspaces {
 	margin-top: 6px;
 	padding-top: 0px;

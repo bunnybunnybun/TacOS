@@ -5,7 +5,17 @@
 	"reload_style_on_change": true,
 	"modules-left": ["niri/workspaces", "mpd", "niri/window"],
 	"modules-center": ["clock"],
-	"modules-right": ["pulseaudio", "cpu", "memory"],
+	"modules-right": ["pulseaudio", "battery", "cpu", "memory"],
+	"battery": {
+		"interval": 60,
+    	"states": {
+        	"warning": 30,
+        	"critical": 15
+    	},
+    	"format": "{icon}   {capacity}%",
+    	"format-icons": ["", "", "", "", ""],
+    	"max-length": 25
+	},
 	"mpd": {
 		"tooltip": false,
 		"format": "{stateIcon} {artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
