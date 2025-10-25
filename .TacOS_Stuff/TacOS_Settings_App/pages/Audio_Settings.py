@@ -37,7 +37,8 @@ class AudioSettingsPage(Gtk.Box):
         self.label_ig = Gtk.Label(label="Adjust audio level")
         self.mute_button = Gtk.Button(label=self.mute_icon)
         self.mute_button.connect("clicked", self.on_mute_clicked)
-        self.mute_button.set_valign(Gtk.Align.CENTER) 
+        self.mute_button.set_valign(Gtk.Align.CENTER)
+        self.mute_button.get_style_context().add_class("mute_button")
 
         self.audio_slider = Gtk.Scale.new_with_range(
             orientation=Gtk.Orientation.VERTICAL,
