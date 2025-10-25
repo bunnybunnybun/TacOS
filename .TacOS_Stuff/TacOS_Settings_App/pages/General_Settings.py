@@ -92,10 +92,10 @@ class GeneralSettingsPage(Gtk.Box):
             set_focus_ring_color_fall(None, color_value)
 
     def Light_Mode(self, widget):
-        os.system('gsettings set org.gnome.desktop.interface gtk-theme "Emacs"')
+        os.system('gsettings set org.gnome.desktop.interface gtk-theme "Fluent-pink-Light"')
 
     def Dark_Mode(self, widget):
-        os.system('gsettings set org.gnome.desktop.interface gtk-theme "Fluent-pink"')
+        os.system('gsettings set org.gnome.desktop.interface gtk-theme "Fluent-pink-Dark"')
     
     def Black_Mode(self, widget):
         os.system('gsettings set org.gnome.desktop.interface gtk-theme "Material-Black-Plum-3.38"')
