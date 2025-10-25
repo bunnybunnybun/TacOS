@@ -11,6 +11,19 @@ class AudioSettingsPage(Gtk.Box):
         main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         secondary_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
 
+        mute = subprocess.run(
+            "pactl get-sink-mute @DEFAULT_SINK@",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+        print(mute.stdout.strip())
+        self.mute_value = mute.stdout.strip()
+        if self.mute_value == "Mute: yes":
+            self.mute_icon = ""
+        else:
+            self.mute_icon = ""
+
         current = subprocess.run(
             "pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '\d+(?=%)' | head -n 1",
             shell=True,
@@ -22,7 +35,7 @@ class AudioSettingsPage(Gtk.Box):
         volume_value = int(current_volume)
 
         self.label_ig = Gtk.Label(label="Adjust audio level")
-        self.mute_button = Gtk.Button(label="Toggle mute")
+        self.mute_button = Gtk.Button(label=self.mute_icon)
         self.mute_button.connect("clicked", self.on_mute_clicked)
         self.mute_button.set_valign(Gtk.Align.CENTER) 
 
@@ -49,3 +62,15 @@ class AudioSettingsPage(Gtk.Box):
 
     def on_mute_clicked(self, widget):
         os.system("pactl set-sink-mute @DEFAULT_SINK@ toggle")
+        mute = subprocess.run(
+            "pactl get-sink-mute @DEFAULT_SINK@",
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+        self.mute_value = mute.stdout.strip()
+        if self.mute_value == "Mute: yes":
+            self.mute_icon = ""
+        else:
+            self.mute_icon = ""
+        self.mute_button.set_label(self.mute_icon)
