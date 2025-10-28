@@ -4,9 +4,9 @@ format = """
 [](#31af00)\
 $os\
 $username\
-[](bg:#ffffff fg:#31af00)\
+[](bg:#ffffff fg:#31af00)\
 $directory\
-[](fg:#ffffff bg:#f4da32)\
+[](fg:#ffffff bg:#f4da32)\
 $c\
 $rust\
 $golang\
@@ -16,9 +16,9 @@ $java\
 $kotlin\
 $haskell\
 $python\
-[](fg:#f4da32 bg:#f4da32)\
+[](fg:#f4da32 bg:#f4da32)\
 $docker_context\
-[](fg:#f4da32 bg:#ffffff)\
+[](fg:#f4da32 bg:#ffffff)\
 $time\
 [ ](fg:#ffffff)\
 $line_break$character"""
