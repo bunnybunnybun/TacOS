@@ -9,13 +9,12 @@ Also, please keep in mind that:
  - Auto tiling window management, with the ability to scroll through your windows. Watch the demo video to see what I mean.
  - Dynamic workspaces. Use different workspaces to stay organized!
  - Keyboard driven; you can operate the system completely without a mouse, if you are inclined to do so :)
- - Preset themes. Use the Theme Switcher application to switch between beautiful, premade themes!
+ - Preset themes. You can easily switch between beautiful premade themes in the TacOS settings app!
  - Smooth animations to please your eyes...
  - Extremely customizable; If you don't like any of the premade themes, you can customize everything to exactly how you like it!
 
  ## Todos/coming soon
- - A simple unified settings app, to be able to change all the basic system settings (like wallpaper, panel configuration, bluetooth settings etc) from one app.
- - Actually create the demo video :(
+ - Finish the settings app
  - Add more preset themes!
  - Support for logging in with a fingerprint reader
  - Improve the way notifications are handled
