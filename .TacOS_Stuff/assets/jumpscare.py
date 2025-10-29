@@ -1,5 +1,6 @@
 import gi
 import subprocess
+import os
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk, GLib
 gi.require_version('GtkLayerShell', '0.1')
@@ -32,19 +33,20 @@ class MainWindow(Gtk.Window):
         self.set_default_size(600, 400)
 
         GtkLayerShell.init_for_window(self)
-
-        image = Gtk.Image.new_from_file("jumpscare_image.png")
+        self.script_dir = os.path.dirname(os.path.abspath(__file__))
+        print(self.script_dir)
+        image = Gtk.Image.new_from_file(f"{self.script_dir}/jumpscare_image.png")
         image.set_opacity(1)
         self.add(image)
 
         self.show_all()
         self.play_audio()
 
-        GLib.timeout_add_seconds(3, self.destroy)
+        GLib.timeout_add_seconds(2, self.destroy)
 
     def play_audio(self):
         subprocess.Popen(
-        ["mpv", "taco-crunch.mp3"],
+        ["mpv", f"{self.script_dir}/taco-crunch.mp3"],
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL
         )
