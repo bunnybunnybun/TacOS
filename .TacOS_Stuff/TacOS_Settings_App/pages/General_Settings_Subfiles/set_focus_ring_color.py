@@ -24,27 +24,27 @@ def update_focus_ring_color_in_kdl(file_path, new_color="#0f4c5c"):
     with open(file_path, 'w') as f:
         f.write(str(doc))
 
-
+script_dir = os.path.dirname(os.path.abspath(__file__))
 def set_focus_ring_color_daisies(widget, color_value="#0f4c5c"):
     width_value = color_value if color_value is not None else "#0f4c5c"
-    update_focus_ring_color_in_kdl("/home/carlisle/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/daisies_layout_part_2.kdl", width_value)
+    update_focus_ring_color_in_kdl(f"{script_dir}/niri_config_file_sections/layout/daisies_layout_part_2.kdl", width_value)
     os.system("cat ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/daisies_layout_part_1.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/daisies_layout_part_2.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/daisies_layout_part_3.kdl > ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl")
     os.system("cat ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/daisies_the_rest_lol.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl > ~/.config/niri/config.kdl")
 
 def set_focus_ring_color_minimal(widget, color_value="#0f4c5c"):
     width_value = color_value if color_value is not None else "#0f4c5c"
-    update_focus_ring_color_in_kdl("/home/carlisle/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/minimal_layout_part_2.kdl", width_value)
+    update_focus_ring_color_in_kdl(f"{script_dir}/niri_config_file_sections/layout/minimal_layout_part_2.kdl", width_value)
     os.system("cat ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/minimal_layout_part_1.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/minimal_layout_part_2.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/minimal_layout_part_3.kdl > ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl")
     os.system("cat ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/minimal_the_rest_lol.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl > ~/.config/niri/config.kdl")
 
 def set_focus_ring_color_magic(widget, color_value="#0f4c5c"):
     width_value = color_value if color_value is not None else "#0f4c5c"
-    update_focus_ring_color_in_kdl("/home/carlisle/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/magic_layout_part_2.kdl", width_value)
+    update_focus_ring_color_in_kdl(f"{script_dir}/niri_config_file_sections/layout/magic_layout_part_2.kdl", width_value)
     os.system("cat ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/magic_layout_part_1.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/magic_layout_part_2.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/magic_layout_part_3.kdl > ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl")
     os.system("cat ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/magic_the_rest_lol.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl > ~/.config/niri/config.kdl")
 
 def set_focus_ring_color_fall(widget, color_value="#0f4c5c"):
     width_value = color_value if color_value is not None else "#0f4c5c"
-    update_focus_ring_color_in_kdl("/home/carlisle/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/fall_layout_part_2.kdl", width_value)
+    update_focus_ring_color_in_kdl(f"{script_dir}/niri_config_file_sections/layout/fall_layout_part_2.kdl", width_value)
     os.system("cat ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/fall_layout_part_1.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/fall_layout_part_2.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/fall_layout_part_3.kdl > ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl")
     os.system("cat ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/fall_the_rest_lol.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl > ~/.config/niri/config.kdl")
