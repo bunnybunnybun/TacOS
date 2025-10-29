@@ -266,7 +266,7 @@ binds {
     Mod+D { spawn "io.github.milkshiift.GoofCord"; }
     Mod+S { spawn "nemo"; }
     Mod+Z { spawn "/opt/zen-browser-bin/zen-bin"; }
-    Mod+T hotkey-overlay-title="Open a Terminal: Kitty" { spawn "kitty"; }
+    Mod+T hotkey-overlay-title="Open a Terminal: Kitty" { spawn "~/test_script.sh"; }
     Mod+W hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel" "--config" "/etc/xdg/fuzzel/fall_fuzzel.ini"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
