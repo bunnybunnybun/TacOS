@@ -117,6 +117,7 @@ class GeneralSettingsPage(Gtk.Box):
         time.sleep(0.1)
         os.system("hyprpaper --config ~/.TacOS_Stuff/assets/hyprpaper/daisies_hyprpaper.conf & disown")
         os.system("cp ~/.TacOS_Stuff/assets/niri/daisy_config.kdl ~/.config/niri/config.kdl")
+        os.system('gsettings set org.gnome.desktop.interface gtk-theme "Fluent-yellow-Light"')
         os.system(f"rm {self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies {self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal {self.script_dir}/General_Settings_Subfiles/current_theme_is_magic {self.script_dir}/General_Settings_Subfiles/current_theme_is_fall")
         os.system(f"touch {self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies")
 
@@ -126,6 +127,7 @@ class GeneralSettingsPage(Gtk.Box):
         time.sleep(0.1)
         os.system("hyprpaper --config ~/.TacOS_Stuff/assets/hyprpaper/minimal_hyprpaper.conf & disown")
         os.system("cp ~/.TacOS_Stuff/assets/niri/minimal_config.kdl ~/.config/niri/config.kdl")
+        os.system('gsettings set org.gnome.desktop.interface gtk-theme "Fluent-pink-Dark"')
         os.system(f"rm {self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies {self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal {self.script_dir}/General_Settings_Subfiles/current_theme_is_magic {self.script_dir}/General_Settings_Subfiles/current_theme_is_fall")
         os.system(f"touch {self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal")
 
