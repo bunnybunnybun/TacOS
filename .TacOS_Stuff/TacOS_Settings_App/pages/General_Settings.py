@@ -118,6 +118,7 @@ class GeneralSettingsPage(Gtk.Box):
         os.system("hyprpaper --config ~/.TacOS_Stuff/assets/hyprpaper/daisies_hyprpaper.conf & disown")
         os.system("cp ~/.TacOS_Stuff/assets/niri/daisy_config.kdl ~/.config/niri/config.kdl")
         os.system('gsettings set org.gnome.desktop.interface gtk-theme "Fluent-yellow-Light"')
+        os.system("cp ~/.config/kitty/general-theme.conf ~/.config/kitty/current-theme.conf")
         os.system(f"rm {self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies {self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal {self.script_dir}/General_Settings_Subfiles/current_theme_is_magic {self.script_dir}/General_Settings_Subfiles/current_theme_is_fall")
         os.system(f"touch {self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies")
 
@@ -128,6 +129,7 @@ class GeneralSettingsPage(Gtk.Box):
         os.system("hyprpaper --config ~/.TacOS_Stuff/assets/hyprpaper/minimal_hyprpaper.conf & disown")
         os.system("cp ~/.TacOS_Stuff/assets/niri/minimal_config.kdl ~/.config/niri/config.kdl")
         os.system('gsettings set org.gnome.desktop.interface gtk-theme "Fluent-pink-Dark"')
+        os.system("cp ~/.config/kitty/general-theme.conf ~/.config/kitty/current-theme.conf")
         os.system(f"rm {self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies {self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal {self.script_dir}/General_Settings_Subfiles/current_theme_is_magic {self.script_dir}/General_Settings_Subfiles/current_theme_is_fall")
         os.system(f"touch {self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal")
 
@@ -138,6 +140,7 @@ class GeneralSettingsPage(Gtk.Box):
         os.system("hyprpaper --config ~/.TacOS_Stuff/assets/hyprpaper/magic_hyprpaper.conf & disown")
         os.system("cp ~/.TacOS_Stuff/assets/niri/magic_config.kdl ~/.config/niri/config.kdl")
         os.system('gsettings set org.gnome.desktop.interface gtk-theme "Material-Black-Plum-3.38"')
+        os.system("cp ~/.config/kitty/general-theme.conf ~/.config/kitty/current-theme.conf")
         os.system(f"rm {self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies {self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal {self.script_dir}/General_Settings_Subfiles/current_theme_is_magic {self.script_dir}/General_Settings_Subfiles/current_theme_is_fall")
         os.system(f"touch {self.script_dir}/General_Settings_Subfiles/current_theme_is_magic")
 
@@ -147,6 +150,7 @@ class GeneralSettingsPage(Gtk.Box):
         time.sleep(0.1)
         os.system("hyprpaper --config ~/.TacOS_Stuff/assets/hyprpaper/halloween_hyprpaper.conf & disown")
         os.system("cp ~/.TacOS_Stuff/assets/niri/fall_config.kdl ~/.config/niri/config.kdl")
+        os.system("cp ~/.config/kitty/halloween-theme.conf ~/.config/kitty/current-theme.conf")
         os.system(f"rm {self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies {self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal {self.script_dir}/General_Settings_Subfiles/current_theme_is_magic {self.script_dir}/General_Settings_Subfiles/current_theme_is_fall")
         os.system(f"touch {self.script_dir}/General_Settings_Subfiles/current_theme_is_fall")
         os.system('gsettings set org.gnome.desktop.interface gtk-theme "Material-Black-Mango-3.38"')
