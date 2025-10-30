@@ -31,7 +31,7 @@ class GeneralSettingsPage(Gtk.Box):
         theme_button_3 = Gtk.Button(label="Magic")
         theme_button_3.connect("clicked", self.Set_Theme_Magic)
         theme_button_3.get_style_context().add_class("button_theme_magic")
-        theme_button_4 = Gtk.Button(label="Fall/Autumn")
+        theme_button_4 = Gtk.Button(label="Halloween")
         theme_button_4.connect("clicked", self.Set_Theme_Fall)
         theme_button_4.get_style_context().add_class("button_theme_fall")
         light_mode_button = Gtk.Button(label="Light mode")
@@ -142,10 +142,10 @@ class GeneralSettingsPage(Gtk.Box):
         os.system(f"touch {self.script_dir}/General_Settings_Subfiles/current_theme_is_magic")
 
     def Set_Theme_Fall(self, widget):
-        os.system("killall waybar; waybar -c ~/.TacOS_Stuff/assets/waybar/fall_config.jsonc -s ~/.TacOS_Stuff/assets/waybar/fall_style.css & disown")
+        os.system("killall waybar; waybar -c ~/.TacOS_Stuff/assets/waybar/config.jsonc -s ~/.TacOS_Stuff/assets/waybar/fall_style.css & disown")
         os.system("killall hyprpaper")
         time.sleep(0.1)
-        os.system("hyprpaper --config ~/.TacOS_Stuff/assets/hyprpaper/fall_hyprpaper.conf & disown")
+        os.system("hyprpaper --config ~/.TacOS_Stuff/assets/hyprpaper/halloween_hyprpaper.conf & disown")
         os.system("cp ~/.TacOS_Stuff/assets/niri/fall_config.kdl ~/.config/niri/config.kdl")
         os.system(f"rm {self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies {self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal {self.script_dir}/General_Settings_Subfiles/current_theme_is_magic {self.script_dir}/General_Settings_Subfiles/current_theme_is_fall")
         os.system(f"touch {self.script_dir}/General_Settings_Subfiles/current_theme_is_fall")

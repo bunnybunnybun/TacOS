@@ -7,7 +7,7 @@
 	"modules-right": ["pulseaudio", "battery", "cpu", "memory", "custom/power"],
 	
 	"custom/power": {
-		"format": "power",
+		"format": "⏻",
 		"on-click": "python3 ~/.TacOS_Stuff/end_session_dialog/end_session_dialog.py"
 	},
 	"battery": {
