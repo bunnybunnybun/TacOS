@@ -603,6 +603,9 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
+    Print { screenshot; }
+    Shift+Print { screenshot-screen; }
+    Ctrl+Print { screenshot-window; }
     Mod+P { screenshot; }
     Mod+Shift+p { screenshot-screen; }
     Mod+Ctrl+p { screenshot-window; }
