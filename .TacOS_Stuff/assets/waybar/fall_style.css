@@ -17,6 +17,40 @@ window#waybar.hidden {
 	opacity: 0.2;
 }
 
+#custom-power {
+	margin-top: 6px;
+	padding-top: 0px;
+	margin-left: 2px;
+	margin-right: 8px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 0px;
+	margin-bottom: 6px;
+	border: 0px solid #ffffff;
+	border-radius: 10px;
+	transition: none;
+	color: #000000;
+	background: #0b3c48;
+	box-shadow: 0 0px 0px rgba(0, 0, 0, 0.7);
+}
+
+#custom-power:hover {
+	margin-top: 3px;
+	padding-top: 0px;
+	margin-left: 2px;
+	margin-right: 8px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 0px;
+	margin-bottom: 9px;
+	border: 0px solid #ffffff;
+	border-radius: 10px;
+	transition: none;
+	color: #000000;
+	background: #0b3c48;
+	box-shadow: 4 4px 4px rgba(0, 0, 0, 0.7);
+}
+
 #battery {
 	margin-top: 6px;
 	padding-top: 0px;
@@ -246,7 +280,7 @@ window#waybar.hidden {
 	margin-top: 6px;
 	padding-top: 0px;
 	margin-left: 2px;
-	margin-right: 8px;
+	margin-right: 10px;
 	padding-left: 8px;
 	padding-right: 8px;
 	padding-bottom: 0px;
@@ -263,7 +297,7 @@ window#waybar.hidden {
 	margin-top: 3px;
 	padding-top: 0px;
 	margin-left: 2px;
-	margin-right: 8px;
+	margin-right: 10px;
 	padding-left: 8px;
 	padding-right: 8px;
 	padding-bottom: 0px;

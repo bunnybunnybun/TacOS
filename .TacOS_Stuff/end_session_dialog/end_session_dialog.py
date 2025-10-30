@@ -5,15 +5,48 @@ from gi.repository import Gtk, Gdk, GLib
 gi.require_version('GtkLayerShell', '0.1')
 from gi.repository import GtkLayerShell
 
+css = '''
+box {
+    margin: 10px;
+    background-color: @theme_bg_color;
+    border-radius: 20px;
+}
+
+button {
+    margin: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+button.nevermind {
+    margin: 20px;
+    margin-top: 0px;
+}
+
+label.label {
+    margin: 10px;
+    margin-bottom: 0px;
+    margin-top: 15px;
+}
+
+window {
+    background-color: rgba(0, 0, 0, 0)
+}
+'''
+
 css_provider = Gtk.CssProvider()
-css_provider.load_from_path("style.css")
+css_provider.load_from_data(css.encode())
 
 screen = Gdk.Screen.get_default()
 style_context = Gtk.StyleContext()
 style_context.add_provider_for_screen(
     screen,
     css_provider,
-    Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+    Gtk.STYLE_PROVIDER_PRIORITY_USER
 )
 
 class MainWindow(Gtk.Window):
