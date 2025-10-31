@@ -20,7 +20,10 @@ if [ -f "$HOME/.TacOS_Stuff/.yay_has_been_installed" ]; then
 else
     cd ~/ && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && touch ~/.TacOS_Stuff/.yay_has_been_installed && rm -rf yay
 fi
-yay -S --needed --noconfirm ungoogled-chromium-bin fluent-gtk-theme material-black-colors-theme gtk-layer-shell
+yay -S --needed --noconfirm ungoogled-chromium-bin
+yay -S --needed --noconfirm fluent-gtk-theme
+yay -S --needed --noconfirm material-black-colors-theme
+yay -S --needed --noconfirm gtk-layer-shell
 if [ -f "$HOME/.TacOS_Stuff/.ACYLS_has_been_installed" ]; then
     echo "ACYLS theme has already been installed"
 else

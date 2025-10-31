@@ -6,10 +6,6 @@
 	min-height: 5px;
 }
 
-.modules-left {
-	
-}
-
 window#waybar {
 	background: transparent;
 	min-height: 0px;
