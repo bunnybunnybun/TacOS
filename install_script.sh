@@ -15,11 +15,16 @@ sudo cp ~/.TacOS_Stuff/assets/fastfetch ~/.config/ -r
 sudo cp ~/.TacOS_Stuff/assets/icons /usr/share/ -r
 sudo cp -r ~/.TacOS_Stuff/assets/fuzzel /etc/xdg/
 echo 'eval "$(starship init bash)"' >> ~/.bashrc
-if [ -f "/home/carlisle/.yay_has_been_installed" ]; then
+if [ -f "$HOME/.TacOS_Stuff/.yay_has_been_installed" ]; then
     echo "Yay has already been installed"
 else
-    cd ~/ && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && touch ~/.yay_has_been_installed && rm -rf yay
+    cd ~/ && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && touch ~/.TacOS_Stuff/.yay_has_been_installed && rm -rf yay
 fi
 yay -S --needed --noconfirm ungoogled-chromium-bin fluent-gtk-theme material-black-colors-theme gtk-layer-shell
+if [ -f "$HOME/.TacOS_Stuff/.ACYLS_has_been_installed" ]; then
+    echo "ACYLS theme has already been installed"
+else
+    git clone https://github.com/worron/ACYLS.git ~/.icons/ACYLS && touch ~/.TacOS_Stuff/.ACYLS_has_been_installed
+fi
 
 echo "TacOS setup finished! It is recommend that you reboot now. (You can reboot by typing reboot and then pressing enter)"
