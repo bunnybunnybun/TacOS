@@ -7,6 +7,8 @@
 	"modules-right": ["pulseaudio", "battery", "cpu", "memory", "custom/power"],
 	
 	"custom/power": {
+		"tooltip": true,
+		"tooltip-format": "End session",
 		"format": "⏻",
 		"on-click": "python3 ~/.TacOS_Stuff/end_session_dialog/end_session_dialog.py"
 	},
@@ -38,7 +40,7 @@
 	}
 },
 	"pulseaudio": {
-		"tooltip": false,
+		"tooltip": true,
 		"scroll-step": 5,
 		"format": "   {volume}%",
 		"format-icons": {
@@ -52,18 +54,19 @@
 		"format-ethernet": " {ipaddr}"
 	},
 	"cpu": {
-		"tooltip": false,
+		"tooltip": true,
 		"interval": 3,
 		"format": "   {}%",
 		"on-click": "plasma-systemmonitor"
 	},
 	"memory": {
-		"tooltip": false,
+		"tooltip": true,
 		"format": "   {}%",
 		"on-click": "plasma-systemmonitor"
 	},
 	"clock": {
 		"format": "{:%Y/%m/%d %H:%M}",
-		"tooltip": false
+		"tooltip": true,
+		"tooltip-format": "Clock" 
 	}
 }

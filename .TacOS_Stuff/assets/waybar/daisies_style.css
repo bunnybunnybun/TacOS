@@ -21,6 +21,14 @@ window#waybar.hidden {
 	opacity: 0.2;
 }
 
+tooltip {
+	border-radius: 10px;
+}
+
+tooltip label {
+	color: #e0e0e0;
+}
+
 #custom-power {
 	margin-top: 6px;
 	padding-top: 0px;
