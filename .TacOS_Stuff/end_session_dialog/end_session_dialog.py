@@ -12,6 +12,11 @@ box {
     border-radius: 20px;
 }
 
+box.main_box {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+    margin: 20px;
+}
+
 button {
     margin: 10px;
     border-radius: 10px;
@@ -54,6 +59,9 @@ class MainWindow(Gtk.Window):
         super().__init__(title="End Session Dialog")
         self.set_default_size(200, 500)
         GtkLayerShell.init_for_window(self)
+        GtkLayerShell.set_keyboard_mode(self, GtkLayerShell.KeyboardMode.EXCLUSIVE)
+
+        self.connect("key-press-event", self.on_key_press)
 
         GtkLayerShell.set_anchor(self, GtkLayerShell.Edge.TOP, True)
         GtkLayerShell.set_anchor(self, GtkLayerShell.Edge.LEFT, True)
@@ -63,6 +71,7 @@ class MainWindow(Gtk.Window):
         GLib.idle_add(self.position_window, vertical_offset)
 
         main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
+        main_box.get_style_context().add_class("main_box")
         buttons_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
         label = Gtk.Label(label="You're leaving already? Well, come again soon!")
         label.get_style_context().add_class("label")
@@ -83,13 +92,17 @@ class MainWindow(Gtk.Window):
         main_box.add(nevermind_button)
         self.add(main_box)
 
+    def on_key_press(self, widget, event):
+        if event.keyval == Gdk.KEY_Escape:
+            self.destroy()
+            return True
+        return False
+
     def position_window(self, vertical_offset):
-        """Center horizontally, position slightly above vertical center"""
         display = Gdk.Display.get_default()
         monitor = display.get_monitor(0)
         geometry = monitor.get_geometry()
 
-        # Get actual window dimensions (after realization)
         win_width = self.get_allocated_width()
         win_height = self.get_allocated_height()
 

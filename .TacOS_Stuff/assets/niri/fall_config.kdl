@@ -252,16 +252,16 @@ layout {
         // pixels and match the CSS box-shadow properties.
 
         // Softness controls the shadow blur radius.
-        softness 10
+        softness 13
 
         // Spread expands the shadow.
-        spread 7.0
+        spread 8.0
 
         // Offset moves the shadow relative to the window.
         offset x=0 y=0.0
 
         // You can also change the shadow color and opacity.
-        color "rgba(0, 0, 0, 0.9)"
+        color "rgba(0, 0, 0, 1)"
     }
 
     // Struts shrink the area occupied by windows, similarly to layer-shell panels.
