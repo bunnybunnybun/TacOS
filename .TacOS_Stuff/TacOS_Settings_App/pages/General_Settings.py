@@ -1,6 +1,7 @@
 import gi
 import os
 import time
+from pathlib import Path
 from pages.General_Settings_Subfiles.set_focus_ring_width import set_focus_ring_width_daisies
 from pages.General_Settings_Subfiles.set_focus_ring_width import set_focus_ring_width_minimal
 from pages.General_Settings_Subfiles.set_focus_ring_width import set_focus_ring_width_magic
@@ -82,13 +83,13 @@ class GeneralSettingsPage(Gtk.Box):
         color_value = f"#{r:02x}{g:02x}{b:02x}{a:02x}"
         print(f"Color = {color_value}")
 
-        if os.path.exists(f"{self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies"):
+        if os.path.exists(str(Path.home() / ".TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_daisies")):
             set_focus_ring_color_daisies(None, color_value)
-        elif os.path.exists(f"{self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal"):
+        elif os.path.exists(str(Path.home() / ".TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_minimal")):
             set_focus_ring_color_minimal(None, color_value)
-        elif os.path.exists(f"{self.script_dir}/General_Settings_Subfiles/current_theme_is_magic"):
+        elif os.path.exists(str(Path.home() / ".TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_magic")):
             set_focus_ring_color_magic(None, color_value)
-        elif os.path.exists(f"{self.script_dir}/General_Settings_Subfiles/current_theme_is_fall"):
+        elif os.path.exists(str(Path.home() / ".TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_fall")):
             set_focus_ring_color_fall(None, color_value)
 
     def Light_Mode(self, widget):
@@ -121,8 +122,8 @@ class GeneralSettingsPage(Gtk.Box):
         os.system("gsettings set org.gnome.desktop.interface icon-theme Adwaita")
         os.system("cp ~/.TacOS_Stuff/assets/starship/starship.toml ~/.config/starship.toml")
         os.system("cp ~/.config/kitty/general-theme.conf ~/.config/kitty/current-theme.conf")
-        os.system(f"rm {self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies {self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal {self.script_dir}/General_Settings_Subfiles/current_theme_is_magic {self.script_dir}/General_Settings_Subfiles/current_theme_is_fall")
-        os.system(f"touch {self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies")
+        os.system(f"rm {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_daisies {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_minimal {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_magic {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_fall")
+        os.system(f"touch {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_daisies")
 
     def Set_Theme_Minimal(self, widget):
         os.system("killall waybar; waybar -c ~/.TacOS_Stuff/assets/waybar/config.jsonc -s ~/.TacOS_Stuff/assets/waybar/minimal_style.css & disown")
@@ -134,8 +135,8 @@ class GeneralSettingsPage(Gtk.Box):
         os.system("gsettings set org.gnome.desktop.interface icon-theme Adwaita")
         os.system("cp ~/.TacOS_Stuff/assets/starship/starship.toml ~/.config/starship.toml")
         os.system("cp ~/.config/kitty/general-theme.conf ~/.config/kitty/current-theme.conf")
-        os.system(f"rm {self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies {self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal {self.script_dir}/General_Settings_Subfiles/current_theme_is_magic {self.script_dir}/General_Settings_Subfiles/current_theme_is_fall")
-        os.system(f"touch {self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal")
+        os.system(f"rm {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_daisies {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_minimal {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_magic {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_fall")
+        os.system(f"touch {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_minimal")
 
     def Set_Theme_Magic(self, widget):
         os.system("killall waybar; waybar -c ~/.TacOS_Stuff/assets/waybar/config.jsonc -s ~/.TacOS_Stuff/assets/waybar/magic_style.css & disown")
@@ -147,8 +148,8 @@ class GeneralSettingsPage(Gtk.Box):
         os.system("gsettings set org.gnome.desktop.interface icon-theme Adwaita")
         os.system("cp ~/.TacOS_Stuff/assets/starship/starship.toml ~/.config/starship.toml")
         os.system("cp ~/.config/kitty/general-theme.conf ~/.config/kitty/current-theme.conf")
-        os.system(f"rm {self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies {self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal {self.script_dir}/General_Settings_Subfiles/current_theme_is_magic {self.script_dir}/General_Settings_Subfiles/current_theme_is_fall")
-        os.system(f"touch {self.script_dir}/General_Settings_Subfiles/current_theme_is_magic")
+        os.system(f"rm {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_daisies {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_minimal {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_magic {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_fall")
+        os.system(f"touch {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages//General_Settings_Subfiles/current_theme_is_magic")
 
     def Set_Theme_Fall(self, widget):
         os.system("killall waybar; waybar -c ~/.TacOS_Stuff/assets/waybar/config.jsonc -s ~/.TacOS_Stuff/assets/waybar/fall_style.css & disown")
@@ -158,7 +159,7 @@ class GeneralSettingsPage(Gtk.Box):
         os.system("cp ~/.TacOS_Stuff/assets/niri/fall_config.kdl ~/.config/niri/config.kdl")
         os.system("cp ~/.config/kitty/halloween-theme.conf ~/.config/kitty/current-theme.conf")
         os.system("cp ~/.TacOS_Stuff/assets/starship/halloween-starship.toml ~/.config/starship.toml")
-        os.system(f"rm {self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies {self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal {self.script_dir}/General_Settings_Subfiles/current_theme_is_magic {self.script_dir}/General_Settings_Subfiles/current_theme_is_fall")
-        os.system(f"touch {self.script_dir}/General_Settings_Subfiles/current_theme_is_fall")
+        os.system(f"rm {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_daisies {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_minimal {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_magic {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_fall")
+        os.system(f"touch {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_fall")
         os.system('gsettings set org.gnome.desktop.interface gtk-theme "Material-Black-Cherry-3.38"')
         os.system("gsettings set org.gnome.desktop.interface icon-theme ACYLS")
