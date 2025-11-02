@@ -1,5 +1,6 @@
 import kdl
 import os
+from pathlib import Path
 
 def update_width_in_kdl(file_path, new_width=10):
     with open(file_path, 'r') as f:
@@ -27,24 +28,24 @@ def update_width_in_kdl(file_path, new_width=10):
 script_dir = os.path.dirname(os.path.abspath(__file__))
 def set_focus_ring_width_daisies(widget, scale_value=5):
     width_value = scale_value if scale_value is not None else 5
-    update_width_in_kdl(f"{script_dir}/niri_config_file_sections/layout/daisies_layout_part_2.kdl", width_value)
-    os.system("cat ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/daisies_layout_part_1.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/daisies_layout_part_2.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/daisies_layout_part_3.kdl > ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl")
-    os.system("cat ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/daisies_the_rest_lol.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl > ~/.config/niri/config.kdl")
+    update_width_in_kdl(str(Path.home() / ".TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/daisies_layout_part_2.kdl"), width_value)
+    os.system("cat ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/daisies_layout_part_1.kdl ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/daisies_layout_part_2.kdl ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/daisies_layout_part_3.kdl > ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl")
+    os.system("cat ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/daisies_the_rest_lol.kdl ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl > ~/.config/niri/config.kdl")
 
 def set_focus_ring_width_minimal(widget, scale_value=5):
     width_value = scale_value if scale_value is not None else 5
-    update_width_in_kdl(f"{script_dir}/niri_config_file_sections/layout/minimal_layout_part_2.kdl", width_value)
-    os.system("cat ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/minimal_layout_part_1.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/minimal_layout_part_2.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/minimal_layout_part_3.kdl > ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl")
-    os.system("cat ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/minimal_the_rest_lol.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl > ~/.config/niri/config.kdl")
+    update_width_in_kdl(str(Path.home() / ".TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/minimal_layout_part_2.kdl"), width_value)
+    os.system("cat ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/minimal_layout_part_1.kdl ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/minimal_layout_part_2.kdl ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/minimal_layout_part_3.kdl > ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl")
+    os.system("cat ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/minimal_the_rest_lol.kdl ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl > ~/.config/niri/config.kdl")
 
 def set_focus_ring_width_magic(widget, scale_value=5):
     width_value = scale_value if scale_value is not None else 5
-    update_width_in_kdl(f"{script_dir}/niri_config_file_sections/layout/magic_layout_part_2.kdl", width_value)
-    os.system("cat ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/magic_layout_part_1.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/magic_layout_part_2.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/magic_layout_part_3.kdl > ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl")
-    os.system("cat ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/magic_the_rest_lol.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl > ~/.config/niri/config.kdl")
+    update_width_in_kdl(str(Path.home() / ".TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/magic_layout_part_2.kdl"), width_value)
+    os.system("cat ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/magic_layout_part_1.kdl ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/magic_layout_part_2.kdl ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/magic_layout_part_3.kdl > ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl")
+    os.system("cat ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/magic_the_rest_lol.kdl ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl > ~/.config/niri/config.kdl")
 
 def set_focus_ring_width_fall(widget, scale_value=5):
     width_value = scale_value if scale_value is not None else 5
-    update_width_in_kdl(f"{script_dir}/niri_config_file_sections/layout/fall_layout_part_2.kdl", width_value)
-    os.system("cat ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/fall_layout_part_1.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/fall_layout_part_2.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/fall_layout_part_3.kdl > ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl")
-    os.system("cat ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/fall_the_rest_lol.kdl ~/TacOS/TacOS/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl > ~/.config/niri/config.kdl")
+    update_width_in_kdl(str(Path.home() / ".TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/fall_layout_part_2.kdl"), width_value)
+    os.system("cat ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/fall_layout_part_1.kdl ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/fall_layout_part_2.kdl ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout/fall_layout_part_3.kdl > ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl")
+    os.system("cat ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/fall_the_rest_lol.kdl ~/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/niri_config_file_sections/layout_final.kdl > ~/.config/niri/config.kdl")

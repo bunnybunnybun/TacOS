@@ -103,13 +103,13 @@ class GeneralSettingsPage(Gtk.Box):
 
     def on_scale_changed(self, scale):
         value = scale.get_value()
-        if os.path.exists(f"{self.script_dir}/General_Settings_Subfiles/current_theme_is_daisies"):
+        if os.path.exists(str(Path.home() / ".TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_daisies")):
             set_focus_ring_width_daisies(None, value)
-        elif os.path.exists(f"{self.script_dir}/General_Settings_Subfiles/current_theme_is_minimal"):
+        elif os.path.exists(str(Path.home() / ".TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_minimal")):
             set_focus_ring_width_minimal(None, value)
-        elif os.path.exists(f"{self.script_dir}/General_Settings_Subfiles/current_theme_is_magic"):
+        elif os.path.exists(str(Path.home() / ".TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_magic")):
             set_focus_ring_width_magic(None, value)
-        elif os.path.exists(f"{self.script_dir}/General_Settings_Subfiles/current_theme_is_fall"):
+        elif os.path.exists(str(Path.home() / ".TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_fall")):
             set_focus_ring_width_fall(None, value)
 
     def Set_Theme_Daisies(self, widget):
