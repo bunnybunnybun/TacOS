@@ -16,7 +16,7 @@
 		"tooltip": true,
 		"tooltip-format": "Settings menu",
 		"format": "   Settings",
-		"on-click": "TacOS_Settings"
+		"on-click": "Toggle_TacOS_Settings.sh"
 	},
 	"battery": {
 		"interval": 60,
