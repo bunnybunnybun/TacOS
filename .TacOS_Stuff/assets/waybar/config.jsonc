@@ -2,7 +2,7 @@
 	"layer": "bottom",
 	"height": 20,
 	"reload_style_on_change": true,
-	"modules-left": ["niri/workspaces", "mpd", "niri/window"],
+	"modules-left": ["niri/workspaces", "niri/window", "custom/settings"],
 	"modules-center": ["clock"],
 	"modules-right": ["pulseaudio", "battery", "cpu", "memory", "custom/power"],
 	
@@ -11,6 +11,12 @@
 		"tooltip-format": "End session",
 		"format": "⏻",
 		"on-click": "~/.TacOS_Stuff/end_session_dialog/launch_end_session_dialog.sh"
+	},
+	"custom/settings": {
+		"tooltip": true,
+		"tooltip-format": "Settings menu",
+		"format": "   Settings",
+		"on-click": "TacOS_Settings"
 	},
 	"battery": {
 		"interval": 60,
