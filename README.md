@@ -5,11 +5,6 @@ Also, please keep in mind that:
  - This is a very early prototype, and not anywhere near finished
  - I did not write this entirely from scratch, as that would take, maybe... years?
 
-## Notes for reviewers/stonemasons:
-As for how this relates to the fall theme, there is a fall/autumn theme available in the settings app, and when you close windows they FALL off the screen...
-
-Also, im not sure how fraud checks are done, but I realized something I did might look suspicious so I'd like to clarify what's going on. Basicaly there are a lot of files that were getting committed that probably shouldn't have been, but were cause I set things up in a wierd way. The settings app I made, whenever you change settings it, it changes stuff in some config files, and those config files were stored in the repo, so whenever I changed settings in the settings app, it would change those files, which would auto be added to the next commit I did, making it look like I changed more than I really did. I know that is kinda dumb but I didn't really think about it at the time lol.
-
 ## Features
  - Auto tiling window management, with the ability to scroll through your windows. Watch the demo video to see what I mean.
  - Dynamic workspaces. Use different workspaces to stay organized!
@@ -18,6 +13,9 @@ Also, im not sure how fraud checks are done, but I realized something I did migh
  - Smooth animations to please your eyes...
  - Extremely customizable; If you don't like any of the premade themes, you can customize everything to exactly how you like it!
 
+ ## Demo video
+https://www.youtube.com/watch?v=p9SG1pgNW_M
+
  ## Todos/coming soon
  - Finish the settings app
  - Add more preset themes!
@@ -25,6 +23,14 @@ Also, im not sure how fraud checks are done, but I realized something I did migh
  - Improve the way notifications are handled
  - Add a polkit authentification agent
  - And SO MUCH MORE :) :) 
+
+## For Siege reviewers:
+This is a continuation of last weeks project.
+The main changes made since then are:
+ - Replaced the fall theme with a new Halloween theme.
+ - Created a logout menu.
+ - Added a taco jumpscare.
+ - Lost of minor tweaks and bugfixes.
 
 ## How to install
 First of all, to anyone who has come to review/demo this, you don't need to install it, just watch the video. That being said, if you really want to install it (or if I forget how lol), heres how:
