@@ -99,6 +99,15 @@ button.close_button {
     margin: 5px;
 }
 
+button.about_dialog_button {
+    font-size: 13px;
+    padding: 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 10px;
+    margin: 5px;
+}
+
 scale.audio_slider {
     min-height: 150px;
     margin: 0px;
