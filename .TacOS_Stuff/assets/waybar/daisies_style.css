@@ -74,6 +74,10 @@ tooltip label {
 	color: #000000;
 	background: #f4da32;
 	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
+	background-image: url('black_settings_icon.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
 }
 
 #custom-settings:hover {
@@ -91,6 +95,10 @@ tooltip label {
 	color: #000000;
 	background: #f4da32;
 	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.7);
+	background-image: url('black_settings_icon.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
 }
 
 #battery {

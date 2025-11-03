@@ -74,6 +74,10 @@ window#waybar.hidden {
 	color: #ffffff;
 	background: rgba(0, 0, 0, 0.354);
 	box-shadow: 0 0px 0px rgba(0, 0, 0, 0.7);
+	background-image: url('white_settings_icon_normal.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
 }
 
 #custom-settings:hover {
@@ -91,6 +95,10 @@ window#waybar.hidden {
 	color: #e40000;
 	background: rgba(0, 0, 0, 0.354);
 	box-shadow: 4 4px 4px rgba(0, 0, 0, 0.7);
+	background-image: url('white_settings_icon_hover.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
 }
 
 #battery {
@@ -357,7 +365,7 @@ window#waybar.hidden {
 #clock {
 	margin-top: 6px;
 	padding-top: 0px;
-	margin-left: 10px;
+	margin-left: 2px;
 	margin-right: 10px;
 	padding-left: 8px;
 	padding-right: 8px;
@@ -374,7 +382,7 @@ window#waybar.hidden {
 #clock:hover {
 	margin-top: 3px;
 	padding-top: 0px;
-	margin-left: 10px;
+	margin-left: 2px;
 	margin-right: 10px;
 	padding-left: 8px;
 	padding-right: 8px;

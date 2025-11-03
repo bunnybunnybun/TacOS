@@ -80,6 +80,10 @@ tooltip label {
     color: #000000;
 	transition: none;
 	box-shadow: 0 0px 0px rgba(0, 0, 0, 0.7);
+	background-image: url('black_settings_icon.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
 }
 
 #custom-settings:hover {
@@ -97,6 +101,10 @@ tooltip label {
 	color: #000000;
 	background: #629c74;
 	box-shadow: 4 4px 4px rgba(0, 0, 0, 0.7);
+	background-image: url('black_settings_icon.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain
 }
 
 #battery {
@@ -354,7 +362,7 @@ tooltip label {
 #clock {
 	margin-top: 6px;
 	padding-top: 0px;
-	margin-left: 10px;
+	margin-left: 2px;
 	margin-right: 10px;
 	padding-left: 8px;
 	padding-right: 8px;
@@ -370,7 +378,7 @@ tooltip label {
 #clock:hover {
 	margin-top: 3px;
 	padding-top: 0px;
-	margin-left: 10px;
+	margin-left: 2px;
 	margin-right: 10px;
 	padding-left: 8px;
 	padding-right: 8px;

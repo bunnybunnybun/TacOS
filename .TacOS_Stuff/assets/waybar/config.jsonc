@@ -2,8 +2,8 @@
 	"layer": "bottom",
 	"height": 20,
 	"reload_style_on_change": true,
-	"modules-left": ["niri/workspaces", "niri/window", "custom/settings"],
-	"modules-center": ["clock"],
+	"modules-left": ["niri/workspaces", "niri/window"],
+	"modules-center": ["custom/settings", "clock"],
 	"modules-right": ["pulseaudio", "battery", "cpu", "memory", "custom/power"],
 	
 	"custom/power": {
@@ -15,7 +15,7 @@
 	"custom/settings": {
 		"tooltip": true,
 		"tooltip-format": "Settings menu",
-		"format": "   Settings",
+		"format": "  ",
 		"on-click": "Toggle_TacOS_Settings.sh"
 	},
 	"battery": {
