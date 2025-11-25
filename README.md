@@ -40,3 +40,6 @@ First of all, to anyone who has come to review/demo this, you don't need to inst
  - Run ./install_script. This will begin the installation process. You may be asked to enter your sudo password. Don't worry, I'm not trying to hack into your computer (you can check the source code if you want), it's just required by the package manager in order to install some of the base applications. It may also prompt you a few times to ask if you want to perform certain operations. Just click yes in order to get a proper installation.
  - You may have to manually install drivers for your device, TacOS does not install them automaticaly. (Atleast not yet.)
  - And finaly, enjoy your new desktop!!!
+
+## Credits:
+https://pixabay.com/users/designdrawartes-8580564/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4859839 for an image.
