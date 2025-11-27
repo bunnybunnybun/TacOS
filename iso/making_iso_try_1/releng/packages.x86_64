@@ -144,7 +144,6 @@ xdg-desktop-portal-gnome
 python-pip
 tk
 xwayland-satellite
-hyprpaper
 ttf-jetbrains-mono-nerd
 vim
 starship

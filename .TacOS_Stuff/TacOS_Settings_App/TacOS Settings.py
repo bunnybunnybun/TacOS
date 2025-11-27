@@ -41,6 +41,8 @@ class MainWindow(Gtk.Window):
         self.top_bar_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
         self.top_bar_box.get_style_context().add_class("top_bar")
         self.big_box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
+        self.big_box.get_style_context().add_class("bigbox")
+        self.big_box.set_halign(Gtk.Align.START)
 
         self.box_1 = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         self.box_1.get_style_context().add_class("box_1")
