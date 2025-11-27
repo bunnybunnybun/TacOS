@@ -1,0 +1,5 @@
+focus-ring {
+	width 10.0
+	active-color "#0f4c5cff"
+	inactive-color "#ffffff00"
+}

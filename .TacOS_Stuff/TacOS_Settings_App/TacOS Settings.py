@@ -12,21 +12,29 @@ from gi.repository import Gtk, Gdk
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
-css_provider = Gtk.CssProvider()
-css_provider.load_from_path(f"{script_dir}/style.css")
-
-screen = Gdk.Screen.get_default()
-style_context = Gtk.StyleContext()
-style_context.add_provider_for_screen(
-    screen,
-    css_provider,
-    Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-)
-
 class MainWindow(Gtk.Window):
     def __init__(self):
         super().__init__(title="TacOS Settings")
         self.set_default_size(600, 400)
+
+        self.css_provider1 = Gtk.CssProvider()
+        self.css_provider1.load_from_path(f"{script_dir}/style.css")
+
+        self.css_provider2 = Gtk.CssProvider()
+        self.css_provider2.load_from_path(f"{script_dir}/style2.css")
+
+        screen = Gdk.Screen.get_default()
+        style_context = Gtk.StyleContext()
+
+        style_context.add_provider_for_screen(
+            screen,
+            self.css_provider1,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+        )
+        self.current_theme = self.css_provider1
+
+        #self.theme_button = Gtk.Button(label="Switch theme")
+        #self.theme_button.connect("clicked", self.switch_theme)
 
         self.main_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         self.main_box.get_style_context().add_class("main_box")
@@ -43,7 +51,7 @@ class MainWindow(Gtk.Window):
         self.top_bar_close_button.connect("clicked", self.close_button_on_clicked)
         self.top_bar_close_button.get_style_context().add_class("close_button")
         
-        self.general_settings_page = GeneralSettingsPage()
+        self.general_settings_page = GeneralSettingsPage(main_window=self)
         self.audio_settings_page = AudioSettingsPage()
         self.network_settings_page = NetworkSettingsPage()
         self.display_settings_page = DisplaySettingsPage()
@@ -59,6 +67,7 @@ class MainWindow(Gtk.Window):
         self.stack.add_titled(self.other_settings_page, "Other_Settings", "Other Settings")
         self.switcher = Gtk.StackSidebar()
         self.switcher.set_stack(self.stack)
+        self.switcher.get_style_context().add_class("switcher")
 
         self.box_1.pack_start(self.switcher, True, True, 0)
         self.box_2.add(self.stack)
@@ -70,7 +79,42 @@ class MainWindow(Gtk.Window):
 
         self.main_box.add(self.top_bar_box)
         self.main_box.add(self.big_box)
+        #self.main_box.add(self.theme_button)
         self.add(self.main_box)
+
+    def switch_to_theme_1(self, widget):
+        screen = Gdk.Screen.get_default()
+        style_context = Gtk.StyleContext()
+
+        style_context.remove_provider_for_screen(
+            screen,
+            self.current_theme
+        )
+
+        self.current_theme = self.css_provider1
+
+        style_context.add_provider_for_screen(
+            screen,
+            self.current_theme,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+        )
+
+    def switch_to_theme_2(self, widget):
+        screen = Gdk.Screen.get_default()
+        style_context = Gtk.StyleContext()
+
+        style_context.remove_provider_for_screen(
+            screen,
+            self.current_theme
+        )
+
+        self.current_theme = self.css_provider2
+
+        style_context.add_provider_for_screen(
+            screen,
+            self.current_theme,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+        )
 
     def close_button_on_clicked(self, widget):
         win.destroy()

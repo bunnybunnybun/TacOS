@@ -15,8 +15,10 @@ gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 
 class GeneralSettingsPage(Gtk.Box):
-    def __init__(self):
+    def __init__(self, main_window=None):
         super().__init__(orientation=Gtk.Orientation.VERTICAL, spacing=10)
+        self.get_style_context().add_class("right_box")
+        self.main_window = main_window
 
         label_1 = Gtk.Label(label="Choose a theme:")
         theme_grid = Gtk.Grid()
@@ -29,9 +31,9 @@ class GeneralSettingsPage(Gtk.Box):
         theme_button_2 = Gtk.Button(label="Minimal")
         theme_button_2.connect("clicked", self.Set_Theme_Minimal)
         theme_button_2.get_style_context().add_class("button_theme_minimal")
-        theme_button_3 = Gtk.Button(label="Magic")
-        theme_button_3.connect("clicked", self.Set_Theme_Magic)
-        theme_button_3.get_style_context().add_class("button_theme_magic")
+        theme_button_3 = Gtk.Button(label="Winter")
+        theme_button_3.connect("clicked", self.Set_Theme_Winter)
+        theme_button_3.get_style_context().add_class("button_theme_winter")
         theme_button_4 = Gtk.Button(label="Halloween")
         theme_button_4.connect("clicked", self.Set_Theme_Fall)
         theme_button_4.get_style_context().add_class("button_theme_fall")
@@ -124,6 +126,8 @@ class GeneralSettingsPage(Gtk.Box):
         os.system("cp ~/.config/kitty/general-theme.conf ~/.config/kitty/current-theme.conf")
         os.system(f"rm {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_daisies {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_minimal {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_magic {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_fall")
         os.system(f"touch {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_daisies")
+        if self.main_window and hasattr(self.main_window, 'switch_to_theme_1'):
+            self.main_window.switch_to_theme_1(widget)
 
     def Set_Theme_Minimal(self, widget):
         os.system("killall waybar; waybar -c ~/.TacOS_Stuff/assets/waybar/config.jsonc -s ~/.TacOS_Stuff/assets/waybar/minimal_style.css & disown")
@@ -137,19 +141,23 @@ class GeneralSettingsPage(Gtk.Box):
         os.system("cp ~/.config/kitty/general-theme.conf ~/.config/kitty/current-theme.conf")
         os.system(f"rm {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_daisies {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_minimal {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_magic {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_fall")
         os.system(f"touch {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_minimal")
+        if self.main_window and hasattr(self.main_window, 'switch_to_theme_1'):
+            self.main_window.switch_to_theme_1(widget)
 
-    def Set_Theme_Magic(self, widget):
-        os.system("killall waybar; waybar -c ~/.TacOS_Stuff/assets/waybar/config.jsonc -s ~/.TacOS_Stuff/assets/waybar/magic_style.css & disown")
-        os.system("killall hyprpaper")
-        time.sleep(0.1)
-        os.system("hyprpaper --config ~/.TacOS_Stuff/assets/hyprpaper/magic_hyprpaper.conf & disown")
-        os.system("cp ~/.TacOS_Stuff/assets/niri/magic_config.kdl ~/.config/niri/config.kdl")
-        os.system('gsettings set org.gnome.desktop.interface gtk-theme "Material-Black-Plum-3.38"')
+    def Set_Theme_Winter(self, widget):
+        #os.system("killall waybar; waybar -c ~/.TacOS_Stuff/assets/waybar/config.jsonc -s ~/.TacOS_Stuff/assets/waybar/magic_style.css & disown")
+        #os.system("killall hyprpaper")
+        #time.sleep(0.1)
+        #os.system("hyprpaper --config ~/.TacOS_Stuff/assets/hyprpaper/magic_hyprpaper.conf & disown")
+        #os.system("cp ~/.TacOS_Stuff/assets/niri/magic_config.kdl ~/.config/niri/config.kdl")
+        os.system('gsettings set org.gnome.desktop.interface gtk-theme "Fluent-pink-Light"')
         os.system("gsettings set org.gnome.desktop.interface icon-theme Adwaita")
         os.system("cp ~/.TacOS_Stuff/assets/starship/starship.toml ~/.config/starship.toml")
         os.system("cp ~/.config/kitty/general-theme.conf ~/.config/kitty/current-theme.conf")
         os.system(f"rm {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_daisies {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_minimal {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_magic {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_fall")
         os.system(f"touch {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages//General_Settings_Subfiles/current_theme_is_magic")
+        if self.main_window and hasattr(self.main_window, 'switch_to_theme_2'):
+            self.main_window.switch_to_theme_2(widget)
 
     def Set_Theme_Fall(self, widget):
         os.system("killall waybar; waybar -c ~/.TacOS_Stuff/assets/waybar/config.jsonc -s ~/.TacOS_Stuff/assets/waybar/fall_style.css & disown")
@@ -163,3 +171,5 @@ class GeneralSettingsPage(Gtk.Box):
         os.system(f"touch {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages/General_Settings_Subfiles/current_theme_is_fall")
         os.system('gsettings set org.gnome.desktop.interface gtk-theme "Material-Black-Cherry-3.38"')
         os.system("gsettings set org.gnome.desktop.interface icon-theme ACYLS")
+        if self.main_window and hasattr(self.main_window, 'switch_to_theme_1'):
+            self.main_window.switch_to_theme_1(widget)

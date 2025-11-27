@@ -1,0 +1,4 @@
+layout {
+	gaps 7
+	center-focused-column "never"
+    
