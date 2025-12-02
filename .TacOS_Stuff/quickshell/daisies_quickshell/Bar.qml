@@ -42,6 +42,24 @@ Scope {
             implicitHeight: 50
 
             Rectangle {
+                Item {
+                    id: colors
+                    property var primaryColor: Qt.rgba(1, 0, 0.788, 0.6)
+                    property var secondaryColor: Qt.rgba(1.0, 0.7, 0.988, 1.0)
+                    property var buttonColor: Qt.rgba(1.0, 0.7, 0.988, 1.0)
+                    property var buttonHoverColor: Qt.rgba(1.0, 0.85, 1.0, 1.0)
+                    property var buttonClickedColor: Qt.rgba(1.0, 0.7, 0.988, 1.0)
+                }
+
+                Item {
+                    id: misc
+                    property var buttonBorderWidth: 5
+                    property var buttonRadius: 5
+                    property var button2Radius: 5
+                    property var radius: 5
+                    property var borderWidth: 4
+                }
+
                 anchors {
                     fill: parent
                     leftMargin: 20
@@ -49,12 +67,12 @@ Scope {
                     topMargin: 10
                     bottomMargin: 0
                 }
-                color: Qt.rgba(1, 0, 0.788, 0.6)
+                color: colors.primaryColor
                 bottomLeftRadius: 20
                 bottomRightRadius: 20
                 topLeftRadius: 20
                 topRightRadius: 20
-                border.color: Qt.rgba(1.0, 0.7, 0.988, 1.0)
+                border.color: colors.secondaryColor
                 border.width: 3
 
                 RowLayout {
@@ -85,8 +103,8 @@ Scope {
                                 bottomRightRadius: 20
                                 topLeftRadius: 20
                                 topRightRadius: 20
-                                color: parent.down ? Qt.rgba(1.0, 0.7, 0.988, 1.0) :
-                                    parent.hovered ? Qt.rgba(1.0, 0.85, 1.0, 1.0) : Qt.rgba(1.0, 0.7, 0.988, 1.0)
+                                color: parent.down ? colors.buttonClickedColor :
+                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
                             }
                         }
                     }
@@ -114,8 +132,8 @@ Scope {
                                 bottomRightRadius: 20
                                 topLeftRadius: 20
                                 topRightRadius: 20
-                                color: parent.down ? Qt.rgba(1.0, 0.7, 0.988, 1.0) :
-                                    parent.hovered ? Qt.rgba(1.0, 0.85, 1.0, 1.0) : Qt.rgba(1.0, 0.7, 0.988, 1.0)
+                                color: parent.down ? colors.buttonClickedColor :
+                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
                             }
                         }
 
@@ -137,8 +155,8 @@ Scope {
                                 bottomRightRadius: 20
                                 topLeftRadius: 20
                                 topRightRadius: 20
-                                color: parent.down ? Qt.rgba(1.0, 0.7, 0.988, 1.0) :
-                                    parent.hovered ? Qt.rgba(1.0, 0.85, 1.0, 1.0) : Qt.rgba(1.0, 0.7, 0.988, 1.0)
+                                color: parent.down ? colors.buttonClickedColor :
+                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
                             }
                         }
                     }
@@ -169,8 +187,8 @@ Scope {
                                 bottomRightRadius: 20
                                 topLeftRadius: 20
                                 topRightRadius: 20
-                                color: parent.down ? Qt.rgba(1.0, 0.7, 0.988, 1.0) :
-                                    parent.hovered ? Qt.rgba(1.0, 0.85, 1.0, 1.0) : Qt.rgba(1.0, 0.7, 0.988, 1.0)
+                                color: parent.down ? colors.buttonClickedColor :
+                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
                             }
                         }
                     }
@@ -187,8 +205,8 @@ Scope {
                 visible: false
                 color: "transparent"
                 Rectangle {
-                    color: Qt.rgba(1.0, 0.0, 0.788, 0.8)
-                    border.color: Qt.rgba(1.0, 0.7, 0.988, 1.0)
+                    color: colors.primaryColor
+                    border.color: colors.secondaryColor
                 border.width: 3
                     anchors {
                         fill: parent
@@ -207,14 +225,14 @@ Scope {
                 anchor.item: trayButton
                 anchor.gravity: Edges.Bottom | Edges.Left
                 anchor.rect.y: 32
-                anchor.rect.x: 58
+                anchor.rect.x: 41
                 implicitWidth: 300
                 implicitHeight: 500
                 visible: false
                 color: "transparent"
                 Rectangle {
-                    color: Qt.rgba(1.0, 0.0, 0.788, 0.8)
-                    border.color: Qt.rgba(1.0, 0.7, 0.988, 1.0)
+                    color: colors.primaryColor
+                    border.color: colors.secondaryColor
                     border.width: 3
                     anchors {
                         fill: parent
@@ -238,8 +256,8 @@ Scope {
                 visible: false
                 color: "transparent"
                 Rectangle {
-                    color: Qt.rgba(1.0, 0.0, 0.788, 0.8)
-                    border.color: Qt.rgba(1.0, 0.7, 0.988, 1.0)
+                    color: colors.primaryColor
+                    border.color: colors.secondaryColor
                     border.width: 3
                     anchors {
                         fill: parent
@@ -279,7 +297,7 @@ Scope {
                                     { path: "file://" + homePath + "/TacOS/TacOS/.TacOS_Stuff/swaybg/halloween.jpg", name: "Graveyard", command: "swaybg -m fill -i "  + homePath + "/TacOS/TacOS/.TacOS_Stuff/swaybg/halloween.jpg" },
                                     { path: "file://" + homePath + "/TacOS/TacOS/.TacOS_Stuff/swaybg/magic.jpg", name: "Magic", command: "swaybg -m fill -i "  + homePath + "/TacOS/TacOS/.TacOS_Stuff/swaybg/magic.jpg" },
                                     { path: "file://" + homePath + "/TacOS/TacOS/.TacOS_Stuff/custom_wallpaper_engine/space_with_eyes.png", name: "Eyes (interactive)", command: "python3 " + homePath + "/TacOS/TacOS/.TacOS_Stuff/custom_wallpaper_engine/parallax_wallpaper_engine.py" },
-                                    { path: "file://" + homePath + "/TacOS/TacOS/.TacOS_Stuff/custom_wallpaper_engine/space_with_eyes.png", name: "Eyes (interactive)", command: "python3 " + homePath + "/TacOS/TacOS/.TacOS_Stuff/custom_wallpaper_engine/parallax_wallpaper_engine_2.py" },
+                                    { path: "file://" + homePath + "/TacOS/TacOS/.TacOS_Stuff/custom_wallpaper_engine/space_background_2.jpg", name: "Eyes (interactive)", command: "python3 " + homePath + "/TacOS/TacOS/.TacOS_Stuff/custom_wallpaper_engine/parallax_wallpaper_engine_2.py" },
                                 ]
 
                                 Button {
@@ -289,7 +307,7 @@ Scope {
 
                                     background: Rectangle {
                                         radius: 3
-                                        border.color: Qt.rgba(1.0, 0.7, 0.988, 1.0)
+                                        border.color: colors.secondaryColor
                                         border.width: 3
 
                                         Image {
@@ -332,8 +350,8 @@ Scope {
                                 bottomRightRadius: 20
                                 topLeftRadius: 20
                                 topRightRadius: 20
-                                color: parent.down ? Qt.rgba(1.0, 0.7, 0.988, 1.0) :
-                                    parent.hovered ? Qt.rgba(1.0, 0.85, 1.0, 1.0) : Qt.rgba(1.0, 0.7, 0.988, 1.0)
+                                color: parent.down ? colors.buttonClickedColor :
+                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
                             }
                         }
                     }

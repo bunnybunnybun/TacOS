@@ -115,7 +115,7 @@ class GeneralSettingsPage(Gtk.Box):
             set_focus_ring_width_fall(None, value)
 
     def Set_Theme_Daisies(self, widget):
-        os.system("killall quickshell; quickshell -p ~/.TacOS_Stuff/quickshell & disown")
+        os.system("killall quickshell; quickshell -p ~/TacOS/TacOS/.TacOS_Stuff/quickshell/daisies_quickshell & disown")
         os.system("killall swaybg; swaybg -m fill -i ~/.TacOS_Stuff/swaybg/Daisies.jpg & disown")
         os.system("cp ~/.TacOS_Stuff/assets/niri/daisy_config.kdl ~/.config/niri/config.kdl")
         os.system('gsettings set org.gnome.desktop.interface gtk-theme "Fluent-yellow-Light"')
@@ -128,7 +128,7 @@ class GeneralSettingsPage(Gtk.Box):
             self.main_window.switch_to_theme_1(widget)
 
     def Set_Theme_Minimal(self, widget):
-        os.system("killall quickshell; quickshell -p ~/.TacOS_Stuff/quickshell & disown")
+        os.system("killall quickshell; quickshell -p ~/TacOS/TacOS/.TacOS_Stuff/quickshell/minimal_quickshell & disown")
         os.system("killall swaybg; swaybg -m fill -i ~/.TacOS_Stuff/swaybg/arch_rainbow.png & disown")
         os.system("cp ~/.TacOS_Stuff/assets/niri/minimal_config.kdl ~/.config/niri/config.kdl")
         os.system('gsettings set org.gnome.desktop.interface gtk-theme "Fluent-pink-Dark"')
@@ -141,9 +141,9 @@ class GeneralSettingsPage(Gtk.Box):
             self.main_window.switch_to_theme_1(widget)
 
     def Set_Theme_Winter(self, widget):
-        #os.system("killall waybar; waybar -c ~/.TacOS_Stuff/assets/waybar/config.jsonc -s ~/.TacOS_Stuff/assets/waybar/magic_style.css & disown")
+        os.system("killall quickshell; quickshell -p ~/TacOS/TacOS/.TacOS_Stuff/quickshell/winter_quickshell & disown")
         os.system("killall swaybg; swaybg -m fill -i ~/.TacOS_Stuff/swaybg/magic.jpg & disown")
-        #os.system("cp ~/.TacOS_Stuff/assets/niri/magic_config.kdl ~/.config/niri/config.kdl")
+        os.system("cp ~/.TacOS_Stuff/assets/niri/magic_config.kdl ~/.config/niri/config.kdl")
         os.system('gsettings set org.gnome.desktop.interface gtk-theme "Fluent-pink-Light"')
         os.system("gsettings set org.gnome.desktop.interface icon-theme Adwaita")
         os.system("cp ~/.TacOS_Stuff/assets/starship/starship.toml ~/.config/starship.toml")
@@ -152,12 +152,9 @@ class GeneralSettingsPage(Gtk.Box):
         os.system(f"touch {Path.home()}/.TacOS_Stuff/TacOS_Settings_App/pages//General_Settings_Subfiles/current_theme_is_magic")
         if self.main_window and hasattr(self.main_window, 'switch_to_theme_2'):
             self.main_window.switch_to_theme_2(widget)
-        os.system("killall quickshell")
-        time.sleep(0.1)
-        os.system("quickshell -p ~/TacOS/TacOS/.TacOS_Stuff/quickshell & disown")
 
     def Set_Theme_Fall(self, widget):
-        os.system("killall quickshell; quickshell -p ~/.TacOS_Stuff/quickshell & disown")
+        os.system("killall quickshell; quickshell -p ~/TacOS/TacOS/.TacOS_Stuff/quickshell/daisies_quickshell & disown")
         os.system("killall swaybg; swaybg -m fill -i ~/.TacOS_Stuff/swaybg/halloween.jpg & disown")
         os.system("cp ~/.TacOS_Stuff/assets/niri/fall_config.kdl ~/.config/niri/config.kdl")
         os.system("cp ~/.config/kitty/halloween-theme.conf ~/.config/kitty/current-theme.conf")

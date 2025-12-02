@@ -126,7 +126,8 @@ xdg-utils
 xfsprogs
 xl2tpd
 zsh
-############## Below is custom added packages. ####################
+
+############## Below is packages that I added ####################
 nemo
 fastfetch
 base-devel
@@ -158,3 +159,7 @@ qt5-base
 qt6-svg
 plasma-desktop
 pam
+icu
+
+############ Packages from my own repo ###############
+calamares
