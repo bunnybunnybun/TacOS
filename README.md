@@ -42,4 +42,6 @@ First of all, to anyone who has come to review/demo this, you don't need to inst
  - And finaly, enjoy your new desktop!!!
 
 ## Credits:
+Photo by <a href="https://unsplash.com/@malcoo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Tomáš Malík</a> on <a href="https://unsplash.com/photos/snow-covered-trees-during-daytime-PrWCad_Vy_w?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+
 https://pixabay.com/users/designdrawartes-8580564/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4859839 for an image.

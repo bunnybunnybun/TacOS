@@ -4,7 +4,7 @@
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
 
 overview {
-    backdrop-color "#200936ff"
+    backdrop-color "#6ebacfff"
 }
 
 cursor {
@@ -94,8 +94,8 @@ output "HDMI-A-1" {
 output "HDMI-A-2"{
 	mode "2560x1440@59.951"
 	transform "90"
-	scale 1.5
-	position x=1920 y=-630
+	scale 0.8
+	position x=1920 y=-1120
 }
 /-output "eDP-1" {
     // Uncomment this line to disable this output.
@@ -181,7 +181,7 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 2
+        width 4
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -189,7 +189,7 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "rgba(204, 255, 0, 1)"
+        active-color "#00763dff"
 
         // Color of the ring on inactive monitors.
         inactive-color "#ffffff00"
@@ -255,13 +255,13 @@ layout {
         softness 10
 
         // Spread expands the shadow.
-        spread 6.0
+        spread 1.0
 
         // Offset moves the shadow relative to the window.
-        offset x=0 y=0
+        offset x=0 y=3
 
         // You can also change the shadow color and opacity.
-        color "rgba(34, 236, 229, 1)"
+        color "rgba(0, 0, 0, 1)"
     }
 
     // Struts shrink the area occupied by windows, similarly to layer-shell panels.
@@ -418,7 +418,7 @@ window-rule {
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
 window-rule {
-    geometry-corner-radius 22
+    geometry-corner-radius 20 20 5 5
     clip-to-geometry true
 }
 

@@ -142,7 +142,7 @@ class GeneralSettingsPage(Gtk.Box):
 
     def Set_Theme_Winter(self, widget):
         os.system("killall quickshell; quickshell -p ~/TacOS/TacOS/.TacOS_Stuff/quickshell/winter_quickshell & disown")
-        os.system("killall swaybg; swaybg -m fill -i ~/.TacOS_Stuff/swaybg/magic.jpg & disown")
+        os.system("killall swaybg; swaybg -m fill -i ~/.TacOS_Stuff/swaybg/winter_background.jpg & disown")
         os.system("cp ~/.TacOS_Stuff/assets/niri/magic_config.kdl ~/.config/niri/config.kdl")
         os.system('gsettings set org.gnome.desktop.interface gtk-theme "Fluent-pink-Light"')
         os.system("gsettings set org.gnome.desktop.interface icon-theme Adwaita")
@@ -154,7 +154,7 @@ class GeneralSettingsPage(Gtk.Box):
             self.main_window.switch_to_theme_2(widget)
 
     def Set_Theme_Fall(self, widget):
-        os.system("killall quickshell; quickshell -p ~/TacOS/TacOS/.TacOS_Stuff/quickshell/daisies_quickshell & disown")
+        os.system("killall quickshell; quickshell -p ~/TacOS/TacOS/.TacOS_Stuff/quickshell/halloween_quickshell & disown")
         os.system("killall swaybg; swaybg -m fill -i ~/.TacOS_Stuff/swaybg/halloween.jpg & disown")
         os.system("cp ~/.TacOS_Stuff/assets/niri/fall_config.kdl ~/.config/niri/config.kdl")
         os.system("cp ~/.config/kitty/halloween-theme.conf ~/.config/kitty/current-theme.conf")

@@ -94,8 +94,8 @@ output "HDMI-A-1" {
 output "HDMI-A-2"{
 	mode "2560x1440@59.951"
 	transform "90"
-	scale 1.5
-	position x=1920 y=-630
+	scale 0.8
+	position x=1920 y=-1120
 }
 /-output "eDP-1" {
     // Uncomment this line to disable this output.
@@ -181,7 +181,7 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 2
+        width 3
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -189,7 +189,7 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#7264a8ff"
+        active-color "#a86576"
 
         // Color of the ring on inactive monitors.
         inactive-color "#ffffff00"
@@ -366,7 +366,7 @@ window-rule {
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
 window-rule {
-    geometry-corner-radius 0
+    geometry-corner-radius 5
     clip-to-geometry true
 }
 

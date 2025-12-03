@@ -39,41 +39,45 @@ Scope {
                 right: true
             }
 
-            implicitHeight: 48
+            implicitHeight: 40
 
             Rectangle {
                 Item {
                     id: colors
-                    property var primaryColor: Qt.rgba(0.667, 0.455, 0.522, 1.0)
-                    property var secondaryColor: Qt.rgba(0.657, 0.395, 0.462, 1.0)
-                    property var buttonColor: Qt.rgba(0.657, 0.395, 0.462, 1.0)
-                    property var buttonHoverColor: Qt.rgba(0.617, 0.355, 0.422, 1.0)
-                    property var buttonClickedColor: Qt.rgba(0.657, 0.395, 0.462, 1.0)
+                    property var primaryColor: Qt.rgba(0.361, 0.361, 0.361, 1)
+                    property var secondaryColor: Qt.rgba(0.2, 0.2, 0.2, 1.0)
+                    property var buttonColor: Qt.rgba(0, 0, 0, 0.254)
+                    property var buttonHoverColor: Qt.rgba(0.0, 0.0, 0.0, 0.4)
+                    property var buttonClickedColor: Qt.rgba(0, 0, 0, 0.354)
                 }
 
                 Item {
                     id: misc
                     property var buttonBorderWidth: 5
-                    property var buttonRadius: 5
+                    property var buttonRadius: 10
                     property var button2Radius: 5
                     property var radius: 5
-                    property var borderWidth: 4
+                    property var borderWidth: 6
                 }
 
                 anchors {
                     fill: parent
-                    leftMargin: 8
-                    rightMargin: 8
-                    topMargin: 8
-                    bottomMargin: 6
+                    leftMargin: 0
+                    rightMargin: 0
+                    topMargin: 0
+                    bottomMargin: 0
                 }
-                color: colors.primaryColor
-                bottomLeftRadius: misc.radius
-                bottomRightRadius: misc.radius
-                topLeftRadius: misc.radius
-                topRightRadius: misc.radius
-                border.color: colors.secondaryColor
-                border.width: 0
+                //color: colors.primaryColor
+                gradient: Gradient {
+                    GradientStop { position: 0.2; color: Qt.rgba(0.361, 0.361, 0.361, 1) }
+                    GradientStop { position: 0.8; color: Qt.rgba(0.627, 0.627, 0.627, 1) }
+                }
+                bottomLeftRadius: 0
+                bottomRightRadius: 0
+                topLeftRadius: 0
+                topRightRadius: 0
+                //border.color: colors.secondaryColor
+                //border.width: 3
 
                 RowLayout {
                     anchors.fill: parent
@@ -82,9 +86,7 @@ Scope {
                         id: leftModules
                         Layout.alignment: Qt.AlignLeft
                         Layout.fillWidth: false
-                        Layout.topMargin: 6
-                        Layout.bottomMargin: 6
-                        Layout.leftMargin: 6
+                        Layout.leftMargin: 8
                         spacing: 10
 
                         Button {
@@ -96,7 +98,7 @@ Scope {
                                 horizontalAlignment: Text.AlignHCenter
                                 verticalAlignment: Text.AlignVCenter
                             }
-                            Layout.preferredHeight: 22
+                            Layout.preferredHeight: 25
                             Layout.preferredWidth: 50
                             onClicked: launchFuzzel.running = true
 
@@ -115,9 +117,6 @@ Scope {
                         id: centerModules
                         Layout.fillWidth: true
                         Layout.alignment: Qt.AlignHCenter
-                        Layout.topMargin: 6
-                        Layout.bottomMargin: 6
-                        Layout.leftMargin: 6
                         spacing: 10
 
                         Button {
@@ -129,7 +128,7 @@ Scope {
                                 horizontalAlignment: Text.AlignHCenter
                                 verticalAlignment: Text.AlignVCenter
                             }
-                            Layout.preferredHeight: 22
+                            Layout.preferredHeight: 25
                             Layout.preferredWidth: 250
                             onClicked: clockPopup.visible = !clockPopup.visible
                             background: Rectangle {
@@ -151,7 +150,7 @@ Scope {
                                 horizontalAlignment: Text.AlignHCenter
                                 verticalAlignment: Text.AlignVCenter
                             }
-                            Layout.preferredHeight: 22
+                            Layout.preferredHeight: 25
                             Layout.preferredWidth: 50
                             Layout.alignment: Qt.AlignRight
                             onClicked: settingsPopup.visible = !settingsPopup.visible
@@ -170,9 +169,7 @@ Scope {
                         id: rightModules
                         Layout.alignment: Qt.AlignRight
                         Layout.fillWidth: false
-                        Layout.topMargin: 6
-                        Layout.bottomMargin: 6
-                        Layout.rightMargin: 6
+                        Layout.rightMargin: 8
                         spacing: 10
 
                         Button {
@@ -185,7 +182,8 @@ Scope {
                                 verticalAlignment: Text.AlignVCenter
                             }
                             Layout.alignment: Qt.AlignRight
-                            Layout.preferredHeight: 22
+                            anchors.rightMargin: 8
+                            Layout.preferredHeight: 25
                             Layout.preferredWidth: 35
                             onClicked: trayPopup.visible = !trayPopup.visible
                             background: Rectangle {
@@ -211,7 +209,12 @@ Scope {
                 visible: false
                 color: "transparent"
                 Rectangle {
-                    color: colors.primaryColor
+                    gradient: Gradient {
+                    GradientStop { position: 0.0; color: Qt.rgba(0.361, 0.361, 0.361, 1) }
+                    GradientStop { position: 0.2; color: Qt.rgba(0.627, 0.627, 0.627, 1) }
+                    GradientStop { position: 0.8; color: Qt.rgba(0.627, 0.627, 0.627, 1) }
+                    GradientStop { position: 1.0; color: Qt.rgba(0.361, 0.361, 0.361, 1) }
+                    }
                     border.color: colors.secondaryColor
                     border.width: misc.borderWidth
                     anchors {
@@ -237,6 +240,12 @@ Scope {
                 visible: false
                 color: "transparent"
                 Rectangle {
+                    gradient: Gradient {
+                    GradientStop { position: 0.0; color: Qt.rgba(0.361, 0.361, 0.361, 1) }
+                    GradientStop { position: 0.2; color: Qt.rgba(0.627, 0.627, 0.627, 1) }
+                    GradientStop { position: 0.8; color: Qt.rgba(0.627, 0.627, 0.627, 1) }
+                    GradientStop { position: 1.0; color: Qt.rgba(0.361, 0.361, 0.361, 1) }
+                    }
                     color: colors.primaryColor
                     border.color: colors.secondaryColor
                     border.width: misc.borderWidth
@@ -372,7 +381,12 @@ Scope {
                 color: "transparent"
                 visible: false
                 Rectangle {
-                    color: colors.primaryColor
+                    gradient: Gradient {
+                    GradientStop { position: 0.0; color: Qt.rgba(0.361, 0.361, 0.361, 1) }
+                    GradientStop { position: 0.2; color: Qt.rgba(0.627, 0.627, 0.627, 1) }
+                    GradientStop { position: 0.8; color: Qt.rgba(0.627, 0.627, 0.627, 1) }
+                    GradientStop { position: 1.0; color: Qt.rgba(0.361, 0.361, 0.361, 1) }
+                    }
                     border.width: misc.borderWidth
                     border.color: colors.secondaryColor
                     radius: misc.radius
@@ -455,7 +469,12 @@ Scope {
                 color: "transparent"
                 visible: false
                 Rectangle {
-                    color: colors.primaryColor
+                    gradient: Gradient {
+                    GradientStop { position: 0.0; color: Qt.rgba(0.361, 0.361, 0.361, 1) }
+                    GradientStop { position: 0.2; color: Qt.rgba(0.627, 0.627, 0.627, 1) }
+                    GradientStop { position: 0.8; color: Qt.rgba(0.627, 0.627, 0.627, 1) }
+                    GradientStop { position: 1.0; color: Qt.rgba(0.361, 0.361, 0.361, 1) }
+                    }
                     border.width: misc.borderWidth
                     border.color: colors.secondaryColor
                     radius: misc.radius
@@ -538,7 +557,12 @@ Scope {
                 color: "transparent"
                 visible: false
                 Rectangle {
-                    color: colors.primaryColor
+                    gradient: Gradient {
+                    GradientStop { position: 0.0; color: Qt.rgba(0.361, 0.361, 0.361, 1) }
+                    GradientStop { position: 0.2; color: Qt.rgba(0.627, 0.627, 0.627, 1) }
+                    GradientStop { position: 0.8; color: Qt.rgba(0.627, 0.627, 0.627, 1) }
+                    GradientStop { position: 1.0; color: Qt.rgba(0.361, 0.361, 0.361, 1) }
+                    }
                     border.width: misc.borderWidth
                     border.color: colors.secondaryColor
                     radius: misc.radius
@@ -621,7 +645,12 @@ Scope {
                 visible: false
                 color: "transparent"
                 Rectangle {
-                    color: colors.primaryColor
+                    gradient: Gradient {
+                        GradientStop { position: 0.0; color: Qt.rgba(0.361, 0.361, 0.361, 1) }
+                        GradientStop { position: 0.2; color: Qt.rgba(0.627, 0.627, 0.627, 1) }
+                        GradientStop { position: 0.8; color: Qt.rgba(0.627, 0.627, 0.627, 1) }
+                        GradientStop { position: 1.0; color: Qt.rgba(0.361, 0.361, 0.361, 1) }
+                    }
                     border.color: colors.secondaryColor
                     border.width: misc.borderWidth
                     anchors {
@@ -667,10 +696,10 @@ Scope {
                                 Button {
                                     Layout.fillWidth: true
                                     Layout.fillHeight: true
-                                    Layout.margins: 5
+                                    Layout.margins: misc.button2Radius
 
                                     background: Rectangle {
-                                        radius: misc.button2Radius
+                                        radius: 3
                                         border.color: parent.down ? colors.buttonClickedColor :
                                         parent.hovered ? colors.buttonHoverColor : colors.buttonColor
                                         border.width: misc.borderWidth
@@ -726,36 +755,6 @@ Scope {
     }
 
     Process {
-        id: openSettings
-        command: ["bash", "-c", "/usr/bin/python3 /home/carlisle/.TacOS_Stuff/TacOS_Settings_App/TacOS\ Settings.py"]
-        stdout: StdioCollector {
-            onStreamFinished: {
-                console.log(`Boop bop testing ${this.text}`)
-            }
-        }
-    }
-
-    //Process {
-    //    id: getTotalMemory
-    //    Item {
-    //        id: resourceUsage
-    //        property var totalMemory: 42
-    //    }
-    //    command: ["bash", "-c", "cat /proc/meminfo | grep MemTotal"]
-    //    stdout: StdioCollector {
-    //        onStreamFinished: {
-    //            resourceUsage.totalMemory = this.text;
-    //            console.log(resourceUsage.totalMemory);
-    //        }
-    //    }
-    //}
-
-    Process {
-        id: getFreeMemory
-        command: ["bash", "-c", "cat /proc/meminfo | grep MemFree"]
-    }
-
-    Process {
         id: dateProc
         command: ["date"]
         running: true
@@ -767,7 +766,7 @@ Scope {
 
     Process {
         id: launchFuzzel
-        command: ["bash", "-c", "fuzzel --config /etc/xdg/fuzzel/minimal_fuzzel_app_drawer.ini"]
+        command: ["bash", "-c", "fuzzel --config /etc/xdg/fuzzel/fuzzel_app_drawer.ini"]
     }
 
     Timer {

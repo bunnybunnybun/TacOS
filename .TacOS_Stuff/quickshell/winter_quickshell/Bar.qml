@@ -44,11 +44,11 @@ Scope {
             Rectangle {
                 Item {
                     id: colors
-                    property var primaryColor: Qt.rgba(1.0, 1.0, 1.0, 1.0)
-                    property var secondaryColor: Qt.rgba(0.85, 0.85, 1.0, 1.0)
-                    property var buttonColor: Qt.rgba(0.85, 0.85, 1.0, 1.0)
-                    property var buttonHoverColor: Qt.rgba(0.75, 0.75, 1.0, 1.0)
-                    property var buttonClickedColor: Qt.rgba(0.85, 0.85, 1.0, 1.0)
+                    property var primaryColor: Qt.rgba(0.5, 0.996, 1, 1.0)
+                    property var secondaryColor: Qt.rgba(0, 0.463, 0.239, 1.0)
+                    property var buttonColor: Qt.rgba(0, 0.463, 0.239, 1.0)
+                    property var buttonHoverColor: Qt.rgba(0, 0.383, 0.199, 1.0)
+                    property var buttonClickedColor: Qt.rgba(0, 0.463, 0.239, 1.0)
                 }
 
                 Item {
@@ -235,7 +235,7 @@ Scope {
                 anchor.item: trayButton
                 anchor.gravity: Edges.Bottom | Edges.Left
                 anchor.rect.y: 32
-                anchor.rect.x: 41
+                anchor.rect.x: 42
                 implicitWidth: 300
                 implicitHeight: 500
                 visible: false
@@ -248,10 +248,411 @@ Scope {
                         fill: parent
                         topMargin: 10
                     }
-                    radius: 20
-                    Text {
-                        text: "Tray thingy"
-                        anchors.centerIn: parent
+                    topLeftRadius: misc.radiusTopLeft
+                    topRightRadius: misc.radiusTopRight
+                    bottomLeftRadius: misc.radiusBottomLeft
+                    bottomRightRadius: misc.radiusBottomRight
+
+                    ColumnLayout {
+                        anchors.fill: parent
+                        spacing: 15
+                        //Button {
+                        //    id: checkRamUsage
+                        //    Layout.margins: 25
+                        //    Layout.fillWidth: true
+                        //    Layout.fillHeight: true
+                        //    Layout.preferredHeight: 35
+                        //    Layout.preferredWidth: 35
+                        //    //onClicked: getTotalMemory.running = true
+                        //    background: Rectangle {
+                        //        radius: misc.button2Radius
+                        //        color: parent.down ? colors.buttonClickedColor :
+                        //        parent.hovered ? colors.buttonHoverColor : colors.buttonColor
+                        //    }
+                        //}
+
+                        Button {
+                            id: openSettingsApp
+                            Layout.alignment: Qt.AlignTop
+                            Layout.margins: 25
+                            Layout.fillWidth: true
+                            Layout.fillHeight: false
+                            Layout.preferredHeight: 35
+                            Layout.preferredWidth: 35
+                            onClicked: openSettings.running = true
+                            contentItem: Label {
+                                text: "Settings "
+                                font.pixelSize: 20
+                                font.bold: true
+                                horizontalAlignment: Text.AlignHCenter
+                                verticalAlignment: Text.AlignVCenter
+                            }
+                            background: Rectangle {
+                                topLeftRadius: misc.radiusTopLeft
+                                topRightRadius: misc.radiusTopRight
+                                bottomLeftRadius: misc.radiusBottomLeft
+                                bottomRightRadius: misc.radiusBottomRight
+                                color: parent.down ? colors.buttonClickedColor :
+                                parent.hovered ? colors.buttonHoverColor : colors.buttonColor
+                            }
+                        }
+
+                        RowLayout {
+                            Layout.alignment: Qt.AlignBottom
+                            Layout.margins: 10
+                            spacing: 0
+                            
+                            Button {
+                                id: logoutButton
+                                onClicked: logoutConfirmation.visible = !logoutConfirmation.visible
+                                Layout.margins: 5
+                                Layout.alignment: Qt.AlignTop
+                                Layout.preferredHeight: 35
+                                Layout.preferredWidth: 100
+                                Layout.fillWidth: true
+                                contentItem: Label {
+                                    text: "logout"
+                                    font.pixelSize: 15
+                                    font.bold: true
+                                    horizontalAlignment: Text.AlignHCenter
+                                    verticalAlignment: Text.AlignVCenter
+                                }
+                                background: Rectangle {
+                                    topLeftRadius: misc.radiusTopLeft
+                                    topRightRadius: misc.radiusTopRight
+                                    bottomLeftRadius: misc.radiusBottomLeft
+                                    bottomRightRadius: misc.radiusBottomRight
+                                    color: parent.down ? colors.buttonClickedColor :
+                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
+                                }
+                            }
+
+                            Button {
+                                id: rebootButton
+                                onClicked: rebootConfirmation.visible = !rebootConfirmation.visible
+                                Layout.margins: 5
+                                Layout.alignment: Qt.AlignTop
+                                Layout.preferredHeight: 35
+                                Layout.preferredWidth: 100
+                                Layout.fillWidth: true
+                                contentItem: Label {
+                                    text: "reboot"
+                                    font.pixelSize: 15
+                                    font.bold: true
+                                    horizontalAlignment: Text.AlignHCenter
+                                    verticalAlignment: Text.AlignVCenter
+                                }
+                                background: Rectangle {
+                                    topLeftRadius: misc.radiusTopLeft
+                                    topRightRadius: misc.radiusTopRight
+                                    bottomLeftRadius: misc.radiusBottomLeft
+                                    bottomRightRadius: misc.radiusBottomRight
+                                    color: parent.down ? colors.buttonClickedColor :
+                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
+                                }
+                            }
+
+                            Button {
+                                id: shutdownButton
+                                onClicked: shutdownConfirmation.visible = !shutdownConfirmation.visible
+                                Layout.margins: 5
+                                Layout.alignment: Qt.AlignTop
+                                Layout.preferredHeight: 35
+                                Layout.preferredWidth: 100
+                                Layout.fillWidth: true
+                                contentItem: Label {
+                                    text: "shutdown"
+                                    font.pixelSize: 15
+                                    font.bold: true
+                                    horizontalAlignment: Text.AlignHCenter
+                                    verticalAlignment: Text.AlignVCenter
+                                }
+                                background: Rectangle {
+                                    topLeftRadius: misc.radiusTopLeft
+                                    topRightRadius: misc.radiusTopRight
+                                    bottomLeftRadius: misc.radiusBottomLeft
+                                    bottomRightRadius: misc.radiusBottomRight
+                                    color: parent.down ? colors.buttonClickedColor :
+                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            PopupWindow {
+                id: logoutConfirmation
+                anchor.window: toplevel
+                anchor.rect.x: 760
+                anchor.rect.y: 290
+                implicitHeight: 250
+                implicitWidth: 450
+                color: "transparent"
+                visible: false
+                Rectangle {
+                    color: colors.primaryColor
+                    border.width: misc.borderWidth
+                    border.color: colors.secondaryColor
+                    topLeftRadius: misc.radiusTopLeft
+                    topRightRadius: misc.radiusTopRight
+                    bottomLeftRadius: misc.radiusBottomLeft
+                    bottomRightRadius: misc.radiusBottomRight
+                    anchors {
+                        fill: parent
+                    }
+
+                    ColumnLayout {
+                        anchors.fill: parent
+                        spacing: 15
+                        Text {
+                            text: "Are you sure you want to logout?"
+                            Layout.alignment: Qt.AlignHCenter
+                            Layout.topMargin: 20
+                            font.pixelSize: 24
+                        }
+
+                        RowLayout {
+                            Layout.alignment: Qt.AlignBottom
+                            Layout.margins: 10
+                            spacing: 0
+
+                            Button {
+                                id: logoutYes
+                                onClicked: execDetached ([
+                                    "bash", "-c", "niri msg action quit -s"
+                                ])
+                                Layout.margins: 5
+                                Layout.alignment: Qt.AlignTop
+                                Layout.preferredHeight: 40
+                                Layout.preferredWidth: 60
+                                Layout.fillWidth: true
+                                contentItem: Label {
+                                    text: "Yes"
+                                    font.pixelSize: 20
+                                    font.bold: true
+                                    horizontalAlignment: Text.AlignHCenter
+                                    verticalAlignment: Text.AlignVCenter
+                                }
+                                background: Rectangle {
+                                    topLeftRadius: misc.radiusTopLeft
+                                    topRightRadius: misc.radiusTopRight
+                                    bottomLeftRadius: misc.radiusBottomLeft
+                                    bottomRightRadius: misc.radiusBottomRight
+                                    color: parent.down ? colors.buttonClickedColor :
+                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
+                                }
+                            }
+
+                            Button {
+                                id: logoutNo
+                                onClicked: logoutConfirmation.visible = !logoutConfirmation.visible
+                                Layout.margins: 5
+                                Layout.alignment: Qt.AlignTop
+                                Layout.preferredHeight: 40
+                                Layout.preferredWidth: 60
+                                Layout.fillWidth: true
+                                contentItem: Label {
+                                    text: "No"
+                                    font.pixelSize: 20
+                                    font.bold: true
+                                    horizontalAlignment: Text.AlignHCenter
+                                    verticalAlignment: Text.AlignVCenter
+                                }
+                                background: Rectangle {
+                                    topLeftRadius: misc.radiusTopLeft
+                                    topRightRadius: misc.radiusTopRight
+                                    bottomLeftRadius: misc.radiusBottomLeft
+                                    bottomRightRadius: misc.radiusBottomRight
+                                    color: parent.down ? colors.buttonClickedColor :
+                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            PopupWindow {
+                id: rebootConfirmation
+                anchor.window: toplevel
+                anchor.rect.x: 760
+                anchor.rect.y: 290
+                implicitHeight: 250
+                implicitWidth: 450
+                color: "transparent"
+                visible: false
+                Rectangle {
+                    color: colors.primaryColor
+                    border.width: misc.borderWidth
+                    border.color: colors.secondaryColor
+                    topLeftRadius: misc.radiusTopLeft
+                    topRightRadius: misc.radiusTopRight
+                    bottomLeftRadius: misc.radiusBottomLeft
+                    bottomRightRadius: misc.radiusBottomRight
+                    anchors {
+                        fill: parent
+                    }
+
+                    ColumnLayout {
+                        anchors.fill: parent
+                        spacing: 15
+                        Text {
+                            text: "Are you sure you want to reboot?"
+                            Layout.alignment: Qt.AlignHCenter
+                            Layout.topMargin: 20
+                            font.pixelSize: 24
+                        }
+
+                        RowLayout {
+                            Layout.alignment: Qt.AlignBottom
+                            Layout.margins: 10
+                            spacing: 0
+
+                            Button {
+                                id: rebootYes
+                                onClicked: execDetached ([
+                                    "bash", "-c", "reboot"
+                                ])
+                                Layout.margins: 5
+                                Layout.alignment: Qt.AlignTop
+                                Layout.preferredHeight: 40
+                                Layout.preferredWidth: 60
+                                Layout.fillWidth: true
+                                contentItem: Label {
+                                    text: "Yes"
+                                    font.pixelSize: 20
+                                    font.bold: true
+                                    horizontalAlignment: Text.AlignHCenter
+                                    verticalAlignment: Text.AlignVCenter
+                                }
+                                background: Rectangle {
+                                    topLeftRadius: misc.radiusTopLeft
+                                    topRightRadius: misc.radiusTopRight
+                                    bottomLeftRadius: misc.radiusBottomLeft
+                                    bottomRightRadius: misc.radiusBottomRight
+                                    color: parent.down ? colors.buttonClickedColor :
+                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
+                                }
+                            }
+
+                            Button {
+                                id: rebootNo
+                                onClicked: rebootConfirmation.visible = !rebootConfirmation.visible
+                                Layout.margins: 5
+                                Layout.alignment: Qt.AlignTop
+                                Layout.preferredHeight: 40
+                                Layout.preferredWidth: 60
+                                Layout.fillWidth: true
+                                contentItem: Label {
+                                    text: "No"
+                                    font.pixelSize: 20
+                                    font.bold: true
+                                    horizontalAlignment: Text.AlignHCenter
+                                    verticalAlignment: Text.AlignVCenter
+                                }
+                                background: Rectangle {
+                                    topLeftRadius: misc.radiusTopLeft
+                                    topRightRadius: misc.radiusTopRight
+                                    bottomLeftRadius: misc.radiusBottomLeft
+                                    bottomRightRadius: misc.radiusBottomRight
+                                    color: parent.down ? colors.buttonClickedColor :
+                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            PopupWindow {
+                id: shutdownConfirmation
+                anchor.window: toplevel
+                anchor.rect.x: 760
+                anchor.rect.y: 290
+                implicitHeight: 250
+                implicitWidth: 450
+                color: "transparent"
+                visible: false
+                Rectangle {
+                    color: colors.primaryColor
+                    border.width: misc.borderWidth
+                    border.color: colors.secondaryColor
+                    topLeftRadius: misc.radiusTopLeft
+                    topRightRadius: misc.radiusTopRight
+                    bottomLeftRadius: misc.radiusBottomLeft
+                    bottomRightRadius: misc.radiusBottomRight
+                    anchors {
+                        fill: parent
+                    }
+
+                    ColumnLayout {
+                        anchors.fill: parent
+                        spacing: 15
+                        Text {
+                            text: "Are you sure you want to poweroff?"
+                            Layout.alignment: Qt.AlignHCenter
+                            Layout.topMargin: 20
+                            font.pixelSize: 24
+                        }
+
+                        RowLayout {
+                            Layout.alignment: Qt.AlignBottom
+                            Layout.margins: 10
+                            spacing: 0
+
+                            Button {
+                                id: shutdownYes
+                                onClicked: execDetached ([
+                                    "bash", "-c", "poweroff"
+                                ])
+                                Layout.margins: 5
+                                Layout.alignment: Qt.AlignTop
+                                Layout.preferredHeight: 40
+                                Layout.preferredWidth: 60
+                                Layout.fillWidth: true
+                                contentItem: Label {
+                                    text: "Yes"
+                                    font.pixelSize: 20
+                                    font.bold: true
+                                    horizontalAlignment: Text.AlignHCenter
+                                    verticalAlignment: Text.AlignVCenter
+                                }
+                                background: Rectangle {
+                                    topLeftRadius: misc.radiusTopLeft
+                                    topRightRadius: misc.radiusTopRight
+                                    bottomLeftRadius: misc.radiusBottomLeft
+                                    bottomRightRadius: misc.radiusBottomRight
+                                    color: parent.down ? colors.buttonClickedColor :
+                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
+                                }
+                            }
+
+                            Button {
+                                id: shutdownNo
+                                onClicked: shutdownConfirmation.visible = !shutdownConfirmation.visible
+                                Layout.margins: 5
+                                Layout.alignment: Qt.AlignTop
+                                Layout.preferredHeight: 40
+                                Layout.preferredWidth: 60
+                                Layout.fillWidth: true
+                                contentItem: Label {
+                                    text: "No"
+                                    font.pixelSize: 20
+                                    font.bold: true
+                                    horizontalAlignment: Text.AlignHCenter
+                                    verticalAlignment: Text.AlignVCenter
+                                }
+                                background: Rectangle {
+                                    topLeftRadius: misc.radiusTopLeft
+                                    topRightRadius: misc.radiusTopRight
+                                    bottomLeftRadius: misc.radiusBottomLeft
+                                    bottomRightRadius: misc.radiusBottomRight
+                                    color: parent.down ? colors.buttonClickedColor :
+                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -383,7 +784,7 @@ Scope {
 
     Process {
         id: launchFuzzel
-        command: ["bash", "-c", "fuzzel --config /etc/xdg/fuzzel/fuzzel_app_drawer.ini"]
+        command: ["bash", "-c", "fuzzel --config /etc/xdg/fuzzel/winter_fuzzel_app_drawer.ini"]
     }
 
     Timer {
