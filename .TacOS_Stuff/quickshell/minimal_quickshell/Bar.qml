@@ -287,6 +287,33 @@ Scope {
                             }
                         }
 
+                        Label {
+                            anchors {
+                                fill: parent
+                            }
+                            text: "WIP"
+                            font.pixelSize: 45
+                            font.bold: true
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
+                        }
+
+                        FileView {
+                            id: viewRamUsage
+                            path: Qt.resolvedUrl("/proc/meminfo")
+                            preload: true
+                            watchChanges: true
+                            onLoaded: console.log("Beepity bop meminfo:", text)
+                            onLoadFailed: {
+                                console.log("Failed to load file:", text())
+                            }
+                        }
+
+                        Label {
+                            id: freeMemory
+                            text: currentRamUsage
+                        }
+
                         RowLayout {
                             Layout.alignment: Qt.AlignBottom
                             Layout.margins: 10

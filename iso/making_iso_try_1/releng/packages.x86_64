@@ -138,9 +138,6 @@ kitty
 mako
 fuzzel
 swaybg
-swayidle
-swaylock
-waybar
 xdg-desktop-portal-gnome
 python-pip
 tk
@@ -157,7 +154,6 @@ yaml-cpp
 kpmcore
 qt5-base
 qt6-svg
-plasma-desktop
 pam
 icu
 

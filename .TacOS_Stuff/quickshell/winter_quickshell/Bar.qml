@@ -297,6 +297,17 @@ Scope {
                             }
                         }
 
+                        Label {
+                            anchors {
+                                fill: parent
+                            }
+                            text: "WIP"
+                            font.pixelSize: 45
+                            font.bold: true
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
+                        }
+
                         RowLayout {
                             Layout.alignment: Qt.AlignBottom
                             Layout.margins: 10

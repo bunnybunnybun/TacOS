@@ -8,7 +8,8 @@ from pages.Other_Settings import OtherSettingsPage
 import os
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, Gdk
+gi.require_version("GdkPixbuf", "2.0")
+from gi.repository import Gtk, Gdk, GdkPixbuf
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -52,6 +53,10 @@ class MainWindow(Gtk.Window):
         self.top_bar_close_button = Gtk.Button(label="")
         self.top_bar_close_button.connect("clicked", self.close_button_on_clicked)
         self.top_bar_close_button.get_style_context().add_class("close_button")
+
+        self.about_page_button = Gtk.Button(label="About")
+        self.about_page_button.get_style_context().add_class("about_dialog_button")
+        self.about_page_button.connect("clicked", self.show_about_dialog)
         
         self.general_settings_page = GeneralSettingsPage(main_window=self)
         self.audio_settings_page = AudioSettingsPage()
@@ -73,6 +78,7 @@ class MainWindow(Gtk.Window):
 
         self.box_1.pack_start(self.switcher, True, True, 0)
         self.box_2.add(self.stack)
+        self.top_bar_box.pack_start(self.about_page_button, False, False, 0)
         self.top_bar_box.set_center_widget(self.top_bar_label)
         self.top_bar_box.pack_end(self.top_bar_close_button, False, False, 0)
 
@@ -117,6 +123,20 @@ class MainWindow(Gtk.Window):
             self.current_theme,
             Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
         )
+
+    def show_about_dialog(self, widget):
+        about_dialog = Gtk.AboutDialog()
+        about_dialog.set_program_name("TacOS Settings")
+        about_dialog.set_version("version: 0.01")
+        about_dialog.set_comments("This is a settings app for TacOS, a Linux distro\nbased on Arch linux that I made as part\nof a coding challenge called Siege.")
+        about_dialog.set_website("https://github.com/bunnybunnybun/TacOS")
+        about_dialog.set_title("About TacOS Settings")
+        pixbuf = GdkPixbuf.Pixbuf.new_from_file("/home/carlisle/.TacOS_Stuff/assets/waybar/white_settings_icon_normal.png")
+        about_dialog.set_logo(pixbuf)
+        about_dialog.set_authors(["Pixelated Carlito"])
+        about_dialog.set_transient_for(self)
+        about_dialog.run()
+        about_dialog.destroy()
 
     def close_button_on_clicked(self, widget):
         win.destroy()
