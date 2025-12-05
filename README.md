@@ -39,13 +39,15 @@ You can watch the demo video [here](https://youtu.be/vFjkG5aqQ9A).
  - Add a polkit authentification agent
  - And SO MUCH MORE :) :) 
 
-## 🏰 For Siege reviewers:
-This is a continuation of last weeks project.
-The main changes made since then are:
- - Replaced the fall theme with a new Halloween theme.
- - Created a logout menu.
- - Added a taco jumpscare.
- - Lost of minor tweaks and bugfixes.
+## 🏰 For Siege stonemasons:
+This is an update to some previously submitted projects.
+Primary changes this week are:
+ - I merged some of the things I made in my "Idk-yet" project (the taskbar and wallpaper creator, mainly) into my TacOS project.
+ - Created a winter theme.
+ - Made different versions of the taskbar for different themes.
+ - A few small improvements and bug fixes...
+
+P.S. sorry for submitting it so late... I kinda forgot lol...
 
 ## 💿 How to install
 First of all, to anyone who has come to review/demo this, you don't need to install it, just watch the video.
