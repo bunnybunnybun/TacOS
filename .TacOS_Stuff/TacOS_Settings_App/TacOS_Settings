@@ -3,6 +3,7 @@
 import sys
 import gi
 import pathlib
+home_path = pathlib.Path.home()
 project_root = pathlib.Path.home() / '.TacOS_Stuff/TacOS_Settings_App'
 sys.path.insert(0, str(project_root))
 from pages.General_Settings import GeneralSettingsPage
@@ -148,7 +149,7 @@ class MainWindow(Gtk.Window):
         about_dialog.set_comments("This is a settings app for TacOS, a Linux distro\nbased on Arch linux that I made as part\nof a coding challenge called Siege.")
         about_dialog.set_website("https://github.com/bunnybunnybun/TacOS")
         about_dialog.set_title("About TacOS Settings")
-        pixbuf = GdkPixbuf.Pixbuf.new_from_file("/home/carlisle/.TacOS_Stuff/assets/waybar/white_settings_icon_normal.png")
+        pixbuf = GdkPixbuf.Pixbuf.new_from_file(f"{home_path}/.TacOS_Stuff/assets/waybar/white_settings_icon_normal.png")
         about_dialog.set_logo(pixbuf)
         about_dialog.set_authors(["Pixelated Carlito"])
         about_dialog.set_transient_for(self)

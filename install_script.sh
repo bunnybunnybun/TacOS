@@ -7,6 +7,7 @@ sudo systemctl enable sddm
 pip install FreeSimpleGUI --break-system-packages
 pip install kdl-py --break-system-packages
 cp $SCRIPT_DIR/.TacOS_Stuff ~/ -r
+chmod +x ~/.TacOS_Stuff/TacOS_Settings_App/TacOS_Settings
 sudo cp $SCRIPT_DIR/.TacOS_Stuff/TacOS_Settings_App/TacOS_Settings.desktop /usr/share/applications/Theme\ Switcher.desktop
 sudo cp $SCRIPT_DIR/.TacOS_Stuff/TacOS_Settings_App/TacOS_Settings /usr/local/bin/ && sudo chmod +x /usr/local/bin/TacOS_Settings && sudo cp $SCRIPT_DIR/.TacOS_Stuff/TacOS_Settings_App/Toggle_TacOS_Settings.sh /usr/local/bin/Toggle_TacOS_Settings.sh && sudo chmod +x /usr/local/bin/Toggle_TacOS_Settings.sh
 cp ~/.TacOS_Stuff/assets/niri/ ~/.config/ -r

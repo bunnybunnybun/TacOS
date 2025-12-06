@@ -6,11 +6,13 @@ from pages.Network_Settings import NetworkSettingsPage
 from pages.Display_Settings import DisplaySettingsPage
 from pages.Other_Settings import OtherSettingsPage
 import os
+from pathlib import Path
 
 gi.require_version("Gtk", "3.0")
 gi.require_version("GdkPixbuf", "2.0")
 from gi.repository import Gtk, Gdk, GdkPixbuf
 
+home_path = Path.home()
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 class MainWindow(Gtk.Window):
@@ -131,7 +133,7 @@ class MainWindow(Gtk.Window):
         about_dialog.set_comments("This is a settings app for TacOS, a Linux distro\nbased on Arch linux that I made as part\nof a coding challenge called Siege.")
         about_dialog.set_website("https://github.com/bunnybunnybun/TacOS")
         about_dialog.set_title("About TacOS Settings")
-        pixbuf = GdkPixbuf.Pixbuf.new_from_file("/home/carlisle/.TacOS_Stuff/assets/waybar/white_settings_icon_normal.png")
+        pixbuf = GdkPixbuf.Pixbuf.new_from_file(f"{home_path}/.TacOS_Stuff/assets/waybar/white_settings_icon_normal.png")
         about_dialog.set_logo(pixbuf)
         about_dialog.set_authors(["Pixelated Carlito"])
         about_dialog.set_transient_for(self)

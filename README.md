@@ -20,6 +20,9 @@ Halloween theme:
 ![image alt](https://github.com/bunnybunnybun/TacOS/blob/739502f527fb4586c0ccfc8640d7f0c0ad9b1c45/Screenshot%20from%202025-12-03%2015-44-22.png)
 </details>
 
+## 🎬 Demo video
+You can watch the demo video [here](https://youtu.be/vFjkG5aqQ9A).
+
 ## ✨ Features
  - Auto tiling window management, with the ability to scroll through your windows. Watch the demo video to see what I mean.
  - Dynamic workspaces. Use different workspaces to stay organized!
@@ -27,9 +30,6 @@ Halloween theme:
  - Preset themes. You can easily switch between beautiful premade themes in the TacOS settings app!
  - Smooth animations to please your eyes...
  - Extremely customizable; If you don't like any of the premade themes, you can customize everything to exactly how you like it!
-
- ## 🎬 Demo video
-You can watch the demo video [here](https://youtu.be/vFjkG5aqQ9A).
 
  ## 🔧 Todos/coming soon
  - Finish the settings app

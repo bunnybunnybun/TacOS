@@ -279,7 +279,9 @@ Scope {
                             Layout.fillHeight: false
                             Layout.preferredHeight: 35
                             Layout.preferredWidth: 35
-                            onClicked: openSettings.running = true
+                            onClicked: trayPopup.visible = !trayPopup.visible, Quickshell.execDetached([
+                                "bash", "-c", "~/.TacOS_Stuff/TacOS_Settings_App/TacOS_Settings"
+                            ])
                             contentItem: Label {
                                 text: "Settings "
                                 font.pixelSize: 20
@@ -713,13 +715,13 @@ Scope {
                                 }
 
                                 model: [
-                                    { path: "file://" + homePath + "/TacOS/TacOS/.TacOS_Stuff/swaybg/Daisies.jpg", name: "Daisies", command: "swaybg -m fill -i " + homePath + "/TacOS/TacOS/.TacOS_Stuff/swaybg/Daisies.jpg" },
-                                    { path: "file://" + homePath + "/TacOS/TacOS/.TacOS_Stuff/swaybg/arch_rainbow.png", name: "Arch", command: "swaybg -m fill -i "  + homePath + "/TacOS/TacOS/.TacOS_Stuff/swaybg/arch_rainbow.png" },
-                                    { path: "file://" + homePath + "/TacOS/TacOS/.TacOS_Stuff/swaybg/fall.jpg", name: "Fall", command: "swaybg -m fill -i "  + homePath + "/TacOS/TacOS/.TacOS_Stuff/swaybg/fall.jpg" },
-                                    { path: "file://" + homePath + "/TacOS/TacOS/.TacOS_Stuff/swaybg/halloween.jpg", name: "Graveyard", command: "swaybg -m fill -i "  + homePath + "/TacOS/TacOS/.TacOS_Stuff/swaybg/halloween.jpg" },
-                                    { path: "file://" + homePath + "/TacOS/TacOS/.TacOS_Stuff/swaybg/magic.jpg", name: "Magic", command: "swaybg -m fill -i "  + homePath + "/TacOS/TacOS/.TacOS_Stuff/swaybg/magic.jpg" },
-                                    { path: "file://" + homePath + "/TacOS/TacOS/.TacOS_Stuff/custom_wallpaper_engine/space_with_eyes.png", name: "Eyes (interactive)", command: "python3 " + homePath + "/TacOS/TacOS/.TacOS_Stuff/custom_wallpaper_engine/parallax_wallpaper_engine.py" },
-                                    { path: "file://" + homePath + "/TacOS/TacOS/.TacOS_Stuff/custom_wallpaper_engine/space_background_2.jpg", name: "Eyes (interactive)", command: "python3 " + homePath + "/TacOS/TacOS/.TacOS_Stuff/custom_wallpaper_engine/parallax_wallpaper_engine_2.py" },
+                                    { path: "file://" + homePath + "/.TacOS_Stuff/swaybg/Daisies.jpg", name: "Daisies", command: "swaybg -m fill -i " + homePath + "/.TacOS_Stuff/swaybg/Daisies.jpg" },
+                                    { path: "file://" + homePath + "/.TacOS_Stuff/swaybg/arch_rainbow.png", name: "Arch", command: "swaybg -m fill -i "  + homePath + "/.TacOS_Stuff/swaybg/arch_rainbow.png" },
+                                    { path: "file://" + homePath + "/.TacOS_Stuff/swaybg/fall.jpg", name: "Fall", command: "swaybg -m fill -i "  + homePath + "/.TacOS_Stuff/swaybg/fall.jpg" },
+                                    { path: "file://" + homePath + "/.TacOS_Stuff/swaybg/halloween.jpg", name: "Graveyard", command: "swaybg -m fill -i "  + homePath + "/.TacOS_Stuff/swaybg/halloween.jpg" },
+                                    { path: "file://" + homePath + "/.TacOS_Stuff/swaybg/magic.jpg", name: "Magic", command: "swaybg -m fill -i "  + homePath + "/.TacOS_Stuff/swaybg/magic.jpg" },
+                                    { path: "file://" + homePath + "/.TacOS_Stuff/custom_wallpaper_engine/space_with_eyes.png", name: "Eyes (interactive)", command: "python3 " + homePath + "/.TacOS_Stuff/custom_wallpaper_engine/parallax_wallpaper_engine.py" },
+                                    { path: "file://" + homePath + "/.TacOS_Stuff/custom_wallpaper_engine/space_background_2.jpg", name: "Eyes (interactive)", command: "python3 " + homePath + "/.TacOS_Stuff/custom_wallpaper_engine/parallax_wallpaper_engine_2.py" },
                                 ]
 
                                 Button {
@@ -745,7 +747,7 @@ Scope {
                                     ToolTip.delay: 1
 
                                     onClicked: Quickshell.execDetached([
-                                        "bash", "-c", "pkill -x swaybg; " + modelData.command + " >> /home/carlisle/test_log.log"
+                                        "bash", "-c", "killall swaybg; " + modelData.command
                                     ])
                                 }
                             }
@@ -766,7 +768,7 @@ Scope {
                             Layout.preferredWidth: 460
                             Layout.margins: 20
                             onClicked: settingsPopup.visible = !settingsPopup.visible, Quickshell.execDetached([
-                                "bash", "-c", "python3 ~/TacOS/TacOS/.TacOS_Stuff/wallpaper_creator_app/wallpaper_creator.py"
+                                "bash", "-c", "python3 ~/.TacOS_Stuff/wallpaper_creator_app/wallpaper_creator.py"
                             ])
                             background: Rectangle {
                                 bottomLeftRadius: 20
