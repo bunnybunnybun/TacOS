@@ -65,7 +65,7 @@ class WallpaperWindow(Gtk.Window):
     def update_mouse_position(self):
         try:
             coords = subprocess.check_output(
-                [os.path.expanduser("~/wl-find-cursor/wl-find-cursor"), "-p"],
+                [os.path.expanduser("~/.TacOS_Stuff/custom_wallpaper_engine/wl-cursor-pos"), "-f", "{x} {y}"],
                 text=True,
                 timeout=1.0
             ).strip()

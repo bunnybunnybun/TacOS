@@ -30,6 +30,7 @@ Scope {
             id: toplevel
             required property var modelData
             screen: modelData
+            aboveWindows: false
 
             color: "transparent"
 
@@ -53,11 +54,11 @@ Scope {
 
                 Item {
                     id: misc
-                    property var buttonBorderWidth: 5
+                    property var buttonBorderWidth: 3
                     property var buttonRadius: 5
                     property var button2Radius: 5
                     property var radius: 5
-                    property var borderWidth: 4
+                    property var borderWidth: 0
                 }
 
                 anchors {
@@ -696,18 +697,18 @@ Scope {
                                 Button {
                                     Layout.fillWidth: true
                                     Layout.fillHeight: true
-                                    Layout.margins: 5
+                                    Layout.margins: 4
 
                                     background: Rectangle {
                                         radius: misc.button2Radius
                                         border.color: parent.down ? colors.buttonClickedColor :
                                         parent.hovered ? colors.buttonHoverColor : colors.buttonColor
-                                        border.width: misc.borderWidth
+                                        border.width: misc.buttonBorderWidth
 
                                         Image {
                                             source: modelData.path
                                             anchors.fill: parent
-                                            anchors.margins: misc.borderWidth
+                                            anchors.margins: misc.buttonBorderWidth
                                             fillMode: Image.PreserveAspectCrop
                                         }
                                     }

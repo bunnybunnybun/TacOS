@@ -3,7 +3,7 @@ This is an operating system based on Arch Linux, designed for power users and po
 
 Also, please keep in mind that:
  - This is a very early prototype, and not anywhere near finished
- - I did not write this entirely from scratch, as that would take, maybe... years?
+ - I did not write this entirely from scratch, as that would take, let's just say... a very long time.
 
 <details><summary> 📸 Screenshots</summary>
  Daisies theme:
@@ -31,7 +31,7 @@ You can watch the demo video [here](https://youtu.be/vFjkG5aqQ9A).
  - Smooth animations to please your eyes...
  - Extremely customizable; If you don't like any of the premade themes, you can customize everything to exactly how you like it!
 
- ## 🔧 Todos/coming soon
+## 🔧 Todos/coming soon
  - Finish the settings app
  - Add more preset themes!
  - Support for logging in with a fingerprint reader

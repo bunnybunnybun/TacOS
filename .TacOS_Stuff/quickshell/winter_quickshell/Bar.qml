@@ -30,6 +30,7 @@ Scope {
             id: toplevel
             required property var modelData
             screen: modelData
+            aboveWindows: false
 
             color: "transparent"
 

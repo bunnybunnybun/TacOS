@@ -81,7 +81,7 @@ class MainWindow(Gtk.Window):
         ], start_new_session=True)
         subprocess.Popen([
             "python3",
-            os.path.expanduser("~/Idk-yet/Idk-yet/wallpaper_creator_app/parallax_wallpaper.py"),
+            os.path.expanduser("~/.TacOS_Stuff/wallpaper_creator_app/parallax_wallpaper.py"),
             background,
             foreground1,
             foreground2,
