@@ -8,7 +8,7 @@ overview {
 }
 
 cursor {
-    xcursor-theme "magic_cursors"
+    xcursor-theme "breeze_cursors"
     xcursor-size 24
 
     hide-when-typing
