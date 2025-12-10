@@ -21,7 +21,7 @@ Halloween theme:
 </details>
 
 ## 🎬 Demo video
-You can watch the demo video [here](https://youtu.be/vFjkG5aqQ9A).
+You can watch the demo video [here](https://youtu.be/xA-WaLfBZ2s).
 
 ## ✨ Features
  - Auto tiling window management, with the ability to scroll through your windows. Watch the demo video to see what I mean.
@@ -41,13 +41,13 @@ You can watch the demo video [here](https://youtu.be/vFjkG5aqQ9A).
 
 ## 🏰 For Siege stonemasons:
 This is an update to some previously submitted projects.
-Primary changes this week are:
- - I merged some of the things I made in my "Idk-yet" project (the taskbar and wallpaper creator, mainly) into my TacOS project.
- - Created a winter theme.
- - Made different versions of the taskbar for different themes.
- - A few small improvements and bug fixes...
+The list of changes this week is pretty short, unfortunately, because: 1, I forgot to submit my project last week for a little while, and ended up coding more for that week even after the week ended, so that stuff I worked on got included as changes for that week, even though the hours went to this week (AFAIK this is fine, since I'm working on the same project this week as last week, atleast nobody said anything when I submitted it so I assume and hope so... But I will make sure not to do that again lol.). And 2, because alot of the time went towards trying to make a system for tracking the mouse cursor in order to fix the interactive wallpaper engine, because the system I previously used for this does not work on the window manager I switched to, only to find out that there was a program that I could use to fix the issue, and so I put my custom one on pause and am using the program I found one.
+Anyways, the primary changes this week are:
+ - Fixed the interactive wallpaper engine!
+ - Lots of bug fixes, especially in the settings app (for example, fixed the settings app not being able to track what the current theme was correctly, changed some hardcoded paths to dynamic paths, etc.)
+Unfortunately I think that was pretty much all of the notable stuff...
 
-P.S. sorry for submitting it so late... I kinda forgot lol...
+
 
 ## 💿 How to install
 First of all, to anyone who has come to review/demo this, you don't need to install it, just watch the video.

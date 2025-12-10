@@ -236,6 +236,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Custom keybinds
+    Mod+A { spawn "pkill" "-f" "parallax"; }
     Mod+D { spawn "io.github.milkshiift.GoofCord"; }
     Mod+S { spawn "nemo"; }
     Mod+Z { spawn "/opt/zen-browser-bin/zen-bin"; }
