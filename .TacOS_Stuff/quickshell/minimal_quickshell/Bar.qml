@@ -3,6 +3,7 @@ import Quickshell.Io
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
+import qs 1.0
 
 Scope {
     id: root
@@ -177,6 +178,46 @@ Scope {
                         spacing: 10
 
                         Button {
+                            id: ramButton
+                            contentItem: Label {
+                            id: freeMemory
+                            text: "RAM: " + ramPercent + "%"
+
+                            property string ramPercent: "0.0"
+
+                            Timer {
+                                id: ramTimer
+                                interval: 500
+                                running: true
+                                repeat: true
+                                onTriggered: getRamUsage.running = true
+                            }
+
+                            Process {
+                                id: getRamUsage
+                                command: ["bash", "-c", "free | awk '/Mem/ {printf \"%.1f\", $3/$2 * 100}'"]
+
+                                stdout: StdioCollector {
+                                    onStreamFinished: {
+                                        freeMemory.ramPercent = this.text.trim()
+                                    }
+                                }
+                            }
+                        }
+                            Layout.alignment: Qt.AlignRight
+                            Layout.preferredHeight: 22
+                            onClicked: resourceUsagePopup.visible = !resourceUsagePopup.visible
+                            background: Rectangle {
+                                bottomLeftRadius: misc.buttonRadius
+                                bottomRightRadius: misc.buttonRadius
+                                topLeftRadius: misc.buttonRadius
+                                topRightRadius: misc.buttonRadius
+                                color: parent.down ? colors.buttonClickedColor :
+                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
+                            }
+                        }
+                        
+                        Button {
                             id: trayButton
                             contentItem: Label {
                                 text: "󰁋"
@@ -228,6 +269,66 @@ Scope {
             }
 
             PopupWindow {
+                id: resourceUsagePopup
+                anchor.item: ramButton
+                anchor.rect.x: 32
+                anchor.rect.y: 42
+                implicitWidth: 400
+                implicitHeight: 400
+                visible: false
+                color: "transparent"
+                Rectangle {
+                    color: colors.primaryColor
+                    border.color: colors.secondaryColor
+                    border.width: misc.borderWidth
+                    anchors {
+                        fill: parent
+                        topMargin: 10
+                    }
+                    radius: misc.radius
+
+                    ColumnLayout {
+                        anchors.top: parent.top
+                        anchors.topMargin: 50
+                        Layout.alignment: Qt.AlignCenter
+
+                        Text {
+                            text: "Resource usage"
+                            //anchors.centerIn: parent
+                        }
+
+                        RowLayout {
+                            anchors.centerIn: parent
+                            spacing: 20
+                            Text {
+                                text: "Ram usage:"
+                                anchors.left: parent.left
+                                font.pixelSize: 15
+                            }
+
+                            Rectangle {
+                                color: Qt.rgba(0.65, 0.65, 0.65, 1.0)
+                                radius: 4
+                                implicitWidth: 120
+                                implicitHeight: 10
+                                //anchors.centerIn: parent
+
+                                Rectangle {
+                                    id: ramUsageBar
+                                    anchors.left: parent.left
+                                    anchors.top: parent.top
+                                    anchors.bottom: parent.bottom
+                                    width: parent.width * (freeMemory.ramPercent / 100)
+                                    radius: 4
+                                    color: Qt.rgba(0.0, 0.75, 0.0, 1)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            PopupWindow {
                 id: trayPopup
                 anchor.item: trayButton
                 anchor.gravity: Edges.Bottom | Edges.Left
@@ -250,20 +351,6 @@ Scope {
                     ColumnLayout {
                         anchors.fill: parent
                         spacing: 15
-                        //Button {
-                        //    id: checkRamUsage
-                        //    Layout.margins: 25
-                        //    Layout.fillWidth: true
-                        //    Layout.fillHeight: true
-                        //    Layout.preferredHeight: 35
-                        //    Layout.preferredWidth: 35
-                        //    //onClicked: getTotalMemory.running = true
-                        //    background: Rectangle {
-                        //        radius: misc.button2Radius
-                        //        color: parent.down ? colors.buttonClickedColor :
-                        //        parent.hovered ? colors.buttonHoverColor : colors.buttonColor
-                        //    }
-                        //}
 
                         Button {
                             id: openSettingsApp
@@ -310,11 +397,6 @@ Scope {
                             onLoadFailed: {
                                 console.log("Failed to load file:", text())
                             }
-                        }
-
-                        Label {
-                            id: freeMemory
-                            text: currentRamUsage
                         }
 
                         RowLayout {
@@ -764,21 +846,6 @@ Scope {
             }
         }
     }
-
-    //Process {
-    //    id: getTotalMemory
-    //    Item {
-    //        id: resourceUsage
-    //        property var totalMemory: 42
-    //    }
-    //    command: ["bash", "-c", "cat /proc/meminfo | grep MemTotal"]
-    //    stdout: StdioCollector {
-    //        onStreamFinished: {
-    //            resourceUsage.totalMemory = this.text;
-    //            console.log(resourceUsage.totalMemory);
-    //        }
-    //    }
-    //}
 
     Process {
         id: getFreeMemory
