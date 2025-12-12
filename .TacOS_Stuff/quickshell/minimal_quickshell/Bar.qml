@@ -60,6 +60,7 @@ Scope {
                     property var button2Radius: 5
                     property var radius: 5
                     property var borderWidth: 0
+                    property var hoverTime: 400
                 }
 
                 anchors {
@@ -289,19 +290,84 @@ Scope {
 
                     ColumnLayout {
                         anchors.top: parent.top
-                        anchors.topMargin: 50
-                        Layout.alignment: Qt.AlignCenter
+                        anchors.topMargin: 30
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        spacing: 15
 
                         Text {
                             text: "Resource usage"
-                            //anchors.centerIn: parent
+                            font.pixelSize: 32
+                            anchors.horizontalCenter: parent.horizontalCenter
                         }
 
-                        RowLayout {
-                            anchors.centerIn: parent
-                            spacing: 20
+                        GridLayout {
+                            rows: 3
+                            columns: 2
+                            Layout.fillWidth: true
+                            Layout.fillHeight: true
+                            Layout.margins: 0
+                            
+
                             Text {
-                                text: "Ram usage:"
+                                text: "RAM usage: " + freeMemory.ramPercent + "%"
+                                anchors.left: parent.left
+                                font.pixelSize: 15
+                            }
+
+                            Rectangle {
+                                id: ramUsageBar
+                                color: Qt.rgba(0.65, 0.65, 0.65, 1.0)
+                                radius: 4
+                                implicitWidth: 200
+                                implicitHeight: 15
+
+                                property string ramTotal: "Loading..."
+
+                                HoverHandler {
+                                    id: ramHoverHandler
+                                }
+
+                                ToolTip {
+                                    visible: ramHoverHandler.hovered
+                                    text: ramUsageBar.ramTotal
+                                    delay: misc.hoverTime
+
+                                    background: Rectangle {
+                                        color: colors.secondaryColor
+                                    }
+
+                                    Timer {
+                                        id: ramTotalTimer
+                                        interval: 500
+                                        running: ramHoverHandler.hovered
+                                        repeat: true
+                                        onTriggered: getRamTotal.running = true
+                                    }
+
+                                    Process {
+                                        id: getRamTotal
+                                        command: ["bash", "-c", "free -k | awk '/Mem:/ {printf $3 \" KiB / \"$2 \" KiB\"}'"]
+
+                                        stdout: StdioCollector {
+                                            onStreamFinished: {
+                                                ramUsageBar.ramTotal = this.text.trim()
+                                            }
+                                        }
+                                    }
+                                }
+
+                                Rectangle {
+                                    anchors.left: parent.left
+                                    anchors.top: parent.top
+                                    anchors.bottom: parent.bottom
+                                    width: parent.width * (freeMemory.ramPercent / 100)
+                                    radius: 4
+                                    color: Qt.rgba(0.0, 0.75, 0.0, 1)
+                                }
+                            }
+
+                            Text {
+                                text: "CPU usage:"
                                 anchors.left: parent.left
                                 font.pixelSize: 15
                             }
@@ -309,12 +375,34 @@ Scope {
                             Rectangle {
                                 color: Qt.rgba(0.65, 0.65, 0.65, 1.0)
                                 radius: 4
-                                implicitWidth: 120
-                                implicitHeight: 10
-                                //anchors.centerIn: parent
+                                implicitWidth: 200
+                                implicitHeight: 15
 
                                 Rectangle {
-                                    id: ramUsageBar
+                                    id: cpuUsageBar
+                                    anchors.left: parent.left
+                                    anchors.top: parent.top
+                                    anchors.bottom: parent.bottom
+                                    width: parent.width * (freeMemory.ramPercent / 100)
+                                    radius: 4
+                                    color: Qt.rgba(0.0, 0.75, 0.0, 1)
+                                }
+                            }
+
+                            Text {
+                                text: "GPU usage:"
+                                anchors.left: parent.left
+                                font.pixelSize: 15
+                            }
+
+                            Rectangle {
+                                color: Qt.rgba(0.65, 0.65, 0.65, 1.0)
+                                radius: 4
+                                implicitWidth: 200
+                                implicitHeight: 15
+
+                                Rectangle {
+                                    id: gpuUsageBar
                                     anchors.left: parent.left
                                     anchors.top: parent.top
                                     anchors.bottom: parent.bottom
