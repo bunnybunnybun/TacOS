@@ -3,7 +3,6 @@ import Quickshell.Io
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
-import qs 1.0
 
 Scope {
     id: root
@@ -179,32 +178,72 @@ Scope {
                         spacing: 10
 
                         Button {
-                            id: ramButton
+                            id: cpuButton
                             contentItem: Label {
-                            id: freeMemory
-                            text: "RAM: " + ramPercent + "%"
+                                id: cpuUsage
+                                text: "CPU: " + cpuUsage.cpuPercent + "%"
 
-                            property string ramPercent: "0.0"
+                                property string cpuPercent: "N/A"
 
-                            Timer {
-                                id: ramTimer
-                                interval: 500
-                                running: true
-                                repeat: true
-                                onTriggered: getRamUsage.running = true
-                            }
+                                Timer {
+                                    id: cpuTimer
+                                    interval: 500
+                                    running: true
+                                    repeat: true
+                                    onTriggered: getCpuUsage.running = true
+                                }
 
-                            Process {
-                                id: getRamUsage
-                                command: ["bash", "-c", "free | awk '/Mem/ {printf \"%.1f\", $3/$2 * 100}'"]
+                                Process {
+                                    id: getCpuUsage
+                                    command: ["bash", "-c", "cat <(grep 'cpu ' /proc/stat) <(sleep 0.1 && grep 'cpu ' /proc/stat) | awk -v RS=\"\" '{printf \"%.1f\", ($13-$2+$15-$4)*100/($13-$2+$15-$4+$16-$5)}'"]
 
-                                stdout: StdioCollector {
-                                    onStreamFinished: {
-                                        freeMemory.ramPercent = this.text.trim()
+                                    stdout: StdioCollector {
+                                        onStreamFinished: {
+                                            cpuUsage.cpuPercent = this.text.trim()
+                                        }
                                     }
                                 }
                             }
+                            Layout.alignment: Qt.AlignRight
+                            Layout.preferredHeight: 22
+                            onClicked: resourceUsagePopup.visible = !resourceUsagePopup.visible
+                            background: Rectangle {
+                                bottomLeftRadius: misc.buttonRadius
+                                bottomRightRadius: misc.buttonRadius
+                                topLeftRadius: misc.buttonRadius
+                                topRightRadius: misc.buttonRadius
+                                color: parent.down ? colors.buttonClickedColor :
+                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
+                            }
                         }
+
+                        Button {
+                            id: ramButton
+                            contentItem: Label {
+                                id: freeMemory
+                                text: "RAM: " + ramPercent + "%"
+
+                                property string ramPercent: "N/A"
+
+                                Timer {
+                                    id: ramTimer
+                                    interval: 500
+                                    running: true
+                                    repeat: true
+                                    onTriggered: getRamUsage.running = true
+                                }
+
+                                Process {
+                                    id: getRamUsage
+                                    command: ["bash", "-c", "free | awk '/Mem/ {printf \"%.1f\", $3/$2 * 100}'"]
+
+                                    stdout: StdioCollector {
+                                        onStreamFinished: {
+                                            freeMemory.ramPercent = this.text.trim()
+                                        }
+                                    }
+                                }
+                            }
                             Layout.alignment: Qt.AlignRight
                             Layout.preferredHeight: 22
                             onClicked: resourceUsagePopup.visible = !resourceUsagePopup.visible
@@ -367,7 +406,7 @@ Scope {
                             }
 
                             Text {
-                                text: "CPU usage:"
+                                text: "CPU usage: " + cpuUsage.cpuPercent + "%"
                                 anchors.left: parent.left
                                 font.pixelSize: 15
                             }
@@ -383,14 +422,14 @@ Scope {
                                     anchors.left: parent.left
                                     anchors.top: parent.top
                                     anchors.bottom: parent.bottom
-                                    width: parent.width * (freeMemory.ramPercent / 100)
+                                    width: parent.width * (cpuUsage.cpuPercent / 100)
                                     radius: 4
                                     color: Qt.rgba(0.0, 0.75, 0.0, 1)
                                 }
                             }
 
                             Text {
-                                text: "GPU usage:"
+                                text: "GPU usage: N/A"
                                 anchors.left: parent.left
                                 font.pixelSize: 15
                             }
