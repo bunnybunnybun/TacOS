@@ -58,7 +58,7 @@ Scope {
                     property var buttonRadius: 5
                     property var button2Radius: 5
                     property var radius: 5
-                    property var borderWidth: 0
+                    property var borderWidth: 3
                     property var hoverTime: 400
                 }
 
@@ -75,13 +75,14 @@ Scope {
                 topLeftRadius: misc.radius
                 topRightRadius: misc.radius
                 border.color: colors.secondaryColor
-                border.width: 0
+                border.width: misc.borderWidth
 
                 RowLayout {
                     anchors.fill: parent
 
                     RowLayout {
                         id: leftModules
+                        anchors.verticalCenter: parent.verticalCenter
                         Layout.alignment: Qt.AlignLeft
                         Layout.fillWidth: false
                         Layout.topMargin: 6
@@ -115,6 +116,8 @@ Scope {
 
                     RowLayout {
                         id: centerModules
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.verticalCenter: parent.verticalCenter
                         Layout.fillWidth: true
                         Layout.alignment: Qt.AlignHCenter
                         Layout.topMargin: 6
@@ -170,6 +173,7 @@ Scope {
 
                     RowLayout {
                         id: rightModules
+                        anchors.verticalCenter: parent.verticalCenter
                         Layout.alignment: Qt.AlignRight
                         Layout.fillWidth: false
                         Layout.topMargin: 6
@@ -206,6 +210,7 @@ Scope {
                             }
                             Layout.alignment: Qt.AlignRight
                             Layout.preferredHeight: 22
+                            Layout.preferredWidth: 75
                             onClicked: resourceUsagePopup.visible = !resourceUsagePopup.visible
                             background: Rectangle {
                                 bottomLeftRadius: misc.buttonRadius
@@ -246,6 +251,7 @@ Scope {
                             }
                             Layout.alignment: Qt.AlignRight
                             Layout.preferredHeight: 22
+                            Layout.preferredWidth: 78
                             onClicked: resourceUsagePopup.visible = !resourceUsagePopup.visible
                             background: Rectangle {
                                 bottomLeftRadius: misc.buttonRadius
@@ -401,7 +407,12 @@ Scope {
                                     anchors.bottom: parent.bottom
                                     width: parent.width * (freeMemory.ramPercent / 100)
                                     radius: 4
-                                    color: Qt.rgba(0.0, 0.75, 0.0, 1)
+                                    color: {
+                                        if (freeMemory.ramPercent < 65) Qt.rgba(0.0, 0.75, 0.0, 1.0)
+                                        else if (freeMemory.ramPercent < 80) Qt.rgba(0.9, 0.9, 0.0, 1.0)
+                                        else if (freeMemory.ramPercent < 90) Qt.rgba(0.9, 0.6, 0.0, 1.0)
+                                        else Qt.rgba(1.0, 0.0, 0.0, 1.0)
+                                    }
                                 }
                             }
 
@@ -424,7 +435,12 @@ Scope {
                                     anchors.bottom: parent.bottom
                                     width: parent.width * (cpuUsage.cpuPercent / 100)
                                     radius: 4
-                                    color: Qt.rgba(0.0, 0.75, 0.0, 1)
+                                    color: {
+                                        if (cpuUsage.cpuPercent < 65) Qt.rgba(0.0, 0.75, 0.0, 1.0)
+                                        else if (cpuUsage.cpuPercent < 80) Qt.rgba(0.9, 0.9, 0.0, 1.0)
+                                        else if (cpuUsage.cpuPercent < 90) Qt.rgba(0.9, 0.6, 0.0, 1.0)
+                                        else Qt.rgba(1.0, 0.0, 0.0, 1.0)
+                                    }
                                 }
                             }
 
@@ -447,7 +463,12 @@ Scope {
                                     anchors.bottom: parent.bottom
                                     width: parent.width * (freeMemory.ramPercent / 100)
                                     radius: 4
-                                    color: Qt.rgba(0.0, 0.75, 0.0, 1)
+                                    color: {
+                                        if (freeMemory.ramPercent < 65) Qt.rgba(0.0, 0.75, 0.0, 1.0)
+                                        else if (freeMemory.ramPercent < 80) Qt.rgba(0.9, 0.9, 0.0, 1.0)
+                                        else if (freeMemory.ramPercent < 90) Qt.rgba(0.9, 0.6, 0.0, 1.0)
+                                        else Qt.rgba(1.0, 0.0, 0.0, 1.0)
+                                    }
                                 }
                             }
                         }
