@@ -50,6 +50,8 @@ Scope {
                     property var buttonColor: Qt.rgba(0.657, 0.395, 0.462, 1.0)
                     property var buttonHoverColor: Qt.rgba(0.617, 0.355, 0.422, 1.0)
                     property var buttonClickedColor: Qt.rgba(0.657, 0.395, 0.462, 1.0)
+                    property var toolTipColor: Qt.rgba(0.462, 0.395, 0.757, 1.0)
+                    property var tooltipBorderColor: Qt.rgba(0.4158, 0.3555, 0.6815, 1.0)
                 }
 
                 Item {
@@ -60,6 +62,7 @@ Scope {
                     property var radius: 5
                     property var borderWidth: 3
                     property var hoverTime: 400
+                    property var toolTipBorderWidth: 2
                 }
 
                 anchors {
@@ -362,7 +365,7 @@ Scope {
                             Rectangle {
                                 id: ramUsageBar
                                 color: Qt.rgba(0.65, 0.65, 0.65, 1.0)
-                                radius: 4
+                                radius: misc.radius
                                 implicitWidth: 200
                                 implicitHeight: 15
 
@@ -378,7 +381,10 @@ Scope {
                                     delay: misc.hoverTime
 
                                     background: Rectangle {
-                                        color: colors.secondaryColor
+                                        color: colors.toolTipColor
+                                        radius: misc.radius
+                                        border.color: colors.tooltipBorderColor
+                                        border.width: misc.toolTipBorderWidth
                                     }
 
                                     Timer {
@@ -406,7 +412,7 @@ Scope {
                                     anchors.top: parent.top
                                     anchors.bottom: parent.bottom
                                     width: parent.width * (freeMemory.ramPercent / 100)
-                                    radius: 4
+                                    radius: misc.radius
                                     color: {
                                         if (freeMemory.ramPercent < 65) Qt.rgba(0.0, 0.75, 0.0, 1.0)
                                         else if (freeMemory.ramPercent < 80) Qt.rgba(0.9, 0.9, 0.0, 1.0)
@@ -424,7 +430,7 @@ Scope {
 
                             Rectangle {
                                 color: Qt.rgba(0.65, 0.65, 0.65, 1.0)
-                                radius: 4
+                                radius: misc.radius
                                 implicitWidth: 200
                                 implicitHeight: 15
 
@@ -434,7 +440,7 @@ Scope {
                                     anchors.top: parent.top
                                     anchors.bottom: parent.bottom
                                     width: parent.width * (cpuUsage.cpuPercent / 100)
-                                    radius: 4
+                                    radius: misc.radius
                                     color: {
                                         if (cpuUsage.cpuPercent < 65) Qt.rgba(0.0, 0.75, 0.0, 1.0)
                                         else if (cpuUsage.cpuPercent < 80) Qt.rgba(0.9, 0.9, 0.0, 1.0)
@@ -452,7 +458,7 @@ Scope {
 
                             Rectangle {
                                 color: Qt.rgba(0.65, 0.65, 0.65, 1.0)
-                                radius: 4
+                                radius: misc.radius
                                 implicitWidth: 200
                                 implicitHeight: 15
 
@@ -462,7 +468,7 @@ Scope {
                                     anchors.top: parent.top
                                     anchors.bottom: parent.bottom
                                     width: parent.width * (freeMemory.ramPercent / 100)
-                                    radius: 4
+                                    radius: misc.radius
                                     color: {
                                         if (freeMemory.ramPercent < 65) Qt.rgba(0.0, 0.75, 0.0, 1.0)
                                         else if (freeMemory.ramPercent < 80) Qt.rgba(0.9, 0.9, 0.0, 1.0)
