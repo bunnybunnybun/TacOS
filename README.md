@@ -21,9 +21,10 @@ Halloween theme:
 </details>
 
 ## 🎬 Demo video
-You can watch the demo video [here](https://youtu.be/xA-WaLfBZ2s).
+You can watch the demo video [here](https://youtu.be/jziFV4OrwU0).
 
 ## ✨ Features
+ - System resource monitoring! View your ram and cpu usage.
  - Auto tiling window management, with the ability to scroll through your windows. Watch the demo video to see what I mean.
  - Dynamic workspaces. Use different workspaces to stay organized!
  - Keyboard driven; you can operate the system completely without a mouse, if you are inclined to do so :)
@@ -41,13 +42,11 @@ You can watch the demo video [here](https://youtu.be/xA-WaLfBZ2s).
 
 ## 🏰 For Siege stonemasons:
 This is an update to some previously submitted projects.
-The list of changes this week is pretty short, unfortunately, because: 1, I forgot to submit my project last week for a little while, and ended up coding more for that week even after the week ended, so that stuff I worked on got included as changes for that week, even though the hours went to this week (AFAIK this is fine, since I'm working on the same project this week as last week, atleast nobody said anything when I submitted it so I assume and hope so... But I will make sure not to do that again lol.). And 2, because alot of the time went towards trying to make a system for tracking the mouse cursor in order to fix the interactive wallpaper engine, because the system I previously used for this does not work on the window manager I switched to, only to find out that there was a program that I could use to fix the issue, and so I put my custom one on pause and am using the program I found one.
-Anyways, the primary changes this week are:
- - Fixed the interactive wallpaper engine!
- - Lots of bug fixes, especially in the settings app (for example, fixed the settings app not being able to track what the current theme was correctly, changed some hardcoded paths to dynamic paths, etc.)
-Unfortunately I think that was pretty much all of the notable stuff...
-
-
+This week I:
+ - Created a resource monitor for seeing the current cpu and ram usage from the taskbar.
+ - Started modularizing the taskbar code so it can be easily customized.
+ - Fixed some bugs, and accidently created some more bugs I'm sure...
+ - I think there were a few other small things but thats most of it.
 
 ## 💿 How to install
 First of all, to anyone who has come to review/demo this, you don't need to install it, just watch the video.
