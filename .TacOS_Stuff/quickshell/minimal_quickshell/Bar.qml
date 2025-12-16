@@ -56,13 +56,16 @@ Scope {
 
                 Item {
                     id: misc
-                    property var buttonBorderWidth: 3
+                    property var buttonBorderWidth: 0
+                    property var wallpaperButtonBorderWidth: 3
                     property var buttonRadius: 5
                     property var button2Radius: 5
                     property var radius: 5
                     property var borderWidth: 3
                     property var hoverTime: 400
                     property var toolTipBorderWidth: 2
+                    property var buttonPreferredHeight: 22
+                    property var buttonFontSize: 14
                 }
 
                 anchors {
@@ -128,27 +131,7 @@ Scope {
                         Layout.leftMargin: 6
                         spacing: 10
 
-                        Button {
-                            id: clockButton
-                            contentItem: Label {
-                                text: root.time
-                                font.pixelSize: 14
-                                font.bold: true
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignVCenter
-                            }
-                            Layout.preferredHeight: 22
-                            Layout.preferredWidth: 250
-                            onClicked: clockPopup.visible = !clockPopup.visible
-                            background: Rectangle {
-                                bottomLeftRadius: misc.buttonRadius
-                                bottomRightRadius: misc.buttonRadius
-                                topLeftRadius: misc.buttonRadius
-                                topRightRadius: misc.buttonRadius
-                                color: parent.down ? colors.buttonClickedColor :
-                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
-                            }
-                        }
+                        ClockButton {}
 
                         Button {
                             id: settingsButton
@@ -184,86 +167,12 @@ Scope {
                         Layout.rightMargin: 6
                         spacing: 10
 
-                        Button {
+                        CpuButton {
                             id: cpuButton
-                            contentItem: Label {
-                                id: cpuUsage
-                                text: "CPU: " + cpuUsage.cpuPercent + "%"
-
-                                property string cpuPercent: "N/A"
-
-                                Timer {
-                                    id: cpuTimer
-                                    interval: 500
-                                    running: true
-                                    repeat: true
-                                    onTriggered: getCpuUsage.running = true
-                                }
-
-                                Process {
-                                    id: getCpuUsage
-                                    command: ["bash", "-c", "cat <(grep 'cpu ' /proc/stat) <(sleep 0.1 && grep 'cpu ' /proc/stat) | awk -v RS=\"\" '{printf \"%.1f\", ($13-$2+$15-$4)*100/($13-$2+$15-$4+$16-$5)}'"]
-
-                                    stdout: StdioCollector {
-                                        onStreamFinished: {
-                                            cpuUsage.cpuPercent = this.text.trim()
-                                        }
-                                    }
-                                }
-                            }
-                            Layout.alignment: Qt.AlignRight
-                            Layout.preferredHeight: 22
-                            Layout.preferredWidth: 75
-                            onClicked: resourceUsagePopup.visible = !resourceUsagePopup.visible
-                            background: Rectangle {
-                                bottomLeftRadius: misc.buttonRadius
-                                bottomRightRadius: misc.buttonRadius
-                                topLeftRadius: misc.buttonRadius
-                                topRightRadius: misc.buttonRadius
-                                color: parent.down ? colors.buttonClickedColor :
-                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
-                            }
                         }
 
-                        Button {
+                        RamButton {
                             id: ramButton
-                            contentItem: Label {
-                                id: freeMemory
-                                text: "RAM: " + ramPercent + "%"
-
-                                property string ramPercent: "N/A"
-
-                                Timer {
-                                    id: ramTimer
-                                    interval: 500
-                                    running: true
-                                    repeat: true
-                                    onTriggered: getRamUsage.running = true
-                                }
-
-                                Process {
-                                    id: getRamUsage
-                                    command: ["bash", "-c", "free | awk '/Mem/ {printf \"%.1f\", $3/$2 * 100}'"]
-
-                                    stdout: StdioCollector {
-                                        onStreamFinished: {
-                                            freeMemory.ramPercent = this.text.trim()
-                                        }
-                                    }
-                                }
-                            }
-                            Layout.alignment: Qt.AlignRight
-                            Layout.preferredHeight: 22
-                            Layout.preferredWidth: 78
-                            onClicked: resourceUsagePopup.visible = !resourceUsagePopup.visible
-                            background: Rectangle {
-                                bottomLeftRadius: misc.buttonRadius
-                                bottomRightRadius: misc.buttonRadius
-                                topLeftRadius: misc.buttonRadius
-                                topRightRadius: misc.buttonRadius
-                                color: parent.down ? colors.buttonClickedColor :
-                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
-                            }
                         }
                         
                         Button {
@@ -357,7 +266,7 @@ Scope {
                             
 
                             Text {
-                                text: "RAM usage: " + freeMemory.ramPercent + "%"
+                                text: "RAM usage: " + ramButton.ramPercent + "%"
                                 anchors.left: parent.left
                                 font.pixelSize: 15
                             }
@@ -411,19 +320,19 @@ Scope {
                                     anchors.left: parent.left
                                     anchors.top: parent.top
                                     anchors.bottom: parent.bottom
-                                    width: parent.width * (freeMemory.ramPercent / 100)
+                                    width: parent.width * (ramButton.ramPercent / 100)
                                     radius: misc.radius
                                     color: {
-                                        if (freeMemory.ramPercent < 65) Qt.rgba(0.0, 0.75, 0.0, 1.0)
-                                        else if (freeMemory.ramPercent < 80) Qt.rgba(0.9, 0.9, 0.0, 1.0)
-                                        else if (freeMemory.ramPercent < 90) Qt.rgba(0.9, 0.6, 0.0, 1.0)
+                                        if (ramButton.ramPercent < 65) Qt.rgba(0.0, 0.75, 0.0, 1.0)
+                                        else if (ramButton.ramPercent < 80) Qt.rgba(0.9, 0.9, 0.0, 1.0)
+                                        else if (ramButton.ramPercent < 90) Qt.rgba(0.9, 0.6, 0.0, 1.0)
                                         else Qt.rgba(1.0, 0.0, 0.0, 1.0)
                                     }
                                 }
                             }
 
                             Text {
-                                text: "CPU usage: " + cpuUsage.cpuPercent + "%"
+                                text: "CPU usage: " + cpuButton.cpuPercent + "%"
                                 anchors.left: parent.left
                                 font.pixelSize: 15
                             }
@@ -435,16 +344,16 @@ Scope {
                                 implicitHeight: 15
 
                                 Rectangle {
-                                    id: cpuUsageBar
+                                    id: cpuButtonBar
                                     anchors.left: parent.left
                                     anchors.top: parent.top
                                     anchors.bottom: parent.bottom
-                                    width: parent.width * (cpuUsage.cpuPercent / 100)
+                                    width: parent.width * (cpuButton.cpuPercent / 100)
                                     radius: misc.radius
                                     color: {
-                                        if (cpuUsage.cpuPercent < 65) Qt.rgba(0.0, 0.75, 0.0, 1.0)
-                                        else if (cpuUsage.cpuPercent < 80) Qt.rgba(0.9, 0.9, 0.0, 1.0)
-                                        else if (cpuUsage.cpuPercent < 90) Qt.rgba(0.9, 0.6, 0.0, 1.0)
+                                        if (cpuButton.cpuPercent < 65) Qt.rgba(0.0, 0.75, 0.0, 1.0)
+                                        else if (cpuButton.cpuPercent < 80) Qt.rgba(0.9, 0.9, 0.0, 1.0)
+                                        else if (cpuButton.cpuPercent < 90) Qt.rgba(0.9, 0.6, 0.0, 1.0)
                                         else Qt.rgba(1.0, 0.0, 0.0, 1.0)
                                     }
                                 }
@@ -467,12 +376,12 @@ Scope {
                                     anchors.left: parent.left
                                     anchors.top: parent.top
                                     anchors.bottom: parent.bottom
-                                    width: parent.width * (freeMemory.ramPercent / 100)
+                                    width: parent.width * (ramButton.ramPercent / 100)
                                     radius: misc.radius
                                     color: {
-                                        if (freeMemory.ramPercent < 65) Qt.rgba(0.0, 0.75, 0.0, 1.0)
-                                        else if (freeMemory.ramPercent < 80) Qt.rgba(0.9, 0.9, 0.0, 1.0)
-                                        else if (freeMemory.ramPercent < 90) Qt.rgba(0.9, 0.6, 0.0, 1.0)
+                                        if (ramButton.ramPercent < 65) Qt.rgba(0.0, 0.75, 0.0, 1.0)
+                                        else if (ramButton.ramPercent < 80) Qt.rgba(0.9, 0.9, 0.0, 1.0)
+                                        else if (ramButton.ramPercent < 90) Qt.rgba(0.9, 0.6, 0.0, 1.0)
                                         else Qt.rgba(1.0, 0.0, 0.0, 1.0)
                                     }
                                 }
@@ -506,28 +415,93 @@ Scope {
                         anchors.fill: parent
                         spacing: 15
 
-                        Button {
-                            id: openSettingsApp
+                        RowLayout {
                             Layout.alignment: Qt.AlignTop
-                            Layout.margins: 25
-                            Layout.fillWidth: true
-                            Layout.fillHeight: false
-                            Layout.preferredHeight: 35
-                            Layout.preferredWidth: 35
-                            onClicked: trayPopup.visible = !trayPopup.visible, Quickshell.execDetached([
-                                "bash", "-c", "~/.TacOS_Stuff/TacOS_Settings_App/TacOS_Settings"
-                            ])
-                            contentItem: Label {
-                                text: "Settings "
-                                font.pixelSize: 20
-                                font.bold: true
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignVCenter
+                            Layout.margins: 15
+                            spacing: 10
+
+                            Item {
+                                Layout.fillWidth: true
                             }
-                            background: Rectangle {
-                                radius: misc.button2Radius
-                                color: parent.down ? colors.buttonClickedColor :
-                                parent.hovered ? colors.buttonHoverColor : colors.buttonColor
+
+                            Button {
+                                id: screenshotButton
+                                Layout.alignment: Qt.AlignRight
+                                Layout.margins: 0
+                                Layout.fillWidth: false
+                                Layout.fillHeight: false
+                                Layout.preferredHeight: 35
+                                Layout.preferredWidth: 35
+                                onClicked: trayPopup.visible = !trayPopup.visible, Quickshell.execDetached([
+                                    "bash", "-c", "niri msg action screenshot"
+                                ])
+                                HoverHandler {
+                                    id: screenshotButtonHoverHandler
+                                }
+                                ToolTip {
+                                    visible: screenshotButtonHoverHandler.hovered
+                                    text: "Screenshot"
+                                    delay: misc.hoverTime
+
+                                    background: Rectangle {
+                                        color: colors.toolTipColor
+                                        radius: misc.radius
+                                        border.color: colors.tooltipBorderColor
+                                        border.width: misc.toolTipBorderWidth
+                                    }
+                                }
+                                contentItem: Label {
+                                    text: "󰹑 "
+                                    font.pixelSize: 20
+                                    font.bold: true
+                                    horizontalAlignment: Text.AlignHCenter
+                                    verticalAlignment: Text.AlignVCenter
+                                }
+                                background: Rectangle {
+                                    radius: 20
+                                    color: parent.down ? colors.buttonClickedColor :
+                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
+                                }
+                            }
+
+                            Button {
+                                id: openSettingsApp
+                                Layout.alignment: Qt.AlignRight
+                                Layout.margins: 0
+                                Layout.fillWidth: false
+                                Layout.fillHeight: false
+                                Layout.preferredHeight: 35
+                                Layout.preferredWidth: 35
+                                onClicked: trayPopup.visible = !trayPopup.visible, Quickshell.execDetached([
+                                    "bash", "-c", "~/.TacOS_Stuff/TacOS_Settings_App/TacOS_Settings"
+                                ])
+                                HoverHandler {
+                                    id: settingsButtonHoverHandler
+                                }
+                                ToolTip {
+                                    visible: settingsButtonHoverHandler.hovered
+                                    text: "Settings"
+                                    delay: misc.hoverTime
+
+                                    background: Rectangle {
+                                        color: colors.toolTipColor
+                                        radius: misc.radius
+                                        border.color: colors.tooltipBorderColor
+                                        border.width: misc.toolTipBorderWidth
+                                    }
+                                }
+                                contentItem: Label {
+                                    text: " "
+                                    font.pixelSize: 20
+                                    font.bold: true
+                                    horizontalAlignment: Text.AlignHCenter
+                                    verticalAlignment: Text.AlignVCenter
+                                }
+                                background: Rectangle {
+                                    radius: 20
+                                    color: parent.down ? colors.buttonClickedColor :
+                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
+                                }
                             }
                         }
 
@@ -542,16 +516,6 @@ Scope {
                             verticalAlignment: Text.AlignVCenter
                         }
 
-                        FileView {
-                            id: viewRamUsage
-                            path: Qt.resolvedUrl("/proc/meminfo")
-                            preload: true
-                            watchChanges: true
-                            onLoaded: console.log("Beepity bop meminfo:", text)
-                            onLoadFailed: {
-                                console.log("Failed to load file:", text())
-                            }
-                        }
 
                         RowLayout {
                             Layout.alignment: Qt.AlignBottom
@@ -939,12 +903,12 @@ Scope {
                                         radius: misc.button2Radius
                                         border.color: parent.down ? colors.buttonClickedColor :
                                         parent.hovered ? colors.buttonHoverColor : colors.buttonColor
-                                        border.width: misc.buttonBorderWidth
+                                        border.width: misc.wallpaperButtonBorderWidth
 
                                         Image {
                                             source: modelData.path
                                             anchors.fill: parent
-                                            anchors.margins: misc.buttonBorderWidth
+                                            anchors.margins: misc.wallpaperButtonBorderWidth
                                             fillMode: Image.PreserveAspectCrop
                                         }
                                     }

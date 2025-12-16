@@ -50,15 +50,22 @@ Scope {
                     property var buttonColor: Qt.rgba(0.957, 0.855, 0.196, 1.0)
                     property var buttonHoverColor: Qt.rgba(0.192, 0.686, 0)
                     property var buttonClickedColor: Qt.rgba(0.957, 0.855, 0.196, 1.0)
+                    property var toolTipColor: Qt.rgba(0.462, 0.395, 0.757, 1.0)
+                    property var tooltipBorderColor: Qt.rgba(0.4158, 0.3555, 0.6815, 1.0)
                 }
 
                 Item {
                     id: misc
                     property var buttonBorderWidth: 5
+                    property var wallpaperButtonBorderWidth: 5
                     property var buttonRadius: 10
                     property var button2Radius: 5
                     property var radius: 10
                     property var borderWidth: 4
+                    property var buttonPreferredHeight: 25
+                    property var buttonFontSize: 14
+                    property var toolTipBorderWidth: 2
+                    property var hoverTime: 400
                 }
 
                 anchors {
@@ -95,7 +102,7 @@ Scope {
                                 horizontalAlignment: Text.AlignHCenter
                                 verticalAlignment: Text.AlignVCenter
                             }
-                            Layout.preferredHeight: 25
+                            Layout.preferredHeight: misc.buttonPreferredHeight
                             Layout.preferredWidth: 50
                             onClicked: launchFuzzel.running = true
 
@@ -122,6 +129,7 @@ Scope {
                     RowLayout {
                         id: centerModules
                         Layout.fillWidth: true
+                        anchors.horizontalCenter: parent.horizontalCenter
                         Layout.alignment: Qt.AlignHCenter
                         spacing: 10
 
@@ -134,7 +142,7 @@ Scope {
                                 horizontalAlignment: Text.AlignHCenter
                                 verticalAlignment: Text.AlignVCenter
                             }
-                            Layout.preferredHeight: 25
+                            Layout.preferredHeight: misc.buttonPreferredHeight
                             Layout.preferredWidth: 250
                             onClicked: clockPopup.visible = !clockPopup.visible
                             background: Rectangle {
@@ -165,7 +173,7 @@ Scope {
                                 horizontalAlignment: Text.AlignHCenter
                                 verticalAlignment: Text.AlignVCenter
                             }
-                            Layout.preferredHeight: 25
+                            Layout.preferredHeight: misc.buttonPreferredHeight
                             Layout.preferredWidth: 50
                             Layout.alignment: Qt.AlignRight
                             onClicked: settingsPopup.visible = !settingsPopup.visible
@@ -196,6 +204,8 @@ Scope {
                         Layout.rightMargin: 8
                         spacing: 10
 
+                        CpuButton {}
+
                         Button {
                             id: trayButton
                             contentItem: Label {
@@ -207,7 +217,7 @@ Scope {
                             }
                             Layout.alignment: Qt.AlignRight
                             anchors.rightMargin: 8
-                            Layout.preferredHeight: 25
+                            Layout.preferredHeight: misc.buttonPreferredHeight
                             Layout.preferredWidth: 35
                             onClicked: trayPopup.visible = !trayPopup.visible
                             background: Rectangle {
@@ -222,7 +232,7 @@ Scope {
                                 bottomRightRadius: misc.buttonRadius
                                 topLeftRadius: misc.buttonRadius
                                 topRightRadius: misc.buttonRadius
-                                border.color: Qt.rgba(1.0, 1.0, 1.0, 1.0)
+                                border.color: colors.primaryColor
                                 border.width: misc.buttonBorderWidth
                                 color: parent.down ? colors.buttonClickedColor :
                                     parent.hovered ? colors.buttonHoverColor : colors.buttonColor
@@ -280,43 +290,94 @@ Scope {
                     ColumnLayout {
                         anchors.fill: parent
                         spacing: 15
-                        //Button {
-                        //    id: checkRamUsage
-                        //    Layout.margins: 25
-                        //    Layout.fillWidth: true
-                        //    Layout.fillHeight: true
-                        //    Layout.preferredHeight: 35
-                        //    Layout.preferredWidth: 35
-                        //    //onClicked: getTotalMemory.running = true
-                        //    background: Rectangle {
-                        //        radius: misc.button2Radius
-                        //        color: parent.down ? colors.buttonClickedColor :
-                        //        parent.hovered ? colors.buttonHoverColor : colors.buttonColor
-                        //    }
-                        //}
 
-                        Button {
-                            id: openSettingsApp
+                        RowLayout {
                             Layout.alignment: Qt.AlignTop
-                            Layout.margins: 25
-                            Layout.fillWidth: true
-                            Layout.fillHeight: false
-                            Layout.preferredHeight: 35
-                            Layout.preferredWidth: 35
-                            onClicked: trayPopup.visible = !trayPopup.visible, Quickshell.execDetached([
-                                "bash", "-c", "~/.TacOS_Stuff/TacOS_Settings_App/TacOS_Settings"
-                            ])
-                            contentItem: Label {
-                                text: "Settings "
-                                font.pixelSize: 20
-                                font.bold: true
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignVCenter
+                            Layout.margins: 15
+                            spacing: 10
+
+                            Item {
+                                Layout.fillWidth: true
                             }
-                            background: Rectangle {
-                                radius: misc.button2Radius
-                                color: parent.down ? colors.buttonClickedColor :
-                                parent.hovered ? colors.buttonHoverColor : colors.buttonColor
+
+                            Button {
+                                id: screenshotButton
+                                Layout.alignment: Qt.AlignRight
+                                Layout.margins: 0
+                                Layout.fillWidth: false
+                                Layout.fillHeight: false
+                                Layout.preferredHeight: 35
+                                Layout.preferredWidth: 35
+                                onClicked: trayPopup.visible = !trayPopup.visible, Quickshell.execDetached([
+                                    "bash", "-c", "niri msg action screenshot"
+                                ])
+                                HoverHandler {
+                                    id: screenshotButtonHoverHandler
+                                }
+                                ToolTip {
+                                    visible: screenshotButtonHoverHandler.hovered
+                                    text: "Screenshot"
+                                    delay: misc.hoverTime
+
+                                    background: Rectangle {
+                                        color: colors.toolTipColor
+                                        radius: misc.radius
+                                        border.color: colors.tooltipBorderColor
+                                        border.width: misc.toolTipBorderWidth
+                                    }
+                                }
+                                contentItem: Label {
+                                    text: "󰹑 "
+                                    font.pixelSize: 20
+                                    font.bold: true
+                                    horizontalAlignment: Text.AlignHCenter
+                                    verticalAlignment: Text.AlignVCenter
+                                }
+                                background: Rectangle {
+                                    radius: 20
+                                    color: parent.down ? colors.buttonClickedColor :
+                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
+                                }
+                            }
+
+                            Button {
+                                id: openSettingsApp
+                                Layout.alignment: Qt.AlignRight
+                                Layout.margins: 0
+                                Layout.fillWidth: false
+                                Layout.fillHeight: false
+                                Layout.preferredHeight: 35
+                                Layout.preferredWidth: 35
+                                onClicked: trayPopup.visible = !trayPopup.visible, Quickshell.execDetached([
+                                    "bash", "-c", "~/.TacOS_Stuff/TacOS_Settings_App/TacOS_Settings"
+                                ])
+                                HoverHandler {
+                                    id: settingsButtonHoverHandler
+                                }
+                                ToolTip {
+                                    visible: settingsButtonHoverHandler.hovered
+                                    text: "Settings"
+                                    delay: misc.hoverTime
+
+                                    background: Rectangle {
+                                        color: colors.toolTipColor
+                                        radius: misc.radius
+                                        border.color: colors.tooltipBorderColor
+                                        border.width: misc.toolTipBorderWidth
+                                    }
+                                }
+                                contentItem: Label {
+                                    text: " "
+                                    font.pixelSize: 20
+                                    font.bold: true
+                                    horizontalAlignment: Text.AlignHCenter
+                                    verticalAlignment: Text.AlignVCenter
+                                }
+                                background: Rectangle {
+                                    radius: 20
+                                    color: parent.down ? colors.buttonClickedColor :
+                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
+                                }
                             }
                         }
 
@@ -718,12 +779,12 @@ Scope {
                                         radius: misc.button2Radius
                                         border.color: parent.down ? colors.secondaryColor :
                                         parent.hovered ? Qt.rgba(0.092, 0.586, 0, 1) : colors.secondaryColor
-                                        border.width: misc.buttonBorderWidth
+                                        border.width: misc.wallpaperButtonBorderWidth
 
                                         Image {
                                             source: modelData.path
                                             anchors.fill: parent
-                                            anchors.margins: misc.buttonBorderWidth
+                                            anchors.margins: misc.wallpaperButtonBorderWidth
                                             fillMode: Image.PreserveAspectCrop
                                         }
                                     }

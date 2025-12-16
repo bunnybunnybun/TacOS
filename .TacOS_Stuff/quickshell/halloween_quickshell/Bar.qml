@@ -50,15 +50,20 @@ Scope {
                     property var buttonColor: Qt.rgba(0, 0, 0, 0.254)
                     property var buttonHoverColor: Qt.rgba(0.0, 0.0, 0.0, 0.4)
                     property var buttonClickedColor: Qt.rgba(0, 0, 0, 0.354)
+                    property var toolTipColor: Qt.rgba(0.462, 0.395, 0.757, 1.0)
+                    property var tooltipBorderColor: Qt.rgba(0.4158, 0.3555, 0.6815, 1.0)
                 }
 
                 Item {
                     id: misc
                     property var buttonBorderWidth: 5
+                    property var wallpaperButtonBorderWidth: 5
                     property var buttonRadius: 10
                     property var button2Radius: 5
                     property var radius: 5
                     property var borderWidth: 6
+                    property var toolTipBorderWidth: 2
+                    property var hoverTime: 400
                 }
 
                 anchors {
@@ -116,6 +121,7 @@ Scope {
 
                     RowLayout {
                         id: centerModules
+                        anchors.horizontalCenter: parent.horizontalCenter
                         Layout.fillWidth: true
                         Layout.alignment: Qt.AlignHCenter
                         spacing: 10
@@ -259,43 +265,94 @@ Scope {
                     ColumnLayout {
                         anchors.fill: parent
                         spacing: 15
-                        //Button {
-                        //    id: checkRamUsage
-                        //    Layout.margins: 25
-                        //    Layout.fillWidth: true
-                        //    Layout.fillHeight: true
-                        //    Layout.preferredHeight: 35
-                        //    Layout.preferredWidth: 35
-                        //    //onClicked: getTotalMemory.running = true
-                        //    background: Rectangle {
-                        //        radius: misc.button2Radius
-                        //        color: parent.down ? colors.buttonClickedColor :
-                        //        parent.hovered ? colors.buttonHoverColor : colors.buttonColor
-                        //    }
-                        //}
 
-                        Button {
-                            id: openSettingsApp
+                        RowLayout {
                             Layout.alignment: Qt.AlignTop
-                            Layout.margins: 25
-                            Layout.fillWidth: true
-                            Layout.fillHeight: false
-                            Layout.preferredHeight: 35
-                            Layout.preferredWidth: 35
-                            onClicked: trayPopup.visible = !trayPopup.visible, Quickshell.execDetached([
-                                "bash", "-c", "~/.TacOS_Stuff/TacOS_Settings_App/TacOS_Settings"
-                            ])
-                            contentItem: Label {
-                                text: "Settings "
-                                font.pixelSize: 20
-                                font.bold: true
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignVCenter
+                            Layout.margins: 15
+                            spacing: 10
+
+                            Item {
+                                Layout.fillWidth: true
                             }
-                            background: Rectangle {
-                                radius: misc.button2Radius
-                                color: parent.down ? colors.buttonClickedColor :
-                                parent.hovered ? colors.buttonHoverColor : colors.buttonColor
+
+                            Button {
+                                id: screenshotButton
+                                Layout.alignment: Qt.AlignRight
+                                Layout.margins: 0
+                                Layout.fillWidth: false
+                                Layout.fillHeight: false
+                                Layout.preferredHeight: 35
+                                Layout.preferredWidth: 35
+                                onClicked: trayPopup.visible = !trayPopup.visible, Quickshell.execDetached([
+                                    "bash", "-c", "niri msg action screenshot"
+                                ])
+                                HoverHandler {
+                                    id: screenshotButtonHoverHandler
+                                }
+                                ToolTip {
+                                    visible: screenshotButtonHoverHandler.hovered
+                                    text: "Screenshot"
+                                    delay: misc.hoverTime
+
+                                    background: Rectangle {
+                                        color: colors.toolTipColor
+                                        radius: misc.radius
+                                        border.color: colors.tooltipBorderColor
+                                        border.width: misc.toolTipBorderWidth
+                                    }
+                                }
+                                contentItem: Label {
+                                    text: "󰹑 "
+                                    font.pixelSize: 20
+                                    font.bold: true
+                                    horizontalAlignment: Text.AlignHCenter
+                                    verticalAlignment: Text.AlignVCenter
+                                }
+                                background: Rectangle {
+                                    radius: 20
+                                    color: parent.down ? colors.buttonClickedColor :
+                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
+                                }
+                            }
+
+                            Button {
+                                id: openSettingsApp
+                                Layout.alignment: Qt.AlignRight
+                                Layout.margins: 0
+                                Layout.fillWidth: false
+                                Layout.fillHeight: false
+                                Layout.preferredHeight: 35
+                                Layout.preferredWidth: 35
+                                onClicked: trayPopup.visible = !trayPopup.visible, Quickshell.execDetached([
+                                    "bash", "-c", "~/.TacOS_Stuff/TacOS_Settings_App/TacOS_Settings"
+                                ])
+                                HoverHandler {
+                                    id: settingsButtonHoverHandler
+                                }
+                                ToolTip {
+                                    visible: settingsButtonHoverHandler.hovered
+                                    text: "Settings"
+                                    delay: misc.hoverTime
+
+                                    background: Rectangle {
+                                        color: colors.toolTipColor
+                                        radius: misc.radius
+                                        border.color: colors.tooltipBorderColor
+                                        border.width: misc.toolTipBorderWidth
+                                    }
+                                }
+                                contentItem: Label {
+                                    text: " "
+                                    font.pixelSize: 20
+                                    font.bold: true
+                                    horizontalAlignment: Text.AlignHCenter
+                                    verticalAlignment: Text.AlignVCenter
+                                }
+                                background: Rectangle {
+                                    radius: 20
+                                    color: parent.down ? colors.buttonClickedColor :
+                                    parent.hovered ? colors.buttonHoverColor : colors.buttonColor
+                                }
                             }
                         }
 
@@ -716,12 +773,12 @@ Scope {
                                         radius: 3
                                         border.color: parent.down ? colors.buttonClickedColor :
                                         parent.hovered ? colors.buttonHoverColor : colors.buttonColor
-                                        border.width: misc.borderWidth
+                                        border.width: misc.wallpaperButtonBorderWidth
 
                                         Image {
                                             source: modelData.path
                                             anchors.fill: parent
-                                            anchors.margins: misc.borderWidth
+                                            anchors.margins: misc.wallpaperButtonBorderWidth
                                             fillMode: Image.PreserveAspectCrop
                                         }
                                     }
