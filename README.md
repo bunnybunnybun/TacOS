@@ -2,6 +2,8 @@
 This is a setup for Arch Linux, designed for power users and power user wannabe's like me!
 It includes several custom apps made by me, but the setup script will also install and configure some third party apps.
 
+Do note that this takes some code from an older project of mine called Idk-yet.
+
 This was originally going to be a full distro based on Arch Linux, which is why I named it TacOS (get it? Tac***OS***, as in operating system...), but I later realized that it made more sense to just make it a post installation script for Arch instead.
 
 Also, please keep in mind that this is nowhere near finished.
